@@ -1,0 +1,279 @@
+<!-- 所有使用教程可以在该链接找到https://echarts.apache.org/zh/option.html -->
+<Header></Header>
+
+<view class="move-container">
+  <view class="flex-wrp" style="flex-direction: row;">
+    <ec-canvas id="mychart-pie-move-bar" canvas-id="mychart-pie" ec="{{ec}}"></ec-canvas>
+    <view class="top-flex-wrp-horizontal" style="flex-direction: column;">
+      <view class="top-flex-wrp-vertical-charge" style="flex-direction: row;">
+        <view class="top-sub-flex-wrp">
+          <image class="top-icon" src="../../img/储能_充电.png" mode=""></image>
+        </view>
+        <view>
+          <text style="color: white">今日充电量</text>
+          <text style="color:#00c0a0">{{charge}} MWh</text>
+        </view>
+      </view>
+      <view class = "top-flex-wrp-vertical-discharge" style="flex-direction: row;">
+        <view class="top-sub-flex-wrp">
+          <image class="top-icon" src="../../img/储能_放电.png" mode=""></image>
+        </view>
+        <view>
+          <text style="color: white">今日放电量</text>
+          <text style="color:#4080ff">{{discharge}} MWh</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="revenue-background" style="flex-direction: column;">
+    <view class="revenue-flex-wrp-vertical" style="flex-direction: row;">
+      <view class="revenue-flex-wrp">
+        <image class="revenue-icon" src="../../img/储能_收益.png" mode=""></image>
+      </view>
+      <view>
+        <text class="revenue-title-font">累 计 收 益</text>
+      </view>
+    </view>
+    <view class="revenue-digit">
+      <text class="revenue-digit-font">￥{{total_revenue}}</text>
+    </view>
+  </view>
+  
+  <view class="flex-wrp" style="flex-direction: row;">
+    <view class="flex-wrp-container" style="flex-direction: column;">
+      <view class="flex-wrp-today-revenue" >
+        <view>
+          <text style="color: white">今日收益（元）</text>
+          <text style="color:#4080ff">{{today_revenue}}</text>
+        </view>
+      </view> 
+    </view>
+    <view class="flex-wrp-container" style="flex-direction: column;">
+      <view class="flex-wrp-yesterday-revenue" style="flex-direction: column;">
+        <view>
+          <text style="color: white">昨日收益（元）</text>
+          <text style="color:#4080ff">{{yesterday_revenue}}</text>
+        </view>
+      </view>  
+    </view>
+  </view>
+
+  <view class="swiper-tab-container">
+    <view class='swiper-tab'>
+      <view class='swiper-tab-list {{currentTableTab==0 ? "selected" : ""}}' data-current='0' bindtap='swichTable'>
+      当月收益
+      </view>
+      <view class='swiper-tab-list {{currentTableTab==1 ? "selected" : ""}}' data-current='1'
+      bindtap='swichTable'>
+        当年收益
+      </view>
+    </view>
+  </view>
+  <swiper current='{{currentTableTab}}' class='swiper-box' duration='300' 
+  style='height:220px' bindchange='slideTable'>
+    <swiper-item>
+      <ec-canvas id="mychart-bar-move-bar" canvas-id="mychart-pie" ec="{{ecDailyBar}}"></ec-canvas>
+    </swiper-item>
+    <swiper-item>
+      <ec-canvas id="mychart-bar-move-bar" canvas-id="mychart-pie" ec="{{ecMonthlyBar}}"></ec-canvas>
+    </swiper-item>
+  </swiper>
+
+  <view class="analysis-container" style="flex-direction: row;">
+    <view class="sub-analysis-container" style="flex-direction: column;">
+      <view class="child-analysis-container" >
+        <view>
+          <text style="color: white">综合效率</text>
+          <text style="color:#4080ff">{{today_revenue}}</text>
+        </view>
+      </view> 
+    </view>
+    <view class="sub-analysis-container" style="flex-direction: column;">
+      <view class="child-analysis-container" style="flex-direction: column;">
+        <view>
+          <text style="color: white">运行系数</text>
+          <text style="color:#4080ff">{{yesterday_revenue}}</text>
+        </view>
+      </view>  
+    </view>
+    <view class="sub-analysis-container" style="flex-direction: column;">
+      <view class="child-analysis-container" >
+        <view>
+          <text style="color: white">利用系数</text>
+          <text style="color:#4080ff">{{today_revenue}}</text>
+        </view>
+      </view> 
+    </view>
+  </view>
+
+  <view class="swiper-tab-container">
+    <view class='swiper-tab'>
+      <view class='swiper-tab-list {{currentTab==0 ? "selected" : ""}}' data-current='0'  bindtap='swichTab'>
+        运行概况
+      </view>
+      <view class='swiper-tab-list {{currentTab==1 ? "selected" : ""}}' data-current='1'
+      bindtap='swichTab'>
+        设备状态
+      </view>
+    </view>
+  </view>
+
+  <swiper current='{{currentTab}}' class='swiper-box' style='height:{{currentTab==0 ? "750px" : "300px"}}' duration='300' bindchange='slideTab'>
+    <swiper-item>
+      <view class="running-container" style="flex-direction: column;">
+        <view class="SOC-wrp" style="flex-direction: column;">
+          <text style="color:white">SOC</text>
+          <view wx:if="{{SOC >= 20}}" class="SOC-container" style="flex-direction: column;">
+            <progress active="true" percent="{{SOC}}" border-radius="5"
+            stroke-width="50" />
+            <text style="color: greenyellow;">{{SOC}}%</text>
+          </view>
+          <view wx:if="{{SOC < 20}}" class="SOC-container" style="flex-direction: column;">
+            <progress active="true" percent="{{SOC}}" border-radius="5" activeColor="red"
+            stroke-width="50" />
+            <text style="color: red;">{{SOC}}%</text>
+          </view>
+        </view>
+        <view class="flex-wrp" style="flex-direction: row;">
+          <view class="mid-sub-flex-wrp" style="flex-direction: row;">
+            <view class="mid-test-sub-flex-wrp">
+              <image class="mid-icon" src="../../img/battery-charge.png" mode=""></image>
+            </view>
+            <view>
+              <text style="color:white">今日充电量</text>
+              <text style="color:#4080ff">{{today_charge}} MWh</text>
+            </view>
+          </view>
+          <view class="mid-sub-flex-wrp" style="flex-direction: row;">
+            <view class="top-sub-flex-wrp">
+              <image class="mid-icon" src="../../img/battery-charge.png" mode=""></image>
+            </view>
+            <view>
+              <text style="color:white">今日放电量</text>
+              <text style="color:#4080ff">{{today_discharge}} MWh</text>
+            </view>
+          </view>
+        </view>
+        <view class="flex-wrp" style="flex-direction: row;">
+          <view class="mid-sub-flex-wrp" style="flex-direction: row;">
+            <view class="mid-test-sub-flex-wrp">
+              <image class="mid-icon" src="../../img/battery-charge.png" mode=""></image>
+            </view>
+            <view>
+              <text style="color:white">累计充电量</text>
+              <text style="color:#4080ff">{{accumulated_charge}} MWh</text>
+            </view>
+          </view>
+          <view class="mid-sub-flex-wrp" style="flex-direction: row;">
+            <view class="mid-test-sub-flex-wrp">
+              <image class="mid-icon" src="../../img/battery-charge.png" mode=""></image>
+            </view>
+            <view>
+              <text style="color:white">累计放电量</text>
+              <text style="color:#4080ff">{{accumulated_discharge}} MWh</text>
+            </view>
+          </view>
+        </view>
+        <view class="flex-wrp" style="flex-direction: row;">
+          <view class="mid-sub-flex-wrp" style="flex-direction: row;">
+            <view class="mid-test-sub-flex-wrp">
+              <image class="mid-icon" src="../../img/battery-charge.png" mode=""></image>
+            </view>
+            <view>
+              <text style="color:white">实时功率</text>
+              <text style="color:#4080ff">{{rt_p}} MW</text>
+            </view>
+          </view>
+          <view class="mid-sub-flex-wrp" style="flex-direction: row;">
+            <view class="mid-test-sub-flex-wrp">
+              <image class="mid-icon" src="../../img/battery-charge.png" mode=""></image>
+            </view>
+            <view>
+              <text style="color:white">电站状态</text>
+              <text style="color:greenyellow">{{rt_var}} MW</text>
+            </view>
+          </view>
+        </view>
+        <view class="flex-wrp" style="flex-direction: row;">
+          <view class="mid-sub-flex-wrp" style="flex-direction: row;">
+            <view class="mid-test-sub-flex-wrp">
+              <image class="mid-icon" src="../../img/battery-charge.png" mode=""></image>
+            </view>
+            <view>
+              <text style="color:white">可充电量</text>
+              <text style="color:#4080ff">{{chargeable}} MW</text>
+            </view>
+          </view>
+          <view class="mid-sub-flex-wrp" style="flex-direction: row;">
+            <view class="mid-test-sub-flex-wrp">
+              <image class="mid-icon" src="../../img/battery-charge.png" mode=""></image>
+            </view>
+            <view>
+              <text style="color:white">可放电量</text>
+              <text style="color:#4080ff">{{dischargeable}} MW</text>
+            </view>
+          </view>
+        </view>
+        <ec-canvas id="mychart-bar-move-bar" canvas-id="mychart-pie" ec="{{ecChargeBar}}"></ec-canvas>
+      </view>
+    </swiper-item>
+
+    <swiper-item>
+      <view class="device-container" style="flex-direction: column;">
+        <view class="sub-divice-container" style="flex-direction: row;">
+          <view class="bot-flex-wrp-container" style="flex-direction: column;">
+            <navigator url='/pages/dat/bms' class="flex-wrp-device" >
+              <view class="bot-sub-flex-wrp">
+                <image class="top-icon" src="../../img/battery-tips.png" mode=""></image>
+              </view>
+              <view>
+                <text style="color:white">BMS</text>
+                <text style="color:white">设备总数 {{bms_cnt}}</text>
+                <text  style="color:red">告警数量 {{bms_warning}}</text>
+              </view>
+            </navigator> 
+          </view>
+          <view class="bot-flex-wrp-container" style="flex-direction: column;">
+            <navigator url='/pages/dat/pcs' class="flex-wrp-device" >
+              <view class="bot-sub-flex-wrp">
+                <image class="top-icon" src="../../img/control.png" mode=""></image>
+              </view>
+              <view>
+                <text style="color:white">PCS</text>
+                <text style="color:white">设备总数 {{pcs_cnt}}</text>
+                <text  style="color:red">告警数量 {{pcs_warning}}</text>
+              </view>
+            </navigator>   
+          </view>
+        </view> 
+        <view class="sub-divice-container" style="flex-direction: row;">
+          <view class="bot-flex-wrp-container" style="flex-direction: column;">
+            <navigator url='/pages/dat/poc' class="flex-wrp-device" >
+              <view class="bot-sub-flex-wrp">
+                <image class="top-icon" src="../../img/air-conditioning.png" mode=""></image>
+              </view>
+              <view>
+                <text style="color:white">空调</text>
+                <text style="color:white">设备总数 {{poc_cnt}}</text>
+                <text  style="color:red">告警数量 {{poc_warning}}</text>
+              </view>
+            </navigator> 
+          </view>
+          <view class="bot-flex-wrp-container" style="flex-direction: column;">
+            <view class="flex-wrp-device" >
+              <view class="bot-sub-flex-wrp">
+                <image class="top-icon" src="../../img/fire-extinguisher-one.png" mode=""></image>
+              </view>
+              <view>
+                <text style="color:white">消防</text>
+                <text style="color:white">设备总数 {{firehydrant_cnt}}</text>
+                <text style="color:red">告警数量 {{firehydrant_warning}}</text>
+              </view>
+            </view>  
+          </view>
+        </view>
+      </view>
+    </swiper-item>
+  </swiper>
+</view>

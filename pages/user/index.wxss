@@ -1,0 +1,49 @@
+/*头部信息*/
+.head {
+    display: flex;
+    margin: 1px;
+    padding: 10px;
+    background-color: crimson;
+  }
+
+  .head-left-touxiang {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 3px 3px 10px gainsboro;
+    display: block;
+    overflow: hidden;
+  }
+  .head-right {
+    padding-left: 10px;
+  }
+  .head-right-txt1 {
+    color: white;
+  }
+  .head-right-txt2 {
+    background-color: darkorange;
+    color: white;
+    margin: 5px 0px;
+    padding: 5px;
+  }
+  .head-right-txt3 {
+    color: white;
+  }
+  
+  .caidan{
+    display: flex;
+    padding: 10px; 
+    border-bottom: 1px solid gainsboro;
+    margin-top: 10px;
+  }
+  .caidan-icon{
+    width: 20px; height: 20px;
+  }
+  .caidan-text{
+    flex-grow: 1;
+    margin-left: 10px;
+  }
+  .caidan-arrow{
+    width: 16px; height: 16px;
+  }

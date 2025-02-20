@@ -1,0 +1,116 @@
+.move-container {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}
+
+.move-container text {
+  margin: 10px;
+  display: block;
+}
+
+.flex-wrp{
+  display:flex;
+}
+
+.picker{
+  padding: 13px;
+  background-color: #ff923f;
+  font-size: x-large;
+  text-align: center;
+}
+
+.BMS-title-font {
+  color:       white;
+  font-size:    18px;
+}
+
+.SOH-wrp{
+  display:flex;
+  text-align: center;
+  align-items: center;
+}
+
+.SOH-container{
+  width: 60%;
+}
+
+.flex-wrp-horizontal{
+  display:flex;
+  width: 100%;
+  align-items: center;
+}
+
+.flex-wrp-vertical-poc{
+  display:flex;
+  height: 100px;
+  width: 98%;
+  border-radius: 20rpx;
+  box-shadow: 0 0 5rpx rgba(0,0,0,0.15);
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: larger;
+}
+
+.running-container {
+  border-top: 2px solid grey;
+  display: flex;
+  background-color: black;
+}
+
+.child-BMS-container{
+  display:flex;
+  width: 50%;
+  align-items: center;
+}
+
+.child-BMS-block-container{
+  margin-bottom: 20px;
+  display:flex;
+  width: 50%;
+  align-items: center;
+}
+
+.BMS-block-normal{
+  margin-left: 20px;
+  width: 75%;
+  background-color: rgb(26, 230, 26);
+  text-align: center;
+}
+
+.BMS-block-abnormal{
+  margin-left: 20px;
+  width: 75%;
+  background-color: red;
+  text-align: center;
+}
+.swiper-tab-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.swiper-tab {
+  width:        60%;
+  border-bottom: 1px solid gray;
+  text-align:   center;
+  line-height:  31px;
+  display:      flex;
+}
+
+.swiper-tab-list {
+  display: inline-block;
+  width: 50%;
+  color: gray;
+}
+
+.selected {
+  color: #4080ff;
+  border-bottom: 3px solid #4080ff;
+}
+
+.swiper-box {
+  width: 100%;
+  display: block;
+  overflow: scroll;
+}

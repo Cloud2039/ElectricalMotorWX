@@ -1,0 +1,117 @@
+/* pages/dat/overview.wxss */
+.move-container {
+  width: 100%;
+  min-height: 500px;
+  background-color: black;
+  position: relative;
+}
+
+.flex-wrp{
+  display:flex;
+}
+
+.move-container text {
+  margin: 10px;
+  display: block;
+}
+
+.station-cnt-background {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 5px;
+  display: flex;
+  width:  24%;
+  display: flex;
+  border-radius: 20rpx;
+  box-shadow: 0 0 5rpx rgba(255,255,255,0.15);
+  background-color: #161924;
+  justify-content: center;
+}
+
+.station-cnt-font {
+  color:       #ff923f;
+  font-size:    25px;
+  text-align: center;
+}
+
+#mychart-bar-move-bar {
+  height: 250px;
+  display: block;
+  background-color: #161924;
+}
+
+.station-summary{
+  display:flex;
+  width: 25%;
+  justify-content: center;
+}
+
+.sub-station-summary{
+  display:flex;
+  height: 20%;
+}
+
+#mychart-pie-move-bar {
+  width: 50%;
+  height: 150px;
+  display: block;
+}
+
+.sub-summary-stat-container{
+  display:flex;
+  height: 60px
+}
+
+.child-summary-stat-container{
+  display:flex;
+  width: 50%;
+}
+
+.child-summary-stat{
+  display:flex;
+  width:30%;
+  align-items: center;
+  justify-content: center;
+}
+
+.child-summary-icon{
+  width: 40px;
+  height: 40px;
+}
+
+.swiper-tab {
+  margin-top:   5px;
+  width:        60%;
+  border-bottom: 1px solid gray;
+  text-align:   center;
+  line-height:  31px;
+  display:      flex;
+}
+
+
+.swiper-tab2 {
+  margin-top:   5px;
+  width:        40%;
+  border-bottom: 1px solid gray;
+  text-align:   center;
+  line-height:  31px;
+  display:      flex;
+}
+
+.swiper-tab-list {
+  display: inline-block;
+  width: 50%;
+  color: gray;
+}
+
+.swiper-box {
+  margin-top: 10px;
+  width: 100%;
+  display: block;
+  overflow: scroll;
+}
+
+.selected {
+  color: #4080ff;
+  border-bottom: 3px solid #4080ff;
+}

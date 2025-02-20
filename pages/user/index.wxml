@@ -1,0 +1,35 @@
+<!--头部信息--> 
+<Header></Header>
+
+<view class='head'>
+
+  <view class='head-left' wx:if="{{lx==1}}">
+    <open-data type="userAvatarUrl" class="head-left-touxiang"></open-data>
+  </view>
+
+  <view class='head-right'>
+    <view class='head-right-txt1'  wx:if="{{lx==1}}">
+      <open-data type="userNickName"></open-data>
+    </view>
+    <view class='head-right-txt2'>
+      欢迎您：{{str_u_name}}
+    </view>
+  </view>
+</view>
+
+<navigator url='/pages/dat/index' open-type='switchTab' class='caidan'>
+  <image class='caidan-icon' src='/img/sp01.png'></image>
+  <text class='caidan-text'>回到首页</text>
+  <image class='caidan-arrow' src='/img/right.png'></image>
+</navigator>
+
+<block wx:if="{{str_u_name=='微信用户'}}">
+
+</block>
+
+<view bindtap='logout' class='caidan'>
+  <image class='caidan-icon' src='/img/m05.png'></image>
+  <text class='caidan-text'>退出登录</text>
+  <image class='caidan-arrow' src='/img/right.png'></image>
+</view>
+

@@ -1,0 +1,142 @@
+<Header></Header>
+
+<view class="move-container" style="height: {{windowHeight}};">
+  <view class="section">
+    <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+      <view class="picker">
+        {{multiArray[0][multiIndex[0]]}}-{{multiArray[1][multiIndex[1]]}}
+      </view>
+    </picker>
+  </view>
+  <view class="running-container" style="flex-direction: column;">
+        <view class="flex-wrp" style="flex-direction: row;">
+          <view wx:if="{{run_stat === 0}}" class="pcs-status-container">
+            <image class="top-icon" src="../../img/待机.png" mode=""></image>
+            <text style="color: yellow;">待机</text>
+          </view>
+          <view wx:if="{{run_stat === 1}}" class="pcs-status-container">
+            <image class="top-icon" src="../../img/充电_1.png" mode=""></image>
+            <text style="color: green;">充电</text>
+          </view>
+          <view wx:if="{{run_stat === 2}}" class="pcs-status-container">
+            <image class="top-icon" src="../../img/放电_1.png" mode=""></image>
+            <text style="color: green;">放电</text>
+          </view>
+          <view wx:if="{{run_stat === 3}}" class="pcs-status-container">
+            <image class="top-icon" src="../../img/告警.png" mode=""></image>
+            <text style="color: orange;">告警</text>
+          </view>
+          <view wx:if="{{run_stat === 4}}" class="pcs-status-container">
+            <image class="top-icon" src="../../img/故障.png" mode=""></image>
+            <text style="color: red;">故障</text>
+          </view>
+          <view wx:if="{{run_stat === 5}}"class="pcs-status-container">
+            <image class="top-icon" src="../../img/停机.png" mode=""></image>
+            <text style="color: grey;">停机</text>
+          </view>
+          <view class="child-PCS-container">
+            <view>
+              <text style="color:white">功率因数实时值</text>
+              <text style="color:#4080ff">{{today_charge}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="flex-wrp" style="flex-direction: row;">
+          <view class="child-PCS-container">
+            <view>
+              <text style="color:white">有功实时值</text>
+              <text style="color:#4080ff">{{today_charge}} KW</text>
+            </view>
+          </view>
+          <view class="child-PCS-container" style="flex-direction: row;">
+            <view>
+              <text style="color:white">无功实时值</text>
+              <text style="color:#4080ff">{{today_discharge}} KVar</text>
+            </view>
+          </view>
+        </view>
+        <view class="flex-wrp" style="flex-direction: row;">
+          <view class="child-PCS-container" style="flex-direction: row;">
+            <view>
+              <text style="color:white">最大可充电功率</text>
+              <text style="color:#4080ff">{{today_discharge}} KW</text>
+            </view>
+          </view>
+          <view class="child-PCS-container">
+            <view>
+              <text style="color:white">最大可放电功率</text>
+              <text style="color:#4080ff">{{today_charge}} KW</text>
+            </view>
+          </view>
+        </view>
+        <view class="flex-wrp" style="flex-direction: row;">
+          <view class="child-PCS-container">
+            <view>
+              <text style="color:white">累计充电量</text>
+              <text style="color:#4080ff">{{today_charge}} MWh</text>
+            </view>
+          </view>
+          <view class="child-PCS-container" style="flex-direction: row;">
+            <view>
+              <text style="color:white">累计放电量</text>
+              <text style="color:#4080ff">{{today_discharge}} MWh</text>
+            </view>
+          </view>
+        </view>
+        <view class="flex-wrp" style="flex-direction: row;">
+          <view class="child-PCS-block-container">
+            <view class='{{lock === 0 ? "PCS-block-normal" : "PCS-block-abnormal"}}'>
+              <text style="color:grey"> 闭锁 </text>
+            </view>
+          </view>
+          <view class="child-PCS-block-container" style="flex-direction: row;">
+            <view class='{{lock === 0 ? "PCS-block-normal" : "PCS-block-abnormal"}}'>
+              <text style="color:grey"> 人工闭锁 </text>
+            </view>
+          </view>
+        </view>
+        <view class="flex-wrp" style="flex-direction: row;">
+          <view class="child-PCS-block-container">
+            <view class='{{lock === 0 ? "PCS-block-normal" : "PCS-block-abnormal"}}'>
+              <text style="color:grey"> 通信异常 </text>
+            </view>
+          </view>
+          <view class="child-PCS-block-container" style="flex-direction: row;">
+            <view class='{{lock === 0 ? "PCS-block-normal" : "PCS-block-abnormal"}}'>
+              <text style="color:grey"> 告警总 </text>
+            </view>
+          </view>
+        </view>
+        <view class="flex-wrp" style="flex-direction: row;">
+          <view class="child-PCS-block-container">
+            <view class='{{lock === 0 ? "PCS-block-normal" : "PCS-block-abnormal"}}'>
+              <text style="color:grey"> 故障总 </text>
+            </view>
+          </view>
+          <view class="child-PCS-block-container" style="flex-direction: row;">
+            <view class='{{lock === 0 ? "PCS-block-normal" : "PCS-block-abnormal"}}'>
+              <text style="color:grey"> 辅控闭锁 </text>
+            </view>
+          </view>
+        </view>
+        <view class="flex-wrp" style="flex-direction: row;">
+          <view class="child-PCS-block-container" style="flex-direction: row;">
+            <view class='{{no_charge === 0 ? "PCS-block-normal" : "PCS-block-abnormal"}}'>
+              <text style="color:grey"> 禁止充电 </text>
+            </view>
+          </view>
+          <view class="child-PCS-block-container" style="flex-direction: row;">
+            <view class='{{no_discharge === 0 ? "PCS-block-normal" : "PCS-block-abnormal"}}'>
+              <text style="color:grey"> 禁止放电 </text>
+            </view>
+          </view>
+        </view>
+        <view class="flex-wrp" style="flex-direction: row;">
+          <view class="child-PCS-block-container">
+            <view class='{{lock === 0 ? "PCS-block-normal" : "PCS-block-abnormal"}}'>
+              <text style="color:grey"> 智能诊断故障闭锁 </text>
+            </view>
+          </view>
+        </view>
+  </view>
+</view>
