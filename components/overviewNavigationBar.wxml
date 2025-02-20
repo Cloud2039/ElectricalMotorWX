@@ -6,7 +6,7 @@
   <view class="navigation-bar" style="{{'height:' + navigationBarHeight}}"> 
     <!-- <image class="nav-img" src='/img/drop-down-list.png' /> -->
     <view class="navigation-title" style="{{'line-height:' + navigationBarHeight}}" >
-      <text>平高储能</text>
+      <text>亨斯迈</text>
     </view>
   </view>
 </view>
