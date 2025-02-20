@@ -1,7 +1,6 @@
 <!--pages/dat/overview.wxml-->
 <Header></Header>
 <view class="move-container" style="flex-direction: row;">
-  <map style="width: 100%; height: 800rpx;" scale="5" markers="{{markers}}"/>
   <view class="flex-wrp" style="flex-direction: column;">
     <view class="flex-wrp" style="flex-direction: row">
       <view class="station-cnt-background" style="flex-direction: column;">
