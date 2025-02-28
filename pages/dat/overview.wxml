@@ -32,6 +32,8 @@
             <text style="color:#4080ff">{{today_charge}} t</text>
           </view>
         </view>
+      </view>
+      <view class="sub-summary-stat-container" style="flex-direction: row;">
         <view class="child-summary-stat-container" style="flex-direction: row;">
           <view class="child-summary-stat">
           <image class="child-summary-icon" src="../../img/finance.png" mode=""></image>

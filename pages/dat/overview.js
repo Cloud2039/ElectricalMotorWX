@@ -27,7 +27,15 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+      var systeminfo=wx.getSystemInfoSync()
+      this.setData({
+        moveheight:systeminfo.windowHeight,
+        moveheight:systeminfo.windowHieght-100
+      })
 
+      this.setData({
+        
+      })
     },
 
     /**
@@ -99,7 +107,7 @@ function getOption() {
             fontWeight: 'bold'
           }
         },
-        color:['#4080ff','#ff0000','#c0c0c0','#ffff00'],
+        color:['#4080ff','#ff0000','#c0c0c0'],
         labelLine:{
           show:false
         },
@@ -111,13 +119,10 @@ function getOption() {
             name: '正常'
           }, {
             value: abnormal_cnt,
-            name: '异常'
+            name: '超期'
           }, {
             value: offline_cnt,
-            name: '离线'
-          }, {
-            value: wait_cnt,
-            name: '待建'
+            name: '临期'
           }]
         }]
     }

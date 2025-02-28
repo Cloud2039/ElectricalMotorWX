@@ -10,8 +10,7 @@
         "pages/dat/pcs",
         "components/mainNavigationBar",
         "components/loginNavigationBar",
-        "components/overviewNavigationBar",
-        "pages/dat/diagram"
+        "components/overviewNavigationBar"
     ],
     "window": {
         "backgroundTextStyle": "light",
@@ -37,12 +36,6 @@
                 "iconPath": "img/Data-off.png",
                 "selectedIconPath": "img/Data-on.png"
             },
-            {
-              "pagePath": "pages/dat/diagram",
-              "text": "一次图",
-              "iconPath": "img/Diagram-off.png",
-              "selectedIconPath": "img/Diagram-on.png"
-          },
             {
                 "pagePath": "pages/user/login",
                 "text": "用户",
