@@ -26,16 +26,7 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad(options) {
-      var systeminfo=wx.getSystemInfoSync()
-      this.setData({
-        moveheight:systeminfo.windowHeight,
-        moveheight:systeminfo.windowHieght-100
-      })
-
-      this.setData({
-        
-      })
+    onLoad() {
     },
 
     /**

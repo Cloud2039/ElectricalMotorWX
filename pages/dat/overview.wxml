@@ -1,18 +1,23 @@
 <!--pages/dat/overview.wxml-->
 <Header></Header>
-<view class="move-container" style="flex-direction: row;">
-  <view class="flex-wrp" style="flex-direction: column;">
-    <view class="flex-wrp" style="flex-direction: row">
-      <view class="station-cnt-background" style="flex-direction: column;">
-        <text class="station-cnt-font">总数:</text>
-        <text class="station-cnt-font">22</text>
-      </view>
-      <ec-canvas id="mychart-pie-move-bar" canvas-id="mychart-pie" ec="{{ec}}"></ec-canvas>
-      <view class="station-summary" style="flex-direction: column;">
-        <view class = "sub-station-summary" style="flex-direction: row;">
-          <text style="color: #4080ff">超期：18</text>
+<form bindsubmit="search">
+  <view class='search-bar'>
+    <input type='text' maxlength='12' placeholder='请输入关键字' name="neirong" />
+    <button form-type='submit'>查询</button>
+  </view>
+  <view class="move-container" style="flex-direction: row;">
+    <view class="flex-wrp" style="flex-direction: column;">
+      <view class="flex-wrp" style="flex-direction: row">
+        <view class="station-cnt-background" style="flex-direction: column;">
+          <text class="station-cnt-font">总数:</text>
+          <text class="station-cnt-font">22</text>
         </view>
-        <view class = "sub-station-summary" style="flex-direction: row;">
+        <ec-canvas id="mychart-pie-move-bar" canvas-id="mychart-pie" ec="{{ec}}"></ec-canvas>
+        <view class="station-summary" style="flex-direction: column;">
+          <view class = "sub-station-summary" style="flex-direction: row;">
+            <text style="color: #4080ff">超期：18</text>
+          </view>
+          <view class = "sub-station-summary" style="flex-direction: row;">
           <text style="color: #ff0000">临期：2</text>
         </view>
         <view class = "sub-station-summary" style="flex-direction: row;">
@@ -58,4 +63,5 @@
     </view>
   </view>
 </view>
+</form>
 

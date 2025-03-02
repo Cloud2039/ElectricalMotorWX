@@ -115,3 +115,24 @@
   color: #4080ff;
   border-bottom: 3px solid #4080ff;
 }
+
+.search-bar{
+  display: flex;
+  background-color: black;
+  border-bottom: 1px solid solid;
+  padding: 5px;
+}
+
+.search-bar input{
+  height: 35px;
+  line-height: 35px;
+  background: white;
+  flex-grow: 1;
+}
+
+.search-bar button{
+  background:  orange;
+  color: white;
+  height: 35px;
+  line-height: 35px; 
+ }
