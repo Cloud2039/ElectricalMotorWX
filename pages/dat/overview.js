@@ -99,9 +99,9 @@ function getOption() {
           }
         },
         color:['#4080ff','#ff0000','#c0c0c0'],
-        labelLine:{
-          show:false
-        },
+        // labelLine:{
+        //   show:true
+        // },
         type: 'pie',
         center: ['40%', '50%'],
         radius: ['50%', '85%'],

@@ -5,63 +5,48 @@
     <input type='text' maxlength='12' placeholder='请输入关键字' name="neirong" />
     <button form-type='submit'>查询</button>
   </view>
-  <view class="move-container" style="flex-direction: row;">
-    <view class="flex-wrp" style="flex-direction: column;">
-      <view class="flex-wrp" style="flex-direction: row">
-        <view class="station-cnt-background" style="flex-direction: column;">
-          <text class="station-cnt-font">总数:</text>
-          <text class="station-cnt-font">22</text>
+  <view class="chart-container" style="flex-direction: column">
+    <view class="station-cnt-background" style="flex-direction: row;">
+      <text class="station-cnt-font">总 数 :</text>
+      <text class="station-cnt-font">22</text>
+    </view>
+    <ec-canvas id="mychart-pie-move-bar" canvas-id="mychart-pie" ec="{{ec}}"></ec-canvas>
+  </view>
+
+  <view class="summary-stat-container" style="flex-direction: column;">
+    <view class="sub-summary-stat-container" style="flex-direction: row;">
+      <view class="child-summary-stat-container" style="flex-direction: row;">
+        <view class="child-summary-stat">
+          <image class="child-summary-icon" src="../../img/power-supply.png" mode=""></image>
         </view>
-        <ec-canvas id="mychart-pie-move-bar" canvas-id="mychart-pie" ec="{{ec}}"></ec-canvas>
-        <view class="station-summary" style="flex-direction: column;">
-          <view class = "sub-station-summary" style="flex-direction: row;">
-            <text style="color: #4080ff">超期：18</text>
-          </view>
-          <view class = "sub-station-summary" style="flex-direction: row;">
-          <text style="color: #ff0000">临期：2</text>
-        </view>
-        <view class = "sub-station-summary" style="flex-direction: row;">
-          <text style="color: #c0c0c0">正常：1</text>
+        <view>
+          <text style="color:white">>100%</text>
+          <text style="color:#4080ff">{{today_charge}} t</text>
         </view>
       </view>
     </view>
-
-    <view class="summary-stat-container" style="flex-direction: column;">
-      <view class="sub-summary-stat-container" style="flex-direction: row;">
-        <view class="child-summary-stat-container" style="flex-direction: row;">
-          <view class="child-summary-stat">
-            <image class="child-summary-icon" src="../../img/power-supply.png" mode=""></image>
-          </view>
-          <view>
-            <text style="color:white">>100%</text>
-            <text style="color:#4080ff">{{today_charge}} t</text>
-          </view>
-        </view>
-      </view>
-      <view class="sub-summary-stat-container" style="flex-direction: row;">
-        <view class="child-summary-stat-container" style="flex-direction: row;">
-          <view class="child-summary-stat">
+    <view class="sub-summary-stat-container" style="flex-direction: row;">
+      <view class="child-summary-stat-container" style="flex-direction: row;">
+        <view class="child-summary-stat">
           <image class="child-summary-icon" src="../../img/finance.png" mode=""></image>
-          </view>
+        </view>
           <view>
-            <text style="color:white">>90%</text>
-            <text style="color:#4080ff">{{today_discharge}} t</text>
-          </view>
+          <text style="color:white">>90%</text>
+          <text style="color:#4080ff">{{today_discharge}} t</text>
         </view>
       </view>
-      <view class="sub-summary-stat-container" style="flex-direction: row;">
-        <view class="child-summary-stat-container" style="flex-direction: row;">
-          <view class="child-summary-stat">
-            <image class="child-summary-icon" src="../../img/power-supply.png" mode=""></image>
-          </view>
-          <view>
-            <text style="color:white">正常</text>
-            <text style="color:#4080ff">{{today_charge}} kV</text>
-          </view>
+    </view>
+    <view class="sub-summary-stat-container" style="flex-direction: row;">
+      <view class="child-summary-stat-container" style="flex-direction: row;">
+        <view class="child-summary-stat">
+          <image class="child-summary-icon" src="../../img/power-supply.png" mode=""></image>
+        </view>
+        <view>
+          <text style="color:white">正常</text>
+          <text style="color:#4080ff">{{today_charge}} kV</text>
         </view>
       </view>
     </view>
   </view>
-</view>
 </form>
 

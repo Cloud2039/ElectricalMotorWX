@@ -1,13 +1,11 @@
 /* pages/dat/overview.wxss */
-.move-container {
-  width: 100%;
-  min-height: 500px;
-  background-color: black;
-  position: relative;
+page{
+  background-color: black;   /* 背景颜色 */
 }
 
-.flex-wrp{
+.chart-container{
   display:flex;
+  align-items: center;
 }
 
 .move-container text {
@@ -20,7 +18,7 @@
   margin-bottom: 10px;
   margin-left: 5px;
   display: flex;
-  width:  24%;
+  width:  50%;
   display: flex;
   border-radius: 20rpx;
   box-shadow: 0 0 5rpx rgba(255,255,255,0.15);
@@ -32,12 +30,6 @@
   color:       #ff923f;
   font-size:    25px;
   text-align: center;
-}
-
-#mychart-bar-move-bar {
-  height: 250px;
-  display: block;
-  background-color: #161924;
 }
 
 .station-summary{
@@ -79,43 +71,6 @@
   height: 40px;
 }
 
-.swiper-tab {
-  margin-top:   5px;
-  width:        60%;
-  border-bottom: 1px solid gray;
-  text-align:   center;
-  line-height:  31px;
-  display:      flex;
-}
-
-
-.swiper-tab2 {
-  margin-top:   5px;
-  width:        40%;
-  border-bottom: 1px solid gray;
-  text-align:   center;
-  line-height:  31px;
-  display:      flex;
-}
-
-.swiper-tab-list {
-  display: inline-block;
-  width: 50%;
-  color: gray;
-}
-
-.swiper-box {
-  margin-top: 10px;
-  width: 100%;
-  display: block;
-  overflow: scroll;
-}
-
-.selected {
-  color: #4080ff;
-  border-bottom: 3px solid #4080ff;
-}
-
 .search-bar{
   display: flex;
   background-color: black;
@@ -131,7 +86,7 @@
 }
 
 .search-bar button{
-  background:  orange;
+  background:  #ff923f;
   color: white;
   height: 35px;
   line-height: 35px; 
