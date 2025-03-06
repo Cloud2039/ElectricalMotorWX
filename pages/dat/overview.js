@@ -88,22 +88,20 @@ function getOption() {
       backgroundColor: "#000000",
       series: [{
         label: {
-          show: false,
-          position: 'center'
+          normal:{
+            fontSize:20
+          }
         },
         emphasis: {
           label: {
             show: true,
-            fontSize: 15,
+            fontSize: 25,
             fontWeight: 'bold'
           }
         },
         color:['#4080ff','#ff0000','#c0c0c0'],
-        // labelLine:{
-        //   show:true
-        // },
         type: 'pie',
-        center: ['40%', '50%'],
+        center: ['50%', '50%'],
         radius: ['50%', '85%'],
         data: [{
             value: normal_cnt,
