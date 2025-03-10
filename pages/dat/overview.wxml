@@ -2,6 +2,7 @@
 <Header></Header>
 <form bindsubmit="search">
   <view class='search-bar'>
+    <image src="../../img/scanning.png" mode="aspectFit" bindtap="scanQRCode">test</image>
     <input type='text' maxlength='12' placeholder='请输入关键字' name="neirong" />
     <button form-type='submit'>查询</button>
   </view>
@@ -20,7 +21,7 @@
           <image class="child-summary-icon" src="../../img/power-supply.png" mode=""></image>
         </view>
         <view>
-          <text style="color:white">>100%</text>
+          <text style="color:white">超  期</text>
           <text style="color:#4080ff">{{today_charge}} t</text>
         </view>
       </view>
@@ -31,7 +32,7 @@
           <image class="child-summary-icon" src="../../img/finance.png" mode=""></image>
         </view>
           <view>
-          <text style="color:white">>90%</text>
+          <text style="color:white">待维护</text>
           <text style="color:#4080ff">{{today_discharge}} t</text>
         </view>
       </view>
@@ -42,7 +43,7 @@
           <image class="child-summary-icon" src="../../img/power-supply.png" mode=""></image>
         </view>
         <view>
-          <text style="color:white">正常</text>
+          <text style="color:white">正  常</text>
           <text style="color:#4080ff">{{today_charge}} kV</text>
         </view>
       </view>

@@ -23,6 +23,21 @@ Page({
       },
     },
 
+    scanQRCode: function() {
+      wx.scanCode({
+        onlyFromCamera: false,
+        success: (res) => {
+          console.log(res);
+          this.setData({
+            result:res.result
+          });
+        },
+        fail:(err) => {
+          console.error(err);
+        }
+      })
+    },
+
     /**
      * 生命周期函数--监听页面加载
      */

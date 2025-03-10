@@ -49,14 +49,22 @@ page{
   display: block;
 }
 
+.summary-stat-container{
+  display:flex;
+  align-items: center;
+  margin-top: 50px;
+}
+
 .sub-summary-stat-container{
   display:flex;
+  width: 50%;
   height: 60px
 }
 
 .child-summary-stat-container{
   display:flex;
-  width: 50%;
+  width: 100%;
+  align-items: center;
 }
 
 .child-summary-stat{
@@ -76,6 +84,11 @@ page{
   background-color: black;
   border-bottom: 1px solid solid;
   padding: 5px;
+}
+
+.search-bar image{
+  height: 35px;
+  width: 35px;
 }
 
 .search-bar input{
