@@ -5,9 +5,6 @@
         "pages/user/login",
         "pages/user/index",
         "pages/dat/overview",
-        "pages/dat/poc",
-        "pages/dat/bms",
-        "pages/dat/pcs",
         "components/mainNavigationBar",
         "components/loginNavigationBar",
         "components/overviewNavigationBar"
@@ -26,19 +23,19 @@
         "list": [
             {
                 "pagePath": "pages/dat/overview",
-                "text": "概览",
+                "text": "首页",
                 "iconPath": "img/Overview-off.png",
                 "selectedIconPath": "img/Overview-on.png"
             },
             {
                 "pagePath": "pages/dat/index",
-                "text": "数据",
+                "text": "统计",
                 "iconPath": "img/Data-off.png",
                 "selectedIconPath": "img/Data-on.png"
             },
             {
                 "pagePath": "pages/user/login",
-                "text": "用户",
+                "text": "我的",
                 "iconPath": "img/User-off.png",
                 "selectedIconPath": "img/User-on.png"
             }

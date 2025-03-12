@@ -96,6 +96,7 @@ page{
   line-height: 35px;
   background: white;
   flex-grow: 1;
+  border-radius: 5px;
 }
 
 .search-bar button{
