@@ -52,6 +52,27 @@ page{
   overflow: scroll;
 }
 
+.swiper-tab-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.swiper-tab {
+  width:        40%;
+  border-bottom: 1px solid gray;
+  text-align:   center;
+  line-height:  31px;
+  display:      flex;
+}
+
+.swiper-tab-list {
+  display: inline-block;
+  width: 50%;
+  color: gray;
+}
+
 .search-bar{
   display: flex;
   background-color: black;
