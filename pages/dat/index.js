@@ -10,7 +10,8 @@ Page({
    */
   data: {
     currentTableTab:        0,
-    currentTab:             0,
+    currentLubeTab:         0,
+    currentBearingTab:      0,
 
     api_url : app.myapp.myweb
   },
@@ -33,20 +34,38 @@ Page({
     }
   },
 
-  slideTab: function(e) {
+  slideLubeTab: function(e) {
     var that = this;
     that.setData({
-      currentTab: e.detail.current
+      currentLubeTab: e.detail.current
     })
   },
 
-  swichTab: function(e) {
+  switchLubeTab: function(e) {
     var that = this;
-    if (this.data.currentTab === e.target.dataset.current) {
+    if (this.data.currentLubeTab === e.target.dataset.current) {
       return false;
     } else {
       that.setData({
-        currentTab: e.target.dataset.current
+        currentLubeTab: e.target.dataset.current
+      })
+    }
+  },
+
+  slideBearingTab: function(e) {
+    var that = this;
+    that.setData({
+      currentBearingTab: e.detail.current
+    })
+  },
+
+  switchBearingTab: function(e) {
+    var that = this;
+    if (this.data.currentBearingTab === e.target.dataset.current) {
+      return false;
+    } else {
+      that.setData({
+        currentBearingTab: e.target.dataset.current
       })
     }
   },

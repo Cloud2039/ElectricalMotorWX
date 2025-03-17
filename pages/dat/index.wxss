@@ -6,20 +6,6 @@ page{
   display:flex;
 }
 
-.top-sub-flex-wrp{
-  display:flex;
-  width:30%;
-  align-items: center;
-  justify-content: center;
-}
-
-.flex-wrp-container{
-  display:flex;
-  height: 50%;
-  width: 50%;
-  align-items: center;
-}
-
 .swiper-tab-container {
   width: 100%;
   display: flex;
@@ -57,13 +43,11 @@ page{
   display: flex;
   justify-content: center;
   flex-direction: row;
-  text-align: center;
 }
 
 .selector-tab {
   width:        100%;
   border-bottom: 1px solid gray;
-  text-align:   center;
   line-height:  31px;
   display:      flex;
   flex-direction: row;
@@ -71,8 +55,9 @@ page{
 
 .selector-tab-list {
   display: inline-block;
-  width: 30%;
+  width: 33%;
   color: gray;
+  text-align: center;
 }
 
 .search-bar{

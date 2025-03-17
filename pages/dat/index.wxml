@@ -21,22 +21,30 @@
   <swiper current='{{currentTableTab}}' class='swiper-box' duration='300' 
   style='height:220px' bindchange='slideTable'>
     <swiper-item>
- 
-        <view class='sselector-tab'>
-          <view class='selector-tab-list {{currentSelectorTab==0 ? "selected" : ""}}' data-current='0' bindtap='switchTable'>
-            超期
-          </view>
-          <view class='selector-tab-list {{currentSelectorTab==1 ? "selected" : ""}}' data-current='1'bindtap='switchTable'>
-            待维护
-          </view>
-          <view class='selector-tab-list {{currentSelectorTab==2 ? "selected" : ""}}' data-current='2'bindtap='switchTable'>
-            正常
-          </view>
-
+      <view class='selector-tab'>
+        <view class='selector-tab-list {{currentLubeTab==0 ? "selected" : ""}}' data-current='0' bindtap='switchLubeTab'>
+          超期
+        </view>
+        <view class='selector-tab-list {{currentLubeTab==1 ? "selected" : ""}}' data-current='1'bindtap='switchLubeTab'>
+          待维护
+        </view>
+        <view class='selector-tab-list {{currentLubeTab==2 ? "selected" : ""}}' data-current='2'bindtap='switchLubeTab'>
+          正常
+        </view>
       </view>
     </swiper-item>
     <swiper-item>
-
+      <view class='selector-tab'>
+        <view class='selector-tab-list {{currentBearingTab==0 ? "selected" : ""}}' data-current='0' bindtap='switchBearingTab'>
+          超期
+        </view>
+        <view class='selector-tab-list {{currentBeartingTab==1 ? "selected" : ""}}' data-current='1'bindtap='switchBearingTab'>
+          待维护
+        </view>
+        <view class='selector-tab-list {{currentBearingTab==2 ? "selected" : ""}}' data-current='2'bindtap='switchBearingTab'>
+          正常
+        </view>
+      </view>
     </swiper-item>
   </swiper>
 </form>
