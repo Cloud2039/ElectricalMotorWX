@@ -32,6 +32,7 @@
           正常
         </view>
       </view>
+      <text>test</text>
     </swiper-item>
     <swiper-item>
       <view class='selector-tab'>
