@@ -32,7 +32,10 @@
           正常
         </view>
       </view>
-      <text>test</text>
+      <scroll-view scroll-y style="height: 1000px;"  class='scroller'>
+        <block wx:for="{{lube_stats}}"  wx:key="*this">
+        </block>
+      </scroll-view>
     </swiper-item>
     <swiper-item>
       <view class='selector-tab'>

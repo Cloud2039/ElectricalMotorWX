@@ -13,6 +13,9 @@ Page({
     currentLubeTab:         0,
     currentBearingTab:      0,
 
+    lube_stats:             [],
+    bearing_stats:          [],
+
     api_url : app.myapp.myweb
   },
 
@@ -34,13 +37,6 @@ Page({
     }
   },
 
-  slideLubeTab: function(e) {
-    var that = this;
-    that.setData({
-      currentLubeTab: e.detail.current
-    })
-  },
-
   switchLubeTab: function(e) {
     var that = this;
     if (this.data.currentLubeTab === e.target.dataset.current) {
@@ -49,14 +45,17 @@ Page({
       that.setData({
         currentLubeTab: e.target.dataset.current
       })
-    }
-  },
+      wx.request({
+        url: app.myapp.myweb + 'url',
+        data:{
 
-  slideBearingTab: function(e) {
-    var that = this;
-    that.setData({
-      currentBearingTab: e.detail.current
-    })
+        },
+        success:function(res){
+          console.log(res.data)
+          that.setData({lube_stats:res.data})
+        }
+      })
+    }
   },
 
   switchBearingTab: function(e) {
@@ -66,6 +65,16 @@ Page({
     } else {
       that.setData({
         currentBearingTab: e.target.dataset.current
+      })
+      wx.request({
+        url: app.myapp.myweb + 'url',
+        data:{
+
+        },
+        success:function(res){
+          console.log(res.data)
+          that.setData({bearing_stats:res.data})
+        }
       })
     }
   },
