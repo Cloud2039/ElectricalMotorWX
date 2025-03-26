@@ -28,17 +28,11 @@ formSubmit:function(e){
     //发起登录请求
     console.log("用户名：" + e.detail.value.uname + " | 密码：" + e.detail.value.upwd)
     wx.request({
-      url: app.myapp.myweb + '/login',  
+      url: app.myapp.myweb + '/wx_check_login_user',  
       data:{
         username: e.detail.value.uname,
         password: e.detail.value.upwd,
-        loginType: 'IAC_USR_WEB',
       },
-      header:{
-        'content-type': 'application/x-www-form-urlencoded',
-        'dataType': 'json',
-      },
-      method:"POST",
       success:function(res){
         console.log("登录返回值：" + res.data + "|zt=" + res.data.code + "status" + res.data.message)
         if(res.data.code=="200"){

@@ -34,6 +34,11 @@
       </view>
       <scroll-view scroll-y style="height: 1000px;"  class='scroller'>
         <block wx:for="{{lube_stats}}"  wx:key="*this">
+          <view class = 'block_view'>
+            <navigator url='' class=''>
+              <image class='block_view_image'></image>
+            </navigator>
+          </view>
         </block>
       </scroll-view>
     </swiper-item>

@@ -98,3 +98,20 @@ page{
  .scroller{
    background-color: white;
  }
+
+ .block_view{
+  display : flex;
+  padding : 5px;
+  width   :100%;
+ }
+
+ .block_img {
+  width: 100%;
+  border: 1px solid gainsboro;
+  border-radius: 5px;
+  box-shadow: 0px 2px 2px gainsboro;
+}
+
+ .block_view_image{
+  width: 30%;
+ }
