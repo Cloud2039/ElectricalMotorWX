@@ -19,25 +19,51 @@
     </view>
   </view>
   <swiper current='{{currentTableTab}}' class='swiper-box' duration='300' 
-  style='height:220px' bindchange='slideTable'>
+  style='height:600px' bindchange='slideTable'>
     <swiper-item>
       <view class='selector-tab'>
         <view class='selector-tab-list {{currentLubeTab==0 ? "selected" : ""}}' data-current='0' bindtap='switchLubeTab'>
-          超期
+          正常
         </view>
         <view class='selector-tab-list {{currentLubeTab==1 ? "selected" : ""}}' data-current='1'bindtap='switchLubeTab'>
           待维护
         </view>
         <view class='selector-tab-list {{currentLubeTab==2 ? "selected" : ""}}' data-current='2'bindtap='switchLubeTab'>
-          正常
+          超期
         </view>
       </view>
-      <scroll-view scroll-y style="height: 1000px;"  class='scroller'>
+      <scroll-view scroll-y class='scroller'>
         <block wx:for="{{lube_stats}}"  wx:key="*this">
-          <view class = 'block_view'>
-            <navigator url='' class=''>
-              <image class='block_view_image'></image>
-            </navigator>
+          <view class='block-nav' bindtap='toSpecific'>
+            <view class='view-id-and-stat'>
+              <text class='text-id'>{{item.motor_id}}</text>
+              <text wx:if="{{item.motor_status == 0}}" class='text-stat-normal'>正常</text>
+              <text wx:if="{{item.motor_status == 1}}" class='text-stat-close'>待维护</text>
+              <text wx:if="{{item.motor_status == 2}}" class='text-stat-over'>超期</text>
+            </view>
+            <view class='block-below'>
+              <image class='block-img' src='../../img/motor_01.png' mode='widthFix'></image>
+              <view class='block-info'>
+                <view class='view-separate-block'>
+                  <view class='view-c1'>
+                    <text class="text-c1">地点：</text>
+                    <text class="text-c1">轴伸端：</text>
+                    <text class="text-c1">非轴伸端：</text>
+                  </view>
+                  <view class='view-c2'>
+                    <text class="text-c2">{{item.location}}{{item.position_num}}</text>
+                    <view class='view-spec'>
+                      <text class="text-c2">{{item.de_maintenance_time}}</text>
+                      <text class="text-c2">{{item.de_running_time}}/{{item.de_reference_time}}h</text>
+                    </view>
+                    <view class='view-spec'>
+                      <text class="text-c2">{{item.nde_maintenance_time}}</text>
+                      <text class="text-c2">{{item.nde_running_time}}/{{item.nde_reference_time}}h</text>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>  
           </view>
         </block>
       </scroll-view>
@@ -45,13 +71,13 @@
     <swiper-item>
       <view class='selector-tab'>
         <view class='selector-tab-list {{currentBearingTab==0 ? "selected" : ""}}' data-current='0' bindtap='switchBearingTab'>
-          超期
+          正常
         </view>
         <view class='selector-tab-list {{currentBeartingTab==1 ? "selected" : ""}}' data-current='1'bindtap='switchBearingTab'>
           待维护
         </view>
         <view class='selector-tab-list {{currentBearingTab==2 ? "selected" : ""}}' data-current='2'bindtap='switchBearingTab'>
-          正常
+          超期
         </view>
       </view>
     </swiper-item>

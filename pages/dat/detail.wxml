@@ -1,0 +1,47 @@
+<!--pages/dat/detail.wxml-->
+<Header></Header>
+
+<form bindsubmit="search">
+  <view class='search-bar'>
+    <image src="../../img/scanning.png" mode="aspectFit" bindtap="scanQRCode">test</image>
+    <input type='text' maxlength='12' placeholder='请输入关键字' name="neirong" />
+    <button form-type='submit'>查询</button>
+  </view>
+</form>
+<scroll-view scroll-y class='scroller'>
+  <view class='block-running-stat'>
+    <view class='view-id-and-stat'>
+      <text class='text-id'>{{item.motor_id}}</text>
+      <text wx:if="{{item.motor_status == 0}}" class='text-stat-normal'>正常</text>
+      <text wx:if="{{item.motor_status == 1}}" class='text-stat-close'>待维护</text>
+      <text wx:if="{{item.motor_status == 2}}" class='text-stat-over'>超期</text>
+    </view>
+    <view class='block-below'>
+      <image class='block-img' src='../../img/motor_01.png' mode='widthFix'></image>
+      <view class='block-info'>
+        <view class='view-separate-block'>
+          <view class='view-c1'>
+            <text class="text-c1">地点：</text>
+            <text class="text-c1">轴伸端：</text>
+            <text class="text-c1">非轴伸端：</text>
+          </view>
+          <view class='view-c2'>
+            <text class="text-c2">{{item.location}}{{item.position_num}}</text>
+            <view class='view-spec'>
+              <text class="text-c2">{{item.de_maintenance_time}}</text>
+              <text class="text-c2">{{item.de_running_time}}/{{item.de_reference_time}}h</text>
+            </view>
+            <view class='view-spec'>
+              <text class="text-c2">{{item.nde_maintenance_time}}</text>
+              <text class="text-c2">{{item.nde_running_time}}/{{item.nde_reference_time}}h</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>  
+  </view>
+  <view class='block-basic'>
+  </view>
+  <view class='block-repair'>
+  </view>
+</scroll-view>

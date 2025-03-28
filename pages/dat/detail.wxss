@@ -1,72 +1,4 @@
-page{
-  background-color: black;   /* 背景颜色 */
-}
-
-.flex-wrp{
-  display:flex;
-}
-
-.swiper-tab-container {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.swiper-item {
-  display: flex;
-}
-
-.swiper-item text{
-  color: #4080ff;
-}
-
-.swiper-tab {
-  width:        40%;
-  border-bottom: 1px solid gray;
-  text-align:   center;
-  line-height:  31px;
-  display:      flex;
-}
-
-.swiper-tab-list {
-  display: inline-block;
-  width: 50%;
-  color: gray;
-}
-
-.selected {
-  color: #4080ff;
-  border-bottom: 3px solid #4080ff;
-}
-
-.swiper-box {
-  width: 100%;
-  display: block;
-  overflow: scroll;
-}
-
-.selector-tab-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-}
-
-.selector-tab {
-  width:        100%;
-  border-bottom: 1px solid gray;
-  line-height:  31px;
-  display:      flex;
-  flex-direction: row;
-}
-
-.selector-tab-list {
-  display: inline-block;
-  width: 33%;
-  color: gray;
-  text-align: center;
-}
+/* pages/dat/detail.wxss */
 
 .search-bar{
   display: flex;
@@ -96,17 +28,30 @@ page{
  }
 
  .scroller{
-   height: 800px;
-   background-color: black;
+  height: 800px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
  }
 
  .block-item {
   width: 25%;
 }
 
+.block-running-stat{
+
+}
+
+.block-basic{
+
+}
+
+.block-repair{
+  
+}
+
 .block-nav {
-  display: flex;
-  flex-direction: column;
+  
   padding: 5px;
   width: 96%;
   border: 1px solid black;

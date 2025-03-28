@@ -2,7 +2,7 @@
 
 <form bindsubmit="formSubmit">
   <view class='denlgu'>
-    <image class="logo" src="/img/logo.png"></image>
+    <image class="logo" src="/img/logo1.png"></image>
     <view class="form-wrap">
       <view class="flex-wrap input-wrap">
         <text class="label">手机号</text>
@@ -18,7 +18,5 @@
     <text class='shuoming'>{{xinxi}}</text>
    
     <button class='mysubmit' form-type="submit">登陆</button>
-
   </view>
-
 </form>

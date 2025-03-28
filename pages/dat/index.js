@@ -1,5 +1,6 @@
 
 import * as echarts from '../../ec-canvas/echarts';
+import {timestampToTime} from "../../utils/common"
 
 //获取应用实例
 var app = getApp()
@@ -46,12 +47,13 @@ Page({
         currentLubeTab: e.target.dataset.current
       })
       wx.request({
-        url: app.myapp.myweb + 'url',
+        url: app.myapp.myweb + '/wx_test_x',
         data:{
-
+          running_stat: e.target.dataset.current
         },
         success:function(res){
           console.log(res.data)
+          transferLubeTime(res.data)
           that.setData({lube_stats:res.data})
         }
       })
@@ -69,7 +71,7 @@ Page({
       wx.request({
         url: app.myapp.myweb + 'url',
         data:{
-
+          running_stat: e.target.dataset.current
         },
         success:function(res){
           console.log(res.data)
@@ -77,6 +79,16 @@ Page({
         }
       })
     }
+  },
+
+  toSpecific: function(){
+    wx.navigateTo({
+      url: '/pages/dat/detail',
+      success:function(res){
+        res.eventChannel.emit('acceptDataFromOpenerPage', {data: this.data.lube_stats[0]})
+        // http://diginfo.cn/element/article/539
+      }
+    })
   },
 
   scanQRCode: function() {
@@ -151,3 +163,10 @@ Page({
 
   }
 });
+
+function transferLubeTime(test) {
+  test.forEach(item=>{
+    item.de_maintenance_time=timestampToTime(item.de_maintenance_time, 1)
+    item.nde_maintenance_time=timestampToTime(item.nde_maintenance_time, 1)
+  })
+};
