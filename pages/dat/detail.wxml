@@ -10,38 +10,97 @@
 </form>
 <scroll-view scroll-y class='scroller'>
   <view class='block-running-stat'>
-    <view class='view-id-and-stat'>
-      <text class='text-id'>{{item.motor_id}}</text>
-      <text wx:if="{{item.motor_status == 0}}" class='text-stat-normal'>正常</text>
-      <text wx:if="{{item.motor_status == 1}}" class='text-stat-close'>待维护</text>
-      <text wx:if="{{item.motor_status == 2}}" class='text-stat-over'>超期</text>
-    </view>
-    <view class='block-below'>
+    <view class='block-image'>
       <image class='block-img' src='../../img/motor_01.png' mode='widthFix'></image>
-      <view class='block-info'>
-        <view class='view-separate-block'>
-          <view class='view-c1'>
-            <text class="text-c1">地点：</text>
-            <text class="text-c1">轴伸端：</text>
-            <text class="text-c1">非轴伸端：</text>
-          </view>
-          <view class='view-c2'>
-            <text class="text-c2">{{item.location}}{{item.position_num}}</text>
-            <view class='view-spec'>
-              <text class="text-c2">{{item.de_maintenance_time}}</text>
-              <text class="text-c2">{{item.de_running_time}}/{{item.de_reference_time}}h</text>
-            </view>
-            <view class='view-spec'>
-              <text class="text-c2">{{item.nde_maintenance_time}}</text>
-              <text class="text-c2">{{item.nde_running_time}}/{{item.nde_reference_time}}h</text>
-            </view>
-          </view>
+    </view>
+    <view class='block-running-stat-1'>
+      <view class='block-id'>
+        <view class='block-id1'>
+          <text class='text-id'>{{lube_stat.motor_id}}</text>
+          <text class='text-data'>{{lube_stat.location}} {{lube_stat.name}}</text>
+        </view>
+        <button plain="true">注油</button>
+      </view>
+      <text class='text-running-stat-title'>润滑脂</text>
+      <view class='block-lube'>
+        <view class='block-sub-lube'>
+          <text class='text-data-title'>轴伸端:</text>
+          <text class='text-data'>{{lube_stat.de_maintenance_time}}</text>
+          <text class='text-data'>{{lube_stat.de_running_time}}/{{lube_stat.de_reference_time}}h</text>
+          <text class='text-data'>50g</text>
+        </view>
+        <view class='block-sub-lube'>
+          <text class='text-data-title'>非轴伸端:</text>
+          <text class='text-data'>{{lube_stat.nde_maintenance_time}}</text>
+          <text class='text-data'>{{lube_stat.nde_running_time}}/{{lube_stat.nde_reference_time}}h</text>
+          <text class='text-data'>50g</text>
         </view>
       </view>
-    </view>  
+      <text class='text-running-stat-title'>轴承</text>
+      <view class='block-lube'>
+        <view class='block-sub-lube'>
+          <text class='text-data-title'>上次更换时间:</text>
+          <text class='text-data'>{{lube_stat.de_maintenance_time}}</text>
+        </view>
+        <view class='block-sub-lube'>
+          <text class='text-data-title'>上次维修时间:</text>
+          <text class='text-data'>{{lube_stat.nde_maintenance_time}}</text>
+        </view>
+      </view>
+      <view class='block-bearing'>
+      </view>
+    </view>
   </view>
+
   <view class='block-basic'>
+    <text class='text-data-title'>型号：YB3 250M-6WTHF1</text>
+    <text class='text-data-title'>生产厂家：佳木斯电机股份有限公司</text>
+    <view class='block-basic-sub1'>
+      <view class='block-basic-sub2'>
+        <text class='text-data-title'>机座号：</text>
+        <text class='text-data-title'>额定电压：</text>
+        <text class='text-data-title'>额定电流：</text>
+        <text class='text-data-title'>轴伸端轴承：</text>
+        <text class='text-data-title'>出厂编号：</text>
+        <text class='text-data-title'>注油量：</text>
+      </view>
+      <view class='block-basic-sub2'>
+        <text class='text-data'>250M</text>
+        <text class='text-data'>380</text>
+        <text class='text-data'>72</text>
+        <text class='text-data'>6314</text>
+        <text class='text-data'>16E-0269-01</text>
+        <text class='text-data'>60g</text>
+      </view>
+      <view class='block-basic-sub2'>
+        <text class='text-data-title'>极数：</text>
+        <text class='text-data-title'>额定功率：</text>
+        <text class='text-data-title'>额定转速：</text>
+        <text class='text-data-title'>非轴伸端轴承：</text>
+        <text class='text-data-title'>出厂年月：</text>
+        <text class='text-data-title'>注油周期：</text>
+      </view>
+      <view class='block-basic-sub2'>
+        <text class='text-data'>6</text>
+        <text class='text-data'>37</text>
+        <text class='text-data'>982</text>
+        <text class='text-data'>6314</text>
+        <text class='text-data'>2025/06/01</text>
+        <text class='text-data'>3500</text>
+      </view>
+    </view>
   </view>
+
   <view class='block-repair'>
+    <view>
+      <view class='selector-tab'>
+        <view class='selector-tab-list {{current_tab==0 ? "selected" : ""}}' data-current='0' bindtap='switchTab'>
+          油
+        </view>
+        <view class='selector-tab-list {{current_tab==1 ? "selected" : ""}}' data-current='1' bindtap='switchTab'>
+          轴
+        </view>
+      </view>
+    </view>
   </view>
 </scroll-view>

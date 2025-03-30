@@ -107,7 +107,7 @@ page{
 .block-nav {
   display: flex;
   flex-direction: column;
-  padding: 5px;
+  padding: 5px; 
   width: 96%;
   border: 1px solid black;
   border-radius: 5px;
