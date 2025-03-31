@@ -8,8 +8,11 @@ Page({
      * 页面的初始数据
      */
     data: {
-      current_tab:  0,
-      lube_stat:    [],
+      current_tab:            0,
+      stat:                   [],
+
+      lube_repair_history:    [],
+      bearing_repair_history: [],
 
       api_url : app.myapp.myweb
     },
@@ -33,12 +36,17 @@ Page({
       var that = this;
       const eventChannel = this.getOpenerEventChannel()
       eventChannel.on('acceptDataFromOpenerPage', function(data) {
-        console.log(data) //输出{data: 'test'}
         var temp = JSON.parse(data.data)
         console.log(temp)
         that.setData({
-          lube_stat: temp
+          stat: temp
         })
+      })
+
+      wx.request({
+        url: app.myapp.myweb + '/wx_test',
+        success:function(res){
+        }
       })
     },
 

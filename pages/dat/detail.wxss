@@ -110,6 +110,12 @@
   flex-direction: column;
 }
 
+.block-repair-title{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+}
+
 .text-id {
   font-size: 22px;
   font-weight: bold;
@@ -121,25 +127,26 @@
 .text-running-stat-title{
   font-size: 17px;
   color:cornflowerblue;
+  margin-bottom: 8px;
 }
 
 .text-data-title{
   font-size: 13px;
   color: grey;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 }
 
 .text-data{
   font-size: 13px;
   color: black;
   font-weight: bold;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .selector-tab {
-  width:        25%;
+  width:        35%;
   border-bottom: 1px solid gray;
-  line-height:  31px;
+  line-height:  20px;
   display:      flex;
   flex-direction: row;
 }

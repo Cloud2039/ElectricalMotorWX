@@ -16,8 +16,8 @@
     <view class='block-running-stat-1'>
       <view class='block-id'>
         <view class='block-id1'>
-          <text class='text-id'>{{lube_stat.motor_id}}</text>
-          <text class='text-data'>{{lube_stat.location}} {{lube_stat.name}}</text>
+          <text class='text-id'>{{stat.motor_id}}</text>
+          <text class='text-data'>{{stat.location}} {{stat.name}}</text>
         </view>
         <button plain="true">注油</button>
       </view>
@@ -25,14 +25,14 @@
       <view class='block-lube'>
         <view class='block-sub-lube'>
           <text class='text-data-title'>轴伸端:</text>
-          <text class='text-data'>{{lube_stat.de_maintenance_time}}</text>
-          <text class='text-data'>{{lube_stat.de_running_time}}/{{lube_stat.de_reference_time}}h</text>
+          <text class='text-data'>{{stat.de_maintenance_time}}</text>
+          <text class='text-data'>{{stat.de_running_time}}/{{stat.de_reference_time}}h</text>
           <text class='text-data'>50g</text>
         </view>
         <view class='block-sub-lube'>
           <text class='text-data-title'>非轴伸端:</text>
-          <text class='text-data'>{{lube_stat.nde_maintenance_time}}</text>
-          <text class='text-data'>{{lube_stat.nde_running_time}}/{{lube_stat.nde_reference_time}}h</text>
+          <text class='text-data'>{{stat.nde_maintenance_time}}</text>
+          <text class='text-data'>{{stat.nde_running_time}}/{{stat.nde_reference_time}}h</text>
           <text class='text-data'>50g</text>
         </view>
       </view>
@@ -40,11 +40,11 @@
       <view class='block-lube'>
         <view class='block-sub-lube'>
           <text class='text-data-title'>上次更换时间:</text>
-          <text class='text-data'>{{lube_stat.de_maintenance_time}}</text>
+          <text class='text-data'>{{stat.de_maintenance_time}}</text>
         </view>
         <view class='block-sub-lube'>
           <text class='text-data-title'>上次维修时间:</text>
-          <text class='text-data'>{{lube_stat.nde_maintenance_time}}</text>
+          <text class='text-data'>{{stat.nde_maintenance_time}}</text>
         </view>
       </view>
       <view class='block-bearing'>
@@ -92,7 +92,8 @@
   </view>
 
   <view class='block-repair'>
-    <view>
+    <view class='block-repair-title'>
+      <text class='text-running-stat-title'>维修记录</text>
       <view class='selector-tab'>
         <view class='selector-tab-list {{current_tab==0 ? "selected" : ""}}' data-current='0' bindtap='switchTab'>
           油
@@ -100,6 +101,9 @@
         <view class='selector-tab-list {{current_tab==1 ? "selected" : ""}}' data-current='1' bindtap='switchTab'>
           轴
         </view>
+      </view>
+      <view>
+
       </view>
     </view>
   </view>
