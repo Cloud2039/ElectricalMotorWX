@@ -1,0 +1,11 @@
+@RequestMapping("/wx_test_y")
+    public List<Map<String, Object>> wx_test_y(int motor_id)
+    {
+        System.out.println("Strange");
+        System.out.println(motor_id);
+        String sql = "select * from motor_repair_records where motor_id='"+motor_id+"'";
+
+        List<Map<String, Object>> list = jdbcTemplate.queryForList(sql);
+
+        return list;
+    }
