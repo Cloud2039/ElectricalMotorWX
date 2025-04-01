@@ -162,3 +162,82 @@
   color: #4080ff;
   border-bottom: 3px solid #4080ff;
 }
+
+/* 表头1 --------------------*/
+.table_header1 {
+  display: flex;
+  background-color: #eeeeee;
+  justify-content: center;
+  width: 100%;
+  font-size: 25rpx;
+  color: black;
+  text-align: center;
+  font-weight: 900;
+  border: 1rpx solid rgb(220, 220, 220);
+}
+.table2View {
+  margin-top: 20rpx;
+  border: 1px solid #eeeeee;
+  border-right: 0;
+  border-bottom: 0;
+  width: 100%;
+  margin-left: 1%;
+}
+.th2_1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60rpx;
+  width: 33.3%;
+ 
+  border-right: 1rpx solid rgb(220, 220, 220);
+}
+.th2_1_1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60rpx;
+  width: 33.3%;
+}
+/* 表格cell */
+.table2_cell {
+  display: flex;
+  justify-content: space-between; /* 项目位于各行之间留有空白的容器内。 */
+  width: 100%;
+  font-size: 25rpx;
+  color: black;
+  text-align: center;
+}
+ 
+.th2_10 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  min-height: 60rpx;
+  width: 20%;
+  border-bottom: 1px solid #eeeeee;
+  border-right: 1px solid #eeeeee;
+}
+.th2_txt {
+  overflow: hidden;
+  display: -webkit-box;
+
+  word-wrap: break-word;
+}
+ 
+.orangeTxt {
+  color: #f9b22d;
+}
+.Tips {
+  margin-top: 20rpx;
+  color: rgba(16, 16, 16, 1);
+  font-size: 28rpx;
+}
+.TipsRed {
+  color: red;
+  font-size: 28rpx;
+}
+.martop {
+  margin-top: 30rpx;
+}

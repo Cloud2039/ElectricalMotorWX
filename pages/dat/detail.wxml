@@ -94,17 +94,43 @@
   <view class='block-repair'>
     <view class='block-repair-title'>
       <text class='text-running-stat-title'>维修记录</text>
+
       <view class='selector-tab'>
         <view class='selector-tab-list {{current_tab==0 ? "selected" : ""}}' data-current='0' bindtap='switchTab'>
           油
         </view>
+
         <view class='selector-tab-list {{current_tab==1 ? "selected" : ""}}' data-current='1' bindtap='switchTab'>
           轴
         </view>
       </view>
-      <view>
+    </view>
 
-      </view>
+    <view class="table2View">
+        <view class="table_header1">
+          <view class="th2_1">时间</view>
+          <view class="th2_1">维修员</view>
+          <view class="th2_1">加注油量</view>
+          <view class="th2_1_1">备注</view>
+        </view>
+        
+        <view wx:for="{{lube_repair_history}}" wx:key="key">
+          <view class="table2_cell">
+            <view class="th2_10">
+              <view class="th2_txt">{{item.time}}</view>
+            </view>
+
+            <view class="th2_10">
+              <view class="th2_txt"> {{item.operator }}</view>
+            </view>
+            <view class="th2_10">
+              <view class="th2_txt"> {{item.amount}}g</view>
+            </view>
+            <view class="th2_10">
+              <view class="th2_txt"> {{item.remark}}</view>
+            </view>
+          </view>
+        </view>
     </view>
   </view>
 </scroll-view>

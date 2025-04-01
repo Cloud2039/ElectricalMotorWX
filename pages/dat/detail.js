@@ -18,7 +18,6 @@ Page({
     },
 
     switchTab: function(e) {
-      console.log("FML")
       var that = this;
       if (this.data.current_tab === e.target.dataset.current) {
         return false;
@@ -37,16 +36,30 @@ Page({
       const eventChannel = this.getOpenerEventChannel()
       eventChannel.on('acceptDataFromOpenerPage', function(data) {
         var temp = JSON.parse(data.data)
-        console.log(temp)
-        that.setData({
-          stat: temp
-        })
-      })
+        var tmp_lube_repair_history = []
+        var tmp_bearing_repair_history = []
 
-      wx.request({
-        url: app.myapp.myweb + '/wx_test',
-        success:function(res){
-        }
+        wx.request({
+          url: app.myapp.myweb + '/wx_test_y',
+          data:{
+            motor_id: temp.motor_id,
+          },
+          success:function(res){
+            res.data.forEach(item=>{
+              if(item.type == 0){
+                tmp_lube_repair_history.push(item)
+              }  
+              else if(item.type == 1) {
+                tmp_bearing_repair_history.push(item)
+              }
+            })
+          }
+        })
+        that.setData({
+          lube_repair_history:      tmp_lube_repair_history,
+          bearing_repair_history:   tmp_bearing_repair_history,
+          stat:                     temp
+        })
       })
     },
 

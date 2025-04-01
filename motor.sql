@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80015
 File Encoding         : 65001
 
-Date: 2025-03-28 17:40:29
+Date: 2025-04-01 13:53:33
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -259,6 +259,10 @@ CREATE TABLE `motor_repair_records` (
 -- ----------------------------
 -- Records of motor_repair_records
 -- ----------------------------
+INSERT INTO `motor_repair_records` VALUES ('1', '1', '1', '0', '50.000', '韩', null, null, '1743131011000', null, null);
+INSERT INTO `motor_repair_records` VALUES ('2', '1', '1', '0', '60.000', '周', null, null, '1743131012000', null, null);
+INSERT INTO `motor_repair_records` VALUES ('3', '1', '1', '0', '60.000', '黄', null, null, '1743131311000', null, null);
+INSERT INTO `motor_repair_records` VALUES ('4', '1', '2', '1', '50.000', '周', null, null, '1743130011000', null, null);
 
 -- ----------------------------
 -- Table structure for `motor_running_data`
