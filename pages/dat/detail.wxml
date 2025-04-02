@@ -19,9 +19,13 @@
           <text class='text-id'>{{stat.motor_id}}</text>
           <text class='text-data'>{{stat.location}} {{stat.name}}</text>
         </view>
-        <button plain="true">注油</button>
       </view>
-      <text class='text-running-stat-title'>润滑脂</text>
+
+      <view class='view-title-button'>
+        <text class='text-running-stat-title'>润滑脂</text>
+        <button class='button' size="mini" bindtap='navigateToLube'>注油</button>
+      </view>
+      
       <view class='block-lube'>
         <view class='block-sub-lube'>
           <text class='text-data-title'>轴伸端:</text>
@@ -36,7 +40,12 @@
           <text class='text-data'>50g</text>
         </view>
       </view>
-      <text class='text-running-stat-title'>轴承</text>
+
+      <view class='view-title-button'>
+        <text space='emsp'  class='text-running-stat-title'>轴 承</text>
+        <button class='button' size="mini" bindtap='navigateToLube'>换轴</button>
+      </view>
+
       <view class='block-lube'>
         <view class='block-sub-lube'>
           <text class='text-data-title'>上次更换时间:</text>
@@ -107,30 +116,33 @@
     </view>
 
     <view class="table2View">
-        <view class="table_header1">
-          <view class="th2_1">时间</view>
-          <view class="th2_1">维修员</view>
-          <view class="th2_1">加注油量</view>
-          <view class="th2_1_1">备注</view>
-        </view>
-        
-        <view wx:for="{{lube_repair_history}}" wx:key="key">
-          <view class="table2_cell">
-            <view class="th2_10">
-              <view class="th2_txt">{{item.time}}</view>
-            </view>
-
-            <view class="th2_10">
-              <view class="th2_txt"> {{item.operator }}</view>
-            </view>
-            <view class="th2_10">
-              <view class="th2_txt"> {{item.amount}}g</view>
-            </view>
-            <view class="th2_10">
-              <view class="th2_txt"> {{item.remark}}</view>
-            </view>
+      <view class="table_header1">
+        <view class="th2_1">时间</view>
+        <view class="th2_1">维修员</view>
+        <view class="th2_1">加注油量</view>
+        <view class="th2_1">备注</view>
+      </view>
+      
+      <view wx:for="{{current_repair_history}}" wx:key="key">
+        <view class="table2_cell">
+          <view class="th2_10">
+            <view class="th2_txt">{{item.time}}</view>
           </view>
+
+          <view class="th2_10">
+            <view class="th2_txt"> {{item.operator}}</view>
+          </view>
+
+          <view class="th2_10">
+            <view class="th2_txt"> {{item.amount}}g</view>
+          </view>
+
+          <view class="th2_10">
+            <view class="th2_txt"> {{item.remark}}</view>
+          </view>
+
         </view>
+      </view>  
     </view>
   </view>
 </scroll-view>

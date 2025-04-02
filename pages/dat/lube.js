@@ -1,32 +1,49 @@
-// components/navigationBar.js
+// pages/dat/bearing.js
+var app = getApp()
+
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-      // 状态栏高度
-      statusBarHeight: wx.getStorageSync('statusBarHeight') + 'px',
-      // 导航栏高度
-      navigationBarHeight: wx.getStorageSync('navigationBarHeight') + 'px',
-      // 胶囊按钮高度
-      menuButtonHeight: wx.getStorageSync('menuButtonHeight') + 'px',
-      // 导航栏和状态栏高度
-      navigationBarAndStatusBarHeight: wx.getStorageSync('statusBarHeight') + wx.getStorageSync('navigationBarHeight') + 'px',
+      motor_id:         0,
+      location:         "",
+      name:             "",
+      isPopupVisible:   false,
     },
-    
+
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+      var that = this
+    
+      that.setData({
+        motor_id: options.motor_id,
+        location: options.location,
+        name: options.name,
+      })
+    },
 
+    myEvent: function(e) {
+      console.log(e.detail.date)
+    },
+
+    popupBearing: function(){
+      var that = this
+
+      console.log("wtf again shit mtfk")
+      that.setData({
+        isPopupVisible:true
+      })
     },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady() {
-      
+
     },
 
     /**

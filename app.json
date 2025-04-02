@@ -8,7 +8,8 @@
         "components/mainNavigationBar",
         "components/loginNavigationBar",
         "components/overviewNavigationBar",
-        "pages/dat/detail"
+        "pages/dat/detail",
+        "pages/dat/lube"
     ],
     "window": {
         "backgroundTextStyle": "light",

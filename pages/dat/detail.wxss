@@ -28,7 +28,6 @@
  }
 
  .scroller{
-  height: 800px;
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -124,6 +123,18 @@
   text-overflow: ellipsis;
 }
 
+.view-title-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.button {
+  height: 30px;
+  background-color:#ff923f;
+  color: #eeeeee;
+}
+
 .text-running-stat-title{
   font-size: 17px;
   color:cornflowerblue;
@@ -173,7 +184,7 @@
   color: black;
   text-align: center;
   font-weight: 900;
-  border: 1rpx solid rgb(220, 220, 220);
+
 }
 .table2View {
   margin-top: 20rpx;
@@ -188,17 +199,11 @@
   align-items: center;
   justify-content: center;
   height: 60rpx;
-  width: 33.3%;
+  width: 25%;
  
   border-right: 1rpx solid rgb(220, 220, 220);
 }
-.th2_1_1 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 60rpx;
-  width: 33.3%;
-}
+
 /* 表格cell */
 .table2_cell {
   display: flex;
@@ -215,14 +220,13 @@
   justify-content: center;
   flex-wrap: wrap;
   min-height: 60rpx;
-  width: 20%;
+  width: 25%;
   border-bottom: 1px solid #eeeeee;
   border-right: 1px solid #eeeeee;
 }
 .th2_txt {
   overflow: hidden;
   display: -webkit-box;
-
   word-wrap: break-word;
 }
  

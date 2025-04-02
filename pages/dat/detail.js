@@ -1,4 +1,6 @@
 // pages/dat/detail.js
+import {timestampToTime} from "../../utils/common"
+
 //获取应用实例
 var app = getApp()
 
@@ -9,10 +11,11 @@ Page({
      */
     data: {
       current_tab:            0,
-      stat:                   [],
+      stat:                   {},
 
       lube_repair_history:    [],
       bearing_repair_history: [],
+      current_repair_history: [],
 
       api_url : app.myapp.myweb
     },
@@ -26,8 +29,29 @@ Page({
           current_tab: e.target.dataset.current
         })
       }
+
+      if (e.target.dataset.current == 0) {
+        that.setData({
+          current_repair_history: that.data.lube_repair_history
+        })
+      }
+      else if (e.target.dataset.current == 1) {
+        that.setData({
+          current_repair_history: that.data.bearing_repair_history
+        })
+      }
     },
 
+    navigateToLube: function(){
+      var that = this;
+      wx.navigateTo({
+        url: '/pages/dat/lube?motor_id='+ that.data.stat.motor_id + "&location=" + that.data.stat.location + "&name=" + that.data.stat.name,
+        success: function(res){
+
+        }
+      })
+    },
+    
     /**
      * 生命周期函数--监听页面加载
      */
@@ -45,7 +69,9 @@ Page({
             motor_id: temp.motor_id,
           },
           success:function(res){
+            transferLubeTime(res.data)
             res.data.forEach(item=>{
+              console.log(item)
               if(item.type == 0){
                 tmp_lube_repair_history.push(item)
               }  
@@ -53,12 +79,13 @@ Page({
                 tmp_bearing_repair_history.push(item)
               }
             })
+            that.setData({
+              lube_repair_history:      tmp_lube_repair_history,
+              bearing_repair_history:   tmp_bearing_repair_history,
+              current_repair_history:   tmp_lube_repair_history,
+              stat:                     temp,
+            })
           }
-        })
-        that.setData({
-          lube_repair_history:      tmp_lube_repair_history,
-          bearing_repair_history:   tmp_bearing_repair_history,
-          stat:                     temp
         })
       })
     },
@@ -112,3 +139,9 @@ Page({
 
     }
 })
+
+function transferLubeTime(test) {
+  test.forEach(item=>{
+    item.time=timestampToTime(item.time, 1)
+  })
+};
