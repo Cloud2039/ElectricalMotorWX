@@ -43,7 +43,11 @@
 
       <view class='view-title-button'>
         <text space='emsp'  class='text-running-stat-title'>轴 承</text>
-        <button class='button' size="mini" bindtap='navigateToLube'>换轴</button>
+        <button class='button' size="mini" bindtap='popupBearing'>换轴</button>
+      </view>
+
+      <view>
+        <Popup visible='{{isPopupVisible}}' motor_id='{{motor_id}}' bindmyevent='myEvent'></Popup>
       </view>
 
       <view class='block-lube'>

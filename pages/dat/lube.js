@@ -10,6 +10,8 @@ Page({
       motor_id:         0,
       location:         "",
       name:             "",
+
+      type:             0,
       isPopupVisible:   false,
     },
 
@@ -30,12 +32,21 @@ Page({
       console.log(e.detail.date)
     },
 
-    popupBearing: function(){
+    popupDeLube: function(){
       var that = this
 
-      console.log("wtf again shit mtfk")
       that.setData({
-        isPopupVisible:true
+        isPopupVisible:true,
+        type: 0,
+      })
+    },
+
+    popupNdeLube: function(){
+      var that = this
+
+      that.setData({
+        isPopupVisible:true,
+        type: 1,
       })
     },
 

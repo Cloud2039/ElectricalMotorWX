@@ -1,6 +1,6 @@
 {
   "usingComponents": {
     "Header": "/components/navigationBar",
-    "Popup": "/components/popup"
+    "Popup": "/components/popupLube"
   }
 }

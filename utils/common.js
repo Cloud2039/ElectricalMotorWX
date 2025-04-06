@@ -20,3 +20,11 @@ export function timestampToTime(value, type = 0){
   ] 
   return arr[type]; 
 } 
+
+export function timeToTimestamp(year, month, day, hour){
+  var dateStr = year+'-'+ month + '-' + day + " " + hour +":00:00";
+  var date = new Date(dateStr)
+  var timeStamp = date.valueOf();
+  
+  return timeStamp; 
+} 

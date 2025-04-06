@@ -1,4 +1,4 @@
-// utils/navigationBar.js
+// pages/dat/bearing.js
 Page({
 
     /**

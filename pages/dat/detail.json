@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "Header": "/components/backNavigationBar"
+    "Header": "/components/backNavigationBar",
+    "Popup": "/components/popup"
   }
 }

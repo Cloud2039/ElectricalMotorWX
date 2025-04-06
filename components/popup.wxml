@@ -2,7 +2,7 @@
 <view class="popup-mask" hidden="{{!visible}}"></view>
 <view class="popup-window" hidden="{{!visible}}">
   <view class="popup-header">
-    <text class="popup-title">注油时间</text>
+    <text class="popup-title">换轴时间</text>
   </view>
   <view class="popup-body">
     <view class="popup-message">

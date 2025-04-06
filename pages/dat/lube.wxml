@@ -7,10 +7,10 @@
   <text>{{name}}</text>
 
   <view>
-    <Popup visible='{{isPopupVisible}}' bindmyevent='myEvent'></Popup>
+    <Popup visible='{{isPopupVisible}}' type='{{type}}' motor_id='{{motor_id}}' bindmyevent='myEvent'></Popup>
   </view>
   <view class='nde_bearing'>
-    <button class='button' bindtap='popupBearing'>非轴伸端</button>
+    <button class='button' bindtap='popupNdeLube'>非轴伸端</button>
   </view>
 
   <view>
@@ -19,7 +19,7 @@
   
   <view class='test'>
     <view class='de_bearing'>
-      <button class='button' bindtap='popupBearing'>轴伸端</button>
+      <button class='button' bindtap='popupDeLube'>轴伸端</button>
     </view>
   </view>
 </view>

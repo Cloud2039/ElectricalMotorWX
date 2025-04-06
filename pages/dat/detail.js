@@ -90,6 +90,19 @@ Page({
       })
     },
 
+    myEvent: function(e) {
+      console.log(e.detail.date)
+    },
+
+    popupBearing: function(){
+      var that = this
+
+      that.setData({
+        isPopupVisible:true,
+        type: 0,
+      })
+    },
+
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

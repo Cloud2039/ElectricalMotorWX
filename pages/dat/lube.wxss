@@ -10,7 +10,7 @@
   font-weight: bolder;
 }
 
-.nde_bearing{
+.nde_lube{
   margin-top: 100px;
   width: 50%;
   align-items: center;
@@ -20,7 +20,7 @@
   width:100%
 }
 
-.de_bearing{
+.de_lube{
   display: inline;
   float: right;
   width: 50%;
