@@ -131,17 +131,59 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function () {
+  // onLoad: function () {
+  //   var that = this
+
+  //   var tmp_lube_stat_normal = new Array();
+  //   var tmp_lube_stat_close = new Array();
+  //   var tmp_lube_stat_over = new Array();
+
+  //   wx.request({
+  //     url: app.myapp.myweb + '/wx_test',
+  //     success:function(res){
+  //       transferLubeTime(res.data)
+
+  //       res.data.forEach(item=>{
+  //         if(item.motor_status == 0){
+  //           tmp_lube_stat_normal.push(item);
+  //         }
+  //         else if (item.motor_status == 1) {
+  //           tmp_lube_stat_close.push(item);
+  //         }
+  //         else if (item.motor_status == 2) {
+  //           tmp_lube_stat_over.push(item);
+  //         }
+  //       })
+        
+  //       // 对每一个motor_id进行数组编号
+  //       var order=0
+  //       var tmp_dict = {}
+  //       tmp_lube_stat_normal.forEach(item=>{
+  //         tmp_dict[item.motor_id]=order
+  //         order=order+1
+  //       })
+
+  //       that.setData(
+  //         {
+  //           lube_stats_all:       res.data,
+  //           lube_stats_normal:    tmp_lube_stat_normal,
+  //           lube_stats_close:     tmp_lube_stat_close,
+  //           lube_stats_over:      tmp_lube_stat_over,
+  //           current_lube_stats:   tmp_lube_stat_normal,
+  //           current_lube_dict:    tmp_dict,
+  //         }
+  //       )
+  //     }
+  //   })
+  // },
+
+  onLoad: function (){
     var that = this
 
-    var tmp_lube_stat_normal = new Array();
-    var tmp_lube_stat_close = new Array();
-    var tmp_lube_stat_over = new Array();
-
     wx.request({
-      url: app.myapp.myweb + '/wx_test',
+      url: app.myapp.myweb + '/api/motorBsasic/selectAll',
       success:function(res){
-        transferLubeTime(res.data)
+        transferLubeTime(res.data.data)
 
         res.data.forEach(item=>{
           if(item.motor_status == 0){
@@ -176,7 +218,6 @@ Page({
       }
     })
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

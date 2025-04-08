@@ -19,21 +19,26 @@ Page({
 //普通登录
 formSubmit:function(e){
   var that = this
+  var constant = "IAC_USR_WEB"
   if (e.detail.value.uname == "" || e.detail.value.upwd ==""){
     that.setData({
       info:"☒请填写用户名和密码！"
     })
   }else{
     //发起登录请求
-    console.log("用户名：" + e.detail.value.uname + " | 密码：" + e.detail.value.upwd)
+    console.log("用户名：" + e.detail.value.uname + "  密码：" + e.detail.value.upwd + 
+    " " + constant)
     wx.request({
-      url: app.myapp.myweb + '/wx_check_login_user',  
-      data:{
-        username: e.detail.value.uname,
-        password: e.detail.value.upwd,
-      },
+      url: app.myapp.myweb + '/login?username='+e.detail.value.uname+'&password='+e.detail.value.upwd+'&loginType=IAC_USR_WEB',  
+      method: 'POST',
+      dataType: "json",
+      // data:JSON.stringify({
+      //   'username': e.detail.value.uname,
+      //   'password': e.detail.value.upwd,
+      //   'loginType': constant,
+      // }),
       success:function(res){
-        console.log("登录返回值：" + res.data + "|zt=" + res.data.code + "status" + res.data.message)
+        console.log("登录返回值：" + res.data + "|status code:" + res.data.code + " message:" + res.data.msg)
         if(res.data.code=="200"){
           console.log("✔登录成功")
           that.setData({
@@ -71,10 +76,9 @@ formSubmit:function(e){
                 }
               })
         }else{
-          console.log("WTF")
-          console.log(res.data.message)
+          console.log(res.data.msg)
           that.setData({
-            info: "☒" + res.data.xinxi
+            info: "☒" + res.data.msg
           })
         }
       }
