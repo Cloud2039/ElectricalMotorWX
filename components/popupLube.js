@@ -36,7 +36,6 @@ Component({
     hours: hours,
     hour: date.getHours(),
     timeStamp: "",
-    amount: 0,
     value: [9999, date.getMonth(), date.getDate()-1, date.getHours()],
   },
 
@@ -50,6 +49,22 @@ Component({
       value: 0,
     },
     motor_id: {
+      type: Number,
+      value: 0,
+    },
+    operatorId: {
+      type: Number,
+      value: 0,
+    },
+    deReferenceTime: {
+      type: Number,
+      value: 0,
+    },
+    ndeReferenceTime: {
+      type: Number,
+      value: 0,
+    },
+    amount: {
       type: Number,
       value: 0,
     }
@@ -67,16 +82,50 @@ Component({
           hour: date.getHours(),
           timeStamp: transferLubeTime(date.getFullYear(), date.getMonth() + 1, date.getDate(), date.getHours())
         })
-        // wx.request({
-        //   url: app.myapp.web +'/wx_test_z',
-        //   data: {
-        //     motor_id: this.data.motor_id,
-        //     type: this.data.type,
-        //     time: this.data.timeStamp,
-        //     amount: this.data.amount,
-        //   }
-        // })
+
+        if(this.data.type == 0){
+          wx.request({
+            url: app.myapp.web +'/api/motorRepairRecords/addOne',
+            header: {
+              'Authorization': wx.getStorageSync('u_access_token')
+            },
+            data: {
+              motor_id: this.data.motor_id,
+              type: this.data.type,
+              time: this.data.timeStamp,
+              amount: this.data.amount,
+              referenceTime: this.data.deReferenceTime,
+              operator: wx.getStorageSync('u_operatorID'),
+            },
+            success(res){
+              console.log("hell yea")
+              console.log(res.data)
+            }
+          })
+        }
+        else if(this.data.type == 0){
+          wx.request({
+            url: app.myapp.web +'/api/motorRepairRecords/addOne',
+            method: "POST",
+            header: {
+              'Authorization': wx.getStorageSync('u_access_token')
+            },
+            data: {
+              motor_id: this.data.motor_id,
+              type: this.data.type,
+              time: this.data.timeStamp,
+              amount: this.data.amount,
+              referenceTime: this.data.ndeReferenceTime,
+              operator: wx.getStorageSync('u_operatorID'),
+            },
+            success(res){
+              console.log("hello yeah")
+              console.log(res.data)
+            }
+          })
+        }
       },
+
       cancel: function() {
           this.setData({ 
             visible: false,

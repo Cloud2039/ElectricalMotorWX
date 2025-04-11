@@ -1,6 +1,7 @@
 // pages/dat/overview.js
-
 import * as echarts from '../../ec-canvas/echarts';
+
+var app = getApp()
 
 Page({
 
@@ -8,6 +9,11 @@ Page({
      * 页面的初始数据
      */
     data: {
+      normal_cnt: wx.getStorageSync('normal_cnt'),
+      close_cnt: wx.getStorageSync('close_cnt'),
+      over_cnt: wx.getStorageSync('over_cnt'),
+      total_cnt: wx.getStorageSync('total_cnt'),
+
       ec: {
         onInit: function (canvas, width, height, dpr) {
           const chart = echarts.init(canvas, null, {
@@ -21,6 +27,7 @@ Page({
           return chart;
         }
       },
+
     },
 
     scanQRCode: function() {
@@ -42,6 +49,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad() {
+      
     },
 
     /**
@@ -55,7 +63,12 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
-
+      this.setData({
+        normal_cnt: wx.getStorageSync('normal_cnt'),
+        close_cnt: wx.getStorageSync('close_cnt'),
+        over_cnt: wx.getStorageSync('over_cnt'),
+        total_cnt: wx.getStorageSync('total_cnt'),
+      })
     },
 
     /**
@@ -76,6 +89,31 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh() {
+      wx.request({
+        url: app.myapp.myweb + '/api/motorRunningData/selectCount',
+        header: {
+          'Authorization': wx.getStorageSync('u_access_token')
+        },
+        success:function(res){
+          wx.setStorage({
+            key: 'normal_cnt',
+            data: res.data.data.normal,
+          })
+          wx.setStorage({
+            key: 'close_cnt',
+            data: res.data.data.maintenance,
+          })
+          wx.setStorage({
+            key: 'over_cnt',
+            data: res.data.data.overdue,
+          })
+          wx.setStorage({
+            key: 'total_cnt',
+            data: res.data.data.normal + res.data.data.maintenance + res.data.data.overdue,
+          })
+        }
+      })
+
       wx.stopPullDownRefresh()
     },
 
@@ -95,12 +133,12 @@ Page({
 })
 
 function getOption() {
-  var normal_cnt = 18;
-  var abnormal_cnt = 2;
-  var offline_cnt = 1;
+  var normal_cnt = wx.getStorageSync('normal_cnt');
+  var close_cnt = wx.getStorageSync('close_cnt');
+  var over_cnt = wx.getStorageSync('over_cnt');
 
   return {
-      backgroundColor: "#000000",
+      backgroundColor: "#EFEFEF",
       series: [{
         label: {
           normal:{
@@ -114,18 +152,18 @@ function getOption() {
             fontWeight: 'bold'
           }
         },
-        color:['#4080ff','#ff0000','#c0c0c0'],
+        color:['#4582fc','#f9513f','#f49a32'],
         type: 'pie',
         center: ['50%', '50%'],
-        radius: ['50%', '85%'],
+        radius: ['65%', '85%'],
         data: [{
             value: normal_cnt,
             name: '正常'
           }, {
-            value: abnormal_cnt,
+            value: close_cnt,
             name: '超期'
           }, {
-            value: offline_cnt,
+            value: over_cnt,
             name: '临期'
           }]
         }]

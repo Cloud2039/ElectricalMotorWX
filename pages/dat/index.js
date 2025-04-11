@@ -131,83 +131,46 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  // onLoad: function () {
-  //   var that = this
-
-  //   var tmp_lube_stat_normal = new Array();
-  //   var tmp_lube_stat_close = new Array();
-  //   var tmp_lube_stat_over = new Array();
-
-  //   wx.request({
-  //     url: app.myapp.myweb + '/wx_test',
-  //     success:function(res){
-  //       transferLubeTime(res.data)
-
-  //       res.data.forEach(item=>{
-  //         if(item.motor_status == 0){
-  //           tmp_lube_stat_normal.push(item);
-  //         }
-  //         else if (item.motor_status == 1) {
-  //           tmp_lube_stat_close.push(item);
-  //         }
-  //         else if (item.motor_status == 2) {
-  //           tmp_lube_stat_over.push(item);
-  //         }
-  //       })
-        
-  //       // 对每一个motor_id进行数组编号
-  //       var order=0
-  //       var tmp_dict = {}
-  //       tmp_lube_stat_normal.forEach(item=>{
-  //         tmp_dict[item.motor_id]=order
-  //         order=order+1
-  //       })
-
-  //       that.setData(
-  //         {
-  //           lube_stats_all:       res.data,
-  //           lube_stats_normal:    tmp_lube_stat_normal,
-  //           lube_stats_close:     tmp_lube_stat_close,
-  //           lube_stats_over:      tmp_lube_stat_over,
-  //           current_lube_stats:   tmp_lube_stat_normal,
-  //           current_lube_dict:    tmp_dict,
-  //         }
-  //       )
-  //     }
-  //   })
-  // },
-
-  onLoad: function (){
+  onLoad: function () {
     var that = this
 
-    wx.request({
-      url: app.myapp.myweb + '/api/motorBsasic/selectAll',
-      success:function(res){
-        transferLubeTime(res.data.data)
+    var tmp_lube_stat_normal = new Array();
+    var tmp_lube_stat_close = new Array();
+    var tmp_lube_stat_over = new Array();
 
-        res.data.forEach(item=>{
-          if(item.motor_status == 0){
-            tmp_lube_stat_normal.push(item);
-          }
-          else if (item.motor_status == 1) {
-            tmp_lube_stat_close.push(item);
-          }
-          else if (item.motor_status == 2) {
-            tmp_lube_stat_over.push(item);
-          }
-        })
+    wx.request({
+      url: app.myapp.myweb + '/api/motorBasicData/selectAll/1?page=1&limit=20',
+      header: {
+        'Authorization': wx.getStorageSync('u_access_token')
+      },
+      success:function(res){
+
+        if(JSON.stringify(res.data.data) != '{}'){
+          transferLubeTime(res.data.data)
+          res.data.data.forEach(item=>{
+            if(item.runningData[0].motorStatus == 0){
+              tmp_lube_stat_normal.push(item);
+            }
+            else if (item.runningData[0].motorStatus == 1) {
+              tmp_lube_stat_close.push(item);
+            }
+            else if (item.runningData[0].motorStatus == 2) {
+              tmp_lube_stat_over.push(item);
+            }
+          })
+        }
         
         // 对每一个motor_id进行数组编号
         var order=0
         var tmp_dict = {}
         tmp_lube_stat_normal.forEach(item=>{
-          tmp_dict[item.motor_id]=order
+          tmp_dict[item.runningData[0].motorId]=order
           order=order+1
         })
 
         that.setData(
           {
-            lube_stats_all:       res.data,
+            lube_stats_all:       res.data.data,
             lube_stats_normal:    tmp_lube_stat_normal,
             lube_stats_close:     tmp_lube_stat_close,
             lube_stats_over:      tmp_lube_stat_over,
@@ -218,6 +181,7 @@ Page({
       }
     })
   },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -229,7 +193,41 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var that = this
+    var order=0
+    var tmp_dict = {}
 
+    if(typeof that.data.currentLubeTab === 'undefined'){
+      that.setData({
+          currentLubeTab: 0
+        }
+      )
+    }
+
+    if(that.data.currentLubeTab == 0){
+      that.data.lube_stats_normal.forEach(item=>{
+        tmp_dict[item.runningData[0].motorId]=order
+        order=order+1
+      })
+    }
+    else if(that.data.currentLubeTab == 1){
+      that.data.lube_stats_close.forEach(item=>{
+        tmp_dict[item.runningData[0].motorId]=order
+        order=order+1
+      })
+    }
+    else if(that.data.currentLubeTab == 2){
+      that.data.lube_stats_over.forEach(item=>{
+        tmp_dict[item.runningData[0].motorId]=order
+        order=order+1
+      })
+    }
+    
+    that.setData(
+      {
+        current_lube_dict:    tmp_dict,
+      }
+    )
   },
 
   /**
@@ -250,6 +248,56 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    var that = this
+
+    var tmp_lube_stat_normal = new Array();
+    var tmp_lube_stat_close = new Array();
+    var tmp_lube_stat_over = new Array();
+    console.log(wx.getStorageSync('u_access_token'))
+
+    wx.request({
+      url: app.myapp.myweb + '/api/motorBasicData/selectAll/1?page=1&limit=20',
+      header: {
+        'Authorization': wx.getStorageSync('u_access_token')
+      },
+      success:function(res){
+
+        if(JSON.stringify(res.data.data) != '{}'){
+          transferLubeTime(res.data.data)
+          res.data.data.forEach(item=>{
+            if(item.runningData[0].motorStatus == 0){
+              tmp_lube_stat_normal.push(item);
+            }
+            else if (item.runningData[0].motorStatus == 1) {
+              tmp_lube_stat_close.push(item);
+            }
+            else if (item.runningData[0].motorStatus == 2) {
+              tmp_lube_stat_over.push(item);
+            }
+          })
+        }
+        
+        // 对每一个motor_id进行数组编号
+        var order=0
+        var tmp_dict = {}
+        tmp_lube_stat_normal.forEach(item=>{
+          tmp_dict[item.runningData[0].motorId]=order
+          order=order+1
+        })
+
+        that.setData(
+          {
+            lube_stats_all:       res.data.data,
+            lube_stats_normal:    tmp_lube_stat_normal,
+            lube_stats_close:     tmp_lube_stat_close,
+            lube_stats_over:      tmp_lube_stat_over,
+            current_lube_stats:   tmp_lube_stat_normal,
+            current_lube_dict:    tmp_dict,
+          }
+        )
+      }
+    })
+    
     wx.stopPullDownRefresh()
   },
 
@@ -270,7 +318,7 @@ Page({
 
 function transferLubeTime(test) {
   test.forEach(item=>{
-    item.de_maintenance_time=timestampToTime(item.de_maintenance_time, 1)
-    item.nde_maintenance_time=timestampToTime(item.nde_maintenance_time, 1)
+    item.runningData[0].deMaintenanceTime=timestampToTime(item.runningData[0].deMaintenanceTime, 1)
+    item.runningData[0].ndeMaintenanceTime=timestampToTime(item.runningData[0].ndeMaintenanceTime, 1)
   })
 };

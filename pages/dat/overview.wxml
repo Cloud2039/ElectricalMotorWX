@@ -1,53 +1,35 @@
 <!--pages/dat/overview.wxml-->
-<Header></Header>
 <form bindsubmit="search">
   <view class='search-bar'>
-    <image src="../../img/scanning.png" mode="aspectFit" bindtap="scanQRCode">test</image>
-    <input type='text' maxlength='12' placeholder='请输入关键字' name="neirong" />
+    <image src="../../img/scanning-blue.png" mode="aspectFit" bindtap="scanQRCode"></image>
+    <input type='text' maxlength='12' placeholder='输入信息' name="neirong" />
     <button form-type='submit'>查询</button>
   </view>
   <view class="chart-container" style="flex-direction: column">
+    <ec-canvas id="mychart-pie-move-bar" canvas-id="mychart-pie" ec="{{ec}}"></ec-canvas>
+    
     <view class="station-cnt-background" style="flex-direction: row;">
       <text class="station-cnt-font">总 数 :</text>
-      <text class="station-cnt-font">22</text>
+      <text class="station-cnt-font">{{total_cnt}}</text>
     </view>
-    <ec-canvas id="mychart-pie-move-bar" canvas-id="mychart-pie" ec="{{ec}}"></ec-canvas>
   </view>
 
-  <view class="summary-stat-container" style="flex-direction: column;">
-    <view class="sub-summary-stat-container" style="flex-direction: row;">
-      <view class="child-summary-stat-container" style="flex-direction: row;">
-        <view class="child-summary-stat">
-          <image class="child-summary-icon" src="../../img/power-supply.png" mode=""></image>
-        </view>
-        <view>
-          <text style="color:white">超  期</text>
-          <text style="color:#4080ff">{{today_charge}} t</text>
-        </view>
-      </view>
+  <view class="summary-stat-container" style="flex-direction: row;">
+    <view class="child-summary-stat-container" style="flex-direction: column;">
+      <text style="color:#f9513f">超  期</text>
+      <text style="color:#f9513f">{{over_cnt}} 个</text>
     </view>
-    <view class="sub-summary-stat-container" style="flex-direction: row;">
-      <view class="child-summary-stat-container" style="flex-direction: row;">
-        <view class="child-summary-stat">
-          <image class="child-summary-icon" src="../../img/finance.png" mode=""></image>
-        </view>
-          <view>
-          <text style="color:white">待维护</text>
-          <text style="color:#4080ff">{{today_discharge}} t</text>
-        </view>
-      </view>
+
+    <view class="child-summary-stat-container" style="flex-direction: column;">
+      <text style="color:#f49a32">待维护</text>
+      <text style="color:#f49a32">{{close_cnt}} 个</text>
     </view>
-    <view class="sub-summary-stat-container" style="flex-direction: row;">
-      <view class="child-summary-stat-container" style="flex-direction: row;">
-        <view class="child-summary-stat">
-          <image class="child-summary-icon" src="../../img/power-supply.png" mode=""></image>
-        </view>
-        <view>
-          <text style="color:white">正  常</text>
-          <text style="color:#4080ff">{{today_charge}} kV</text>
-        </view>
-      </view>
+
+    <view class="child-summary-stat-container" style="flex-direction: column;">
+      <text style="color:#4582fc">正  常</text>
+      <text style="color:#4080ff">{{normal_cnt}} 个</text>
     </view>
+
   </view>
 </form>
 

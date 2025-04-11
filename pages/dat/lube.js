@@ -10,6 +10,10 @@ Page({
       motor_id:         0,
       location:         "",
       name:             "",
+      amount:           0,
+      deReferenceTime:  0,
+      ndeReferenceTime: 0,
+      operatorId:       0,
 
       type:             0,
       isPopupVisible:   false,
@@ -25,6 +29,10 @@ Page({
         motor_id: options.motor_id,
         location: options.location,
         name: options.name,
+        amount: options.amount,
+        deReferenceTime: options.deReferenceTime,
+        ndeReferenceTime: options.ndeReferenceTime,
+        operatorId: wx.getStorageSync('u_operatorID'),
       })
     },
 

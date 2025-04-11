@@ -1,16 +1,41 @@
 /* pages/dat/overview.wxss */
 page{
-  background-color: black;   /* 背景颜色 */
+  background-color: #EFEFEF;   /* 背景颜色 */
+  height: 100%;
 }
+
+.search-bar{
+  display: flex;
+  background-color: white;
+  border-bottom: 1px solid solid;
+  padding: 5px;
+}
+
+.search-bar image{
+  height: 35px;
+  width: 35px;
+}
+
+.search-bar input{
+  height: 35px;
+  line-height: 35px;
+  background: #efefef;
+  flex-grow: 1;
+  border-radius: 5px;
+}
+
+.search-bar button{
+  background:  #efefef;
+  color: #4582fc;
+  height: 35px;
+  line-height: 35px; 
+ }
 
 .chart-container{
+  margin-top: 50px;
   display:flex;
   align-items: center;
-}
-
-.move-container text {
-  margin: 10px;
-  display: block;
+  height: 350px;
 }
 
 .station-cnt-background {
@@ -38,11 +63,6 @@ page{
   justify-content: center;
 }
 
-.sub-station-summary{
-  display:flex;
-  height: 20%;
-}
-
 #mychart-pie-move-bar {
   width: 100%;
   height: 250px;
@@ -53,55 +73,18 @@ page{
   display:flex;
   align-items: center;
   margin-top: 50px;
-}
-
-.sub-summary-stat-container{
-  display:flex;
-  width: 50%;
-  height: 60px
+  justify-content: space-evenly;
+  flex-direction: row;
+  margin-bottom: 10px;
 }
 
 .child-summary-stat-container{
+  height: 100px;
   display:flex;
-  width: 100%;
+  width: 30%;
   align-items: center;
-}
-
-.child-summary-stat{
-  display:flex;
-  width:30%;
-  align-items: center;
-  justify-content: center;
-}
-
-.child-summary-icon{
-  width: 40px;
-  height: 40px;
-}
-
-.search-bar{
-  display: flex;
-  background-color: black;
-  border-bottom: 1px solid solid;
-  padding: 5px;
-}
-
-.search-bar image{
-  height: 35px;
-  width: 35px;
-}
-
-.search-bar input{
-  height: 35px;
-  line-height: 35px;
-  background: white;
-  flex-grow: 1;
+  justify-content: space-evenly;
   border-radius: 5px;
+  box-shadow: 0px 2px 2px gainsboro;
+  background-color: white;
 }
-
-.search-bar button{
-  background:  #ff923f;
-  color: white;
-  height: 35px;
-  line-height: 35px; 
- }

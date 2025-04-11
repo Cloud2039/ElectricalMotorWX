@@ -1,6 +1,6 @@
   /* 定义整个页面的背景颜色 */
   page {
-    background-color: black;   /* 背景颜色 */
+    background-color: #EFEFEF;   /* 背景颜色 */
   }
   
   .denlgu {

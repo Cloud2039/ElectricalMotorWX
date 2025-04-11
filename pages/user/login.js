@@ -32,13 +32,8 @@ formSubmit:function(e){
       url: app.myapp.myweb + '/login?username='+e.detail.value.uname+'&password='+e.detail.value.upwd+'&loginType=IAC_USR_WEB',  
       method: 'POST',
       dataType: "json",
-      // data:JSON.stringify({
-      //   'username': e.detail.value.uname,
-      //   'password': e.detail.value.upwd,
-      //   'loginType': constant,
-      // }),
       success:function(res){
-        console.log("登录返回值：" + res.data + "|status code:" + res.data.code + " message:" + res.data.msg)
+        console.log("登录返回值：" + res.data + "|status code:" + res.data.code + " message:" + res.data.msg + " " + res.data.access_token)
         if(res.data.code=="200"){
           console.log("✔登录成功")
           that.setData({
@@ -46,7 +41,6 @@ formSubmit:function(e){
             openID: res.data.openId
           })            
               //返回信息写入缓存
-              console.log(res.data.name);
               wx.setStorage({
                 key: 'u_login',
                 data: 'yes',
@@ -59,19 +53,43 @@ formSubmit:function(e){
                 data: res.data.name
               })  
               wx.setStorage({
+                key: 'u_operatorID',
+                data: res.data.userId
+              })
+              wx.setStorage({
                 key: 'u_keyname',
                 data: res.data.phone
               })
               wx.setStorage({
-                key: 'u_role_id',
-                data: res.data.role_id
-              })
-              wx.setStorage({
-                key: 'u_id',
-                data: res.data.uid,
+                key: 'u_access_token',
+                data: 'Bearer ' + res.data.access_token,
                 success:function(){
+                  wx.request({
+                    url: app.myapp.myweb + '/api/motorRunningData/selectCount',
+                    header: {
+                      'Authorization': 'Bearer ' + res.data.access_token
+                    },
+                    success:function(res){
+                      wx.setStorage({
+                        key: 'normal_cnt',
+                        data: res.data.data.normal,
+                      })
+                      wx.setStorage({
+                        key: 'close_cnt',
+                        data: res.data.data.maintenance,
+                      })
+                      wx.setStorage({
+                        key: 'over_cnt',
+                        data: res.data.data.overdue,
+                      })
+                      wx.setStorage({
+                        key: 'total_cnt',
+                        data: res.data.data.normal + res.data.data.maintenance + res.data.data.overdue,
+                      })
+                    }
+                  })
                   wx.reLaunch({
-                    url: '/pages/dat/index',
+                    url: '/pages/dat/overview',
                   })
                 }
               })
@@ -131,7 +149,7 @@ formSubmit:function(e){
               if(res.data.data){
                 console.log("test");
                 let data = JSON.parse(res.data.data);
-                app.globalData.access_token = "Bearer " + data.token.access_token;
+                app.globalData.access_token = data.token.access_token;
                 wx.reLaunch({
                   url: '/pages/dat/index',
                 })

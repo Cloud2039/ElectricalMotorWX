@@ -2,7 +2,7 @@
 
 .search-bar{
   display: flex;
-  background-color: black;
+  background-color: white;
   border-bottom: 1px solid solid;
   padding: 5px;
 }
@@ -15,14 +15,14 @@
 .search-bar input{
   height: 35px;
   line-height: 35px;
-  background: white;
+  background: #efefef;
   flex-grow: 1;
   border-radius: 5px;
 }
 
 .search-bar button{
-  background:  #ff923f;
-  color: white;
+  background:  #efefef;
+  color: #4582fc;
   height: 35px;
   line-height: 35px; 
  }
@@ -131,8 +131,9 @@
 
 .button {
   height: 30px;
-  background-color:#ff923f;
-  color: #eeeeee;
+  background-color:#eeeeee;
+  color: #4582fc;
+  border-radius: 2px;
 }
 
 .text-running-stat-title{

@@ -14,22 +14,22 @@
         
         <picker-view style="width: 100%; height: 250px;" value="{{value}}" bindchange="bindChange">
           <picker-view-column>
-            <view wx:for="{{years}}" style="line-height: 30px">{{item}}年</view>
+            <view wx:for="{{years}}" wx:key='unique' style="line-height: 30px">{{item}}年</view>
           </picker-view-column>
           <picker-view-column>
-            <view wx:for="{{months}}" style="line-height: 30px">{{item}}月</view>
+            <view wx:for="{{months}}" wx:key='unique' style="line-height: 30px">{{item}}月</view>
           </picker-view-column>
           <picker-view-column>
-            <view wx:for="{{days}}" style="line-height: 30px">{{item}}日</view>
+            <view wx:for="{{days}}" wx:key='unique' style="line-height: 30px">{{item}}日</view>
           </picker-view-column>
           <picker-view-column>
-            <view wx:for="{{hours}}" style="line-height: 30px">{{item}}时</view>
+            <view wx:for="{{hours}}" wx:key='unique' style="line-height: 30px">{{item}}时</view>
           </picker-view-column>
         </picker-view>
 
         <view class='amount-block'>
           <text class="text-input">加注油量：</text>
-          <input class="input" auto-focus type="digit" />
+          <input class="input" placeholder='{{amount}}' auto-focus type="digit" />
           <text class="text-input"> g</text>
         </view>
       </view>

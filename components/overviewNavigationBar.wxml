@@ -1,14 +1,2 @@
 <!--components/overviewNavigationBar.wxml-->
-<view class="navigation-container" style="{{'height: ' + navigationBarAndStatusBarHeight}}">
-  <!--空白来占位状态栏-->
-  <view class="status-bar" style="{{'height: ' + statusBarHeight}}"></view>
-  <!--自定义导航栏-->
-  <view class="navigation-bar" style="{{'height:' + navigationBarHeight}}"> 
-    <!-- <image class="nav-img" src='/img/drop-down-list.png' /> -->
-    <view class="navigation-title" style="{{'line-height:' + navigationBarHeight}}" >
-      <text>亨斯迈</text>
-    </view>
-  </view>
-</view>
-<!--空白占位fixed空出的位置-->
-<view style="{{'height: ' + navigationBarAndStatusBarHeight}}"></view>
+<text>components/overviewNavigationBar.wxml</text>

@@ -5,42 +5,39 @@
         "pages/user/login",
         "pages/user/index",
         "pages/dat/overview",
-        "components/mainNavigationBar",
-        "components/loginNavigationBar",
-        "components/overviewNavigationBar",
         "pages/dat/detail",
-        "pages/dat/lube",
-        "pages/dat/bearing"
+        "pages/dat/lube"
     ],
     "window": {
         "backgroundTextStyle": "light",
-        "navigationBarBackgroundColor": "#555555",
-        "navigationStyle": "custom",
-        "navigationBarTextStyle": "white",
-        "enablePullDownRefresh": true
+        "navigationBarBackgroundColor": "#ffffff",
+        "navigationStyle": "default",
+        "navigationBarTextStyle": "black",
+        "enablePullDownRefresh": true,
+        "navigationBarTitleText": "电机小助理"
     },
     "tabBar": {
-        "backgroundColor": "#FF923F",
+        "backgroundColor": "#ffffff",
         "color": "#101018",
         "selectedColor": "#999999",
         "list": [
             {
                 "pagePath": "pages/dat/overview",
                 "text": "首页",
-                "iconPath": "img/Overview-off.png",
-                "selectedIconPath": "img/Overview-on.png"
+                "iconPath": "img/overview-grey.png",
+                "selectedIconPath": "img/overview-blue.png"
             },
             {
                 "pagePath": "pages/dat/index",
                 "text": "统计",
-                "iconPath": "img/Data-off.png",
-                "selectedIconPath": "img/Data-on.png"
+                "iconPath": "img/stat-grey.png",
+                "selectedIconPath": "img/stat-blue.png"
             },
             {
                 "pagePath": "pages/user/login",
                 "text": "我的",
-                "iconPath": "img/User-off.png",
-                "selectedIconPath": "img/User-on.png"
+                "iconPath": "img/mine-grey.png",
+                "selectedIconPath": "img/mine-blue.png"
             }
         ]
     },

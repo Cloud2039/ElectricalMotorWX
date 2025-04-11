@@ -1,15 +1,13 @@
 <!--pages/dat/bearing.wxml-->
-<Header></Header>
-
 <view class ='overall'>
   <text class='motor_id'>{{motor_id}}</text>
   <text>{{location}}</text>
   <text>{{name}}</text>
 
   <view>
-    <Popup visible='{{isPopupVisible}}' type='{{type}}' motor_id='{{motor_id}}' bindmyevent='myEvent'></Popup>
+    <Popup visible='{{isPopupVisible}}' type='{{type}}' motor_id='{{motor_id}}' operatorId='{{operatorId}}' deReferenceTime='{{deReferenceTime}}' ndeReferenceTime='{{ndeReferenceTime}}' amount='{{amount}}' bindmyevent='myEvent'></Popup>
   </view>
-  <view class='nde_bearing'>
+  <view class='nde_lube'>
     <button class='button' bindtap='popupNdeLube'>非轴伸端</button>
   </view>
 
@@ -18,7 +16,7 @@
   </view>
   
   <view class='test'>
-    <view class='de_bearing'>
+    <view class='de_lube'>
       <button class='button' bindtap='popupDeLube'>轴伸端</button>
     </view>
   </view>

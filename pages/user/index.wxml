@@ -1,6 +1,4 @@
 <!--头部信息--> 
-<Header></Header>
-
 <view class='head'>
 
   <view class='head-left' wx:if="{{lx==1}}">

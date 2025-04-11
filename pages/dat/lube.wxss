@@ -1,8 +1,16 @@
 /* pages/dat/bearing.wxss */
+page{
+  height: 100%
+}
+
 .overall{
   display: flex;
   flex-direction: column;
   text-align: center;
+  background-color: #efefef;
+  position: fixed;
+  height: 100%;
+  width: 100%;
 }
 
 .motor_id{
