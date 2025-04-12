@@ -2,14 +2,18 @@
 
 .search-bar{
   display: flex;
-  background-color: white;
-  border-bottom: 1px solid solid;
+  background-color: #efefef;
+  border-bottom: 5px solid white;
+  border-left: 7px solid white;
+  border-right: 7px solid white;
+  border-radius: 5px;
   padding: 5px;
 }
 
 .search-bar image{
   height: 35px;
   width: 35px;
+  padding-right: 15px;
 }
 
 .search-bar input{

@@ -47,3 +47,10 @@
   .caidan-arrow{
     width: 16px; height: 16px;
   }
+
+  .mysubmit {
+    margin-top: 50px;
+    width: 80%;
+    background-color: #4582fc;
+    color: white;
+  }

@@ -1,20 +1,20 @@
 <form bindsubmit="formSubmit">
-  <view class='denlgu'>
+  <view class='login'>
     <image class="logo" src="/img/logo1.png"></image>
     <view class="form-wrap">
-      <view class="flex-wrap input-wrap">
-        <text class="label">手机号</text>
-        <input value="" id="username" class="account-info-input" name="uname" />
+      <view class="input-box">
+        <image src="../../img/phone.png" mode="aspectFit"></image>
+        <input placeholder="请输入手机号" value="" id="username" class="account-info-input" name="uname" />
       </view>
-      <view class="flex-wrap input-wrap">
-        <text class="label">密码</text>
-        <input password id="password" class="account-info-input" name="upwd" />
+      <view class="input-box">
+        <image src="../../img/password.png" mode="aspectFit"></image>
+        <input placeholder="请输入密码"password id="password" class="account-info-input" name="upwd" />
       </view>
     </view>
 
     <!--text class='shuoming'>请准确填写账号信息，有问题联系客服</text-->
     <text class='shuoming'>{{xinxi}}</text>
    
-    <button class='mysubmit' form-type="submit">登陆</button>
+    <button class='mysubmit' form-type="submit">登录</button>
   </view>
 </form>

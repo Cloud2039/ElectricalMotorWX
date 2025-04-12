@@ -7,7 +7,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        str_u_name:"", //微信用户或者普通用户
+        u_name:"", //微信用户或者普通用户
         lx:1 //1微信用户，2普通用户
     },
 
@@ -32,13 +32,12 @@ Page({
         var that = this
         wx.getStorage({
           key: 'u_login',
-          success: function (res) {
-
+          success: function () {
               wx.getStorage({
                 key: 'u_name',
-                success: function (res2) {
-                  that.setData({ str_u_name: res2.data })
-                  if(res2.data=="微信用户"){
+                success: function (res) {
+                  that.setData({ u_name: res.data })
+                  if(res.data=="微信用户"){
                     that.setData({ lx: 1 })
                   }else{
                     that.setData({ lx:2 })

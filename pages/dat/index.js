@@ -21,7 +21,17 @@ Page({
 
     bearing_stats:          [],
 
+    subStations:            ['#1变电所','#2变电所','#3变电所'],
+    subStationID:           [1,2,3],
+    index:                  0,
+
     api_url : app.myapp.myweb
+  },
+
+  bindPickerChange: function(e) {
+    this.setData({
+      index: e.detail.value
+    })
   },
 
   slideTable: function(e) {

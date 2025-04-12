@@ -88,6 +88,8 @@ formSubmit:function(e){
                       })
                     }
                   })
+                  //wx.request(获取所有变电所名称并存入)
+                  //abracadebra
                   wx.reLaunch({
                     url: '/pages/dat/overview',
                   })

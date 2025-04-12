@@ -1,19 +1,23 @@
 /* pages/dat/overview.wxss */
 page{
-  background-color: #EFEFEF;   /* 背景颜色 */
+  background-color: #efefef;   /* 背景颜色 */
   height: 100%;
 }
 
 .search-bar{
   display: flex;
-  background-color: white;
-  border-bottom: 1px solid solid;
+  background-color: #efefef;
+  border-bottom: 5px solid white;
+  border-left: 7px solid white;
+  border-right: 7px solid white;
+  border-radius: 5px;
   padding: 5px;
 }
 
 .search-bar image{
   height: 35px;
   width: 35px;
+  padding-right: 15px;
 }
 
 .search-bar input{
@@ -38,7 +42,7 @@ page{
   height: 350px;
 }
 
-.station-cnt-background {
+.station-cnt {
   margin-top: 10px;
   margin-bottom: 10px;
   margin-left: 5px;
@@ -47,20 +51,14 @@ page{
   display: flex;
   border-radius: 20rpx;
   box-shadow: 0 0 5rpx rgba(255,255,255,0.15);
-  background-color: #161924;
+  background-color: white;
   justify-content: center;
 }
 
 .station-cnt-font {
-  color:       #ff923f;
+  color:       black;
   font-size:    25px;
   text-align: center;
-}
-
-.station-summary{
-  display:flex;
-  width: 25%;
-  justify-content: center;
 }
 
 #mychart-pie-move-bar {

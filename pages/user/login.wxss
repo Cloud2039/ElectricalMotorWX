@@ -1,14 +1,15 @@
   /* 定义整个页面的背景颜色 */
   page {
     background-color: #EFEFEF;   /* 背景颜色 */
+    height: 100%;
   }
   
-  .denlgu {
-    height: 100%;
+  .login {
+    height: 70%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
     box-sizing: border-box;
     padding: 4px 12px;
   }
@@ -21,25 +22,25 @@
   .form-wrap {
     border-top: 1px solid #eee;
     margin: 50px 0;
+    width: 80%;
   }
   
-  .flex-wrap {
+  .input-box {
     display: flex;
     flex-direction: row;
-  }
-  
-  .input-wrap {
+    width: 100%;
     background: #fff;
     border-bottom: 1px solid #eee;
-    margin: 0 -12px;
-    padding: 0 12px;
     height: 46px;
     line-height: 46px;
+    align-items: center;
   }
-  
-  .label {
-    color: #999;
-    width: 4.5em;
+
+  .input-box image{
+    height: 30px;
+    width: 30px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
     
   .account-info-input {
@@ -51,7 +52,7 @@
 
   .mysubmit {
     width: 80%;
-    background-color: #00CA9A;
+    background-color: #4582fc;
     color: white;
   }
 
