@@ -12,12 +12,13 @@ page{
   border-right: 7px solid white;
   border-radius: 5px;
   padding: 5px;
+  align-items: center;
 }
 
 .search-bar image{
-  height: 35px;
-  width: 35px;
-  padding-right: 15px;
+  height: 30px;
+  width: 30px;
+  padding-right: 10px;
 }
 
 .search-bar input{
@@ -28,11 +29,17 @@ page{
   border-radius: 5px;
 }
 
-.search-bar button{
-  background:  #efefef;
-  color: #4582fc;
-  height: 35px;
-  line-height: 35px; 
+ .title {
+   margin-top: 20px;
+   display: flex;
+   width: 100%;
+   text-align: center;
+   justify-content: center;
+ }
+ 
+ .title text{
+   font-size: larger;
+   font-weight: bolder;
  }
 
 .chart-container{
@@ -45,20 +52,16 @@ page{
 .station-cnt {
   margin-top: 10px;
   margin-bottom: 10px;
-  margin-left: 5px;
   display: flex;
-  width:  50%;
+  width:  35%;
   display: flex;
-  border-radius: 20rpx;
-  box-shadow: 0 0 5rpx rgba(255,255,255,0.15);
-  background-color: white;
   justify-content: center;
 }
 
 .station-cnt-font {
-  color:       black;
-  font-size:    25px;
-  text-align: center;
+  color:        black;
+  font-size:      25px;
+  text-align:     center;
 }
 
 #mychart-pie-move-bar {

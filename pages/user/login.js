@@ -69,30 +69,54 @@ formSubmit:function(e){
                     header: {
                       'Authorization': 'Bearer ' + res.data.access_token
                     },
-                    success:function(res){
+                    success:function(res3){
                       wx.setStorage({
                         key: 'normal_cnt',
-                        data: res.data.data.normal,
+                        data: res3.data.data.normal,
                       })
                       wx.setStorage({
                         key: 'close_cnt',
-                        data: res.data.data.maintenance,
+                        data: res3.data.data.maintenance,
                       })
                       wx.setStorage({
                         key: 'over_cnt',
-                        data: res.data.data.overdue,
+                        data: res3.data.data.overdue,
                       })
                       wx.setStorage({
                         key: 'total_cnt',
-                        data: res.data.data.normal + res.data.data.maintenance + res.data.data.overdue,
+                        data: res3.data.data.normal + res3.data.data.maintenance + res3.data.data.overdue,
                       })
                     }
                   })
-                  //wx.request(获取所有变电所名称并存入)
-                  //abracadebra
-                  wx.reLaunch({
-                    url: '/pages/dat/overview',
+                  wx.request({
+                    url: app.myapp.myweb + '/api/substation/selectByUserId?userId=' + res.data.userId,
+                    header: {
+                      'Authorization': 'Bearer ' + res.data.access_token
+                    },
+                    success:function(res2){
+                      var tmp_stations = new Array();
+                      var tmp_stationIDs = new Array();
+
+                      res2.data.data.forEach(item=>{
+                        tmp_stations.push(item.name)
+                        tmp_stationIDs.push(item.id)
+                      })
+
+                      wx.setStorage({
+                        key: 'subStations',
+                        data: tmp_stations
+                      })
+                      wx.setStorage({
+                        key: 'subStationIDs',
+                        data: tmp_stationIDs
+                      })
+                    }
                   })
+                  setTimeout(() => {
+                    wx.reLaunch({
+                      url: '/pages/dat/overview',
+                    })
+                  }, 500)
                 }
               })
         }else{
@@ -106,11 +130,6 @@ formSubmit:function(e){
   }
 },
 
-    toHuiyuan:function() {
-        wx.navigateTo({
-          url: '/pages/user/index',
-        })
-    },
     /**
      * 生命周期函数--监听页面加载
      */
@@ -131,35 +150,35 @@ formSubmit:function(e){
     onShow: function () {
       var that = this
       console.log("onShow")
-      wx.login({
-        success(res) {
-          var code = res.code
-          wx.request({
-            url: app.myapp.myweb + '/api/wx/getUserInfo',
-            data: {
-              code: code
-            },
-            method: 'post',
-            dataType: 'json',
-            success: function (res) {
-              console.log(res.data);
-              if(res.data.openId){
-                that.setData({
-                  openId: res.data.openId,
-                });
-              }
-              if(res.data.data){
-                console.log("test");
-                let data = JSON.parse(res.data.data);
-                app.globalData.access_token = data.token.access_token;
-                wx.reLaunch({
-                  url: '/pages/dat/index',
-                })
-              }
-            }
-          })
-        }
-      })
+      // wx.login({
+      //   success(res) {
+      //     var code = res.code
+      //     wx.request({
+      //       url: app.myapp.myweb + '/api/wx/getUserInfo',
+      //       data: {
+      //         code: code
+      //       },
+      //       method: 'post',
+      //       dataType: 'json',
+      //       success: function (res) {
+      //         console.log(res.data);
+      //         if(res.data.openId){
+      //           that.setData({
+      //             openId: res.data.openId,
+      //           });
+      //         }
+      //         if(res.data.data){
+      //           console.log("test");
+      //           let data = JSON.parse(res.data.data);
+      //           app.globalData.access_token = data.token.access_token;
+      //           wx.reLaunch({
+      //             url: '/pages/dat/index',
+      //           })
+      //         }
+      //       }
+      //     })
+      //   }
+      // })
 
       wx.getStorage({
         key: 'u_login',

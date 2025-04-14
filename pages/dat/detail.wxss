@@ -38,6 +38,7 @@
  }
 
 .block-running-stat{
+  padding: 5px;
   display: flex;
   flex-direction: row;
   border-bottom: 1px solid rgb(226, 224, 224);
@@ -91,6 +92,7 @@
 }
 
 .block-basic{
+  padding: 5px;
   display: flex;
   flex-direction: column;
   border-bottom: 1px solid rgb(226, 224, 224);
@@ -109,6 +111,7 @@
 }
 
 .block-repair{
+  padding: 5px;
   display: flex;
   flex-direction: column;
 }

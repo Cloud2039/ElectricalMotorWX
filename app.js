@@ -24,6 +24,6 @@ App({
   },
   myapp:{
     //myweb: "http://ems.cloud.ruishan.cn", 
-    myweb:"http://192.168.0.111:8083",
+    myweb:"http://192.168.0.158:8083",
   },
 })

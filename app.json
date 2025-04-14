@@ -1,8 +1,7 @@
 {
-    "entryPagePath": "pages/user/login",
     "pages": [
-        "pages/dat/index",
         "pages/user/login",
+        "pages/dat/index",
         "pages/user/index",
         "pages/dat/overview",
         "pages/dat/detail",

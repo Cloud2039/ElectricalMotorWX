@@ -14,6 +14,8 @@ Page({
       over_cnt: wx.getStorageSync('over_cnt'),
       total_cnt: wx.getStorageSync('total_cnt'),
 
+      search_value:     '',
+
       ec: {
         onInit: function (canvas, width, height, dpr) {
           const chart = echarts.init(canvas, null, {
@@ -34,13 +36,54 @@ Page({
       wx.scanCode({
         onlyFromCamera: false,
         success: (res) => {
-          console.log(res);
-          this.setData({
-            result:res.result
-          });
+          wx.request({
+            url: app.myapp.myweb + '/api/motorBasicData/seletById/' + res.result,
+            header: {
+              'Authorization': wx.getStorageSync('u_access_token')
+            },
+            success:function(res1){
+              console.log("I came here again haha")
+              console.log(res1)
+              wx.navigateTo({
+                url: '/pages/dat/detail?lube',
+                success: function(res2) {
+                  // 通过eventChannel向被打开页面传送数据
+                  var tmp = JSON.stringify(that.data.lube_stats_all[that.data.all_lube_dict[res.result]])
+                  res1.eventChannel.emit('acceptDataFromOpenerPage', {data: tmp})
+                }
+              })
+            }
+          })
         },
         fail:(err) => {
           console.error(err);
+        }
+      })
+    },
+
+    bindKeyInput: function(e) {
+      this.setData({
+        search_value: e.detail.value
+      })
+    },
+
+    searchTest: function() {
+      wx.request({
+        url: app.myapp.myweb + '/api/motorBasicData/seletById/' + this.data.search_value,
+        header: {
+          'Authorization': wx.getStorageSync('u_access_token')
+        },
+        success:function(res1){
+          console.log("I came here again haha")
+          console.log(res1)
+          wx.navigateTo({
+            url: '/pages/dat/detail?lube',
+            success: function(res2) {
+              // 通过eventChannel向被打开页面传送数据
+              var tmp = JSON.stringify(that.data.lube_stats_all[that.data.all_lube_dict[res.result]])
+              res2.eventChannel.emit('acceptDataFromOpenerPage', {data: tmp})
+            }
+          })
         }
       })
     },

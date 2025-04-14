@@ -3,8 +3,10 @@
 <view class="popup-mask" hidden="{{!visible}}"></view>
 <view class="popup-window" hidden="{{!visible}}">
   <view class="popup-header">
-    <text wx:if="{{type == 0}}" class="popup-title">轴伸端注油时间</text>
-    <text wx:if="{{type == 1}}" class="popup-title">非轴伸端注油时间</text>
+    <view class="popup-buttons">
+      <button class="popup-button" bindtap="cancel">取消</button>
+      <button class="popup-button" bindtap="confirm">确认</button>
+    </view>
   </view>
   <view class="popup-body">
     <view class="popup-message">
@@ -32,11 +34,10 @@
           <input class="input" placeholder='{{amount}}' auto-focus type="digit" />
           <text class="text-input"> g</text>
         </view>
+
+        
+        
       </view>
-    </view>
-    <view class="popup-buttons">
-      <button class="popup-button" bindtap="cancel">取消</button>
-      <button class="popup-button" bindtap="confirm">确认</button>
     </view>
   </view>
 </view>

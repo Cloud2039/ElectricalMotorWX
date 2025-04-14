@@ -3,7 +3,6 @@
   <view class='search-bar'>
     <input type='text' maxlength='12' placeholder='输入信息' name="neirong" />
     <image src="../../img/scanning-blue.png" mode="aspectFit" bindtap="scanQRCode"></image>
-    <button form-type='submit'>查询</button>
   </view>
 </form>
 <scroll-view scroll-y class='scroller'>

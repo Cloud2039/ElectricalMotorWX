@@ -20,8 +20,4 @@
   <text class='caidan-text'>修改密码</text>
 </navigator>
 
-<block wx:if="{{str_u_name=='微信用户'}}">
-
-</block>
-
 <button class='mysubmit' bindtap='logout'>退出登录</button>
