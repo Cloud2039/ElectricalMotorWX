@@ -1,9 +1,11 @@
 /*头部信息*/
+
 .head {
     display: flex;
     margin: 1px;
     padding: 10px;
-    background-color: crimson;
+    border-top: 1px solid grey;
+    height: 150px;
   }
 
   .head-left-touxiang {
@@ -15,20 +17,37 @@
     display: block;
     overflow: hidden;
   }
+
   .head-right {
     padding-left: 10px;
+    display: flex;
+    flex-direction: row;
   }
+
   .head-right-txt1 {
     color: white;
   }
+
   .head-right-txt2 {
     background-color: darkorange;
     color: white;
     margin: 5px 0px;
     padding: 5px;
+    height: 30px;
   }
-  .head-right-txt3 {
-    color: white;
+
+  .block-usrname {
+    display: flex;
+    height: 100%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-left: 50px;
+  }
+
+  .block-usrname text{
+    font-size: 35px;
+    font-weight: bold;
   }
   
   .caidan{

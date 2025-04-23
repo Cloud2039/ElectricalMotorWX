@@ -1,7 +1,7 @@
 /* pages/dat/overview.wxss */
 page{
   height: 100%;
-  background-image: url('https://636c-cloud1-3gu6kw69de9b20f4-1326890269.tcb.qcloud.la/add03.png?sign=6cb99ee719a22deb03ddb8d940d11a9f&t=1745411045');
+  background-image: url('https://636c-cloud1-3gu6kw69de9b20f4-1326890269.tcb.qcloud.la/add03.png?sign=7d85db86970cfb94692c612151d8d2bf&t=1745414313');
   background-size: 100% 100%;
 }
 

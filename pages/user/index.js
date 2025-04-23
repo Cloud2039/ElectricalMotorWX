@@ -15,7 +15,14 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-      wx.showTabBar()
+      wx.showTabBar({
+        success() {
+          console.log('nothing')
+        },
+        fail(err){
+          console.log(err, 'fail')
+        }
+      })
     },
 
     /**
@@ -67,9 +74,7 @@ Page({
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
-      wx.navigateTo({
-        url: '/pages/user/overview',
-      })
+
     },
 
     /**
