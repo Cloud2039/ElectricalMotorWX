@@ -19,7 +19,7 @@ Page({
       ec: {
         onInit: function (canvas, width, height, dpr) {
           const chart = echarts.init(canvas, null, {
-            width: width,
+            width: width-10,
             height: height,
             devicePixelRatio: dpr // new
           });
@@ -179,9 +179,10 @@ function getOption() {
   var normal_cnt = wx.getStorageSync('normal_cnt');
   var close_cnt = wx.getStorageSync('close_cnt');
   var over_cnt = wx.getStorageSync('over_cnt');
+  var total_cnt = wx.getStorageSync('total_cnt')
 
   return {
-      backgroundColor: "#EFEFEF",
+      backgroundColor: "#FFFFFF",
       series: [{
         label: {
           normal:{
@@ -195,20 +196,34 @@ function getOption() {
             fontWeight: 'bold'
           }
         },
-        color:['#4582fc','#f9513f','#f49a32'],
+        color:['#4582fc','#f49a32','#f9513f'],
         type: 'pie',
         center: ['50%', '50%'],
-        radius: ['65%', '85%'],
+        radius: ['58%', '75%'],
         data: [{
             value: normal_cnt,
             name: '正常'
           }, {
             value: close_cnt,
-            name: '超期'
+            name: '待维护'
           }, {
             value: over_cnt,
-            name: '临期'
+            name: '超期'
           }]
-        }]
+        }],
+        graphic: { // 使用 graphic 组件添加自定义文本
+          elements: [
+              {
+                  type: 'text', // 文本
+                  left: 'center', // 水平居中
+                  top: 'center', // 垂直居中
+                  style: {
+                      text: total_cnt+"个", // 显示的文字内容
+                      font: '30px Microsoft YaHei', // 字体样式
+                      fill: '#000000' // 字体颜色
+                  }
+              }
+          ]
+      }
     }
 };

@@ -1,20 +1,17 @@
 <!--pages/dat/overview.wxml-->
 <form bindsubmit="search">
+  <view class='title'>
+    <text>南京金陵亨斯迈</text>
+    <text>新材料有限责任公司</text>
+  </view>
+
   <view class='search-bar'>    
     <input type='text' maxlength='12' placeholder='输入信息' confirm-type="search" value="{{search_value}}" bindinput="bindKeyInput" bindconfirm="searchTest"/>
   <image src="../../img/scanning-blue.png" mode="aspectFit" bindtap="scanQRCode"></image>
   </view>
 
-  <view class='title'>
-    <text>南京金陵亨斯迈新材料有限责任公司</text>
-  </view>
-
-  <view class="chart-container" style="flex-direction: column">
+  <view class="chart-container">
     <ec-canvas id="mychart-pie-move-bar" canvas-id="mychart-pie" ec="{{ec}}"></ec-canvas>
-    <view class="station-cnt" style="flex-direction: column;">
-      <text class="station-cnt-font"> 电机总数 </text>
-      <text class="station-cnt-font">{{total_cnt}} 个</text>
-    </view>
   </view>
 
   <view class="summary-stat-container" style="flex-direction: row;">
@@ -34,4 +31,3 @@
     </view>
   </view>
 </form>
-
