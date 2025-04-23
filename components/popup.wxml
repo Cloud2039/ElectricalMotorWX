@@ -23,7 +23,17 @@
               <view wx:for="{{hours}}" wx:key='unique' style="line-height: 30px">{{item}}时</view>
             </picker-view-column>
           </picker-view>
+
+          <view class='reason-picker'>
+          <text class="reason-text">请选择更换原因：</text>
+          <picker class="search-picker" mode="selector" bindchange="bindPickerChange" value="{{index}}" range="{{reasons}}">
+            <view class="picker">
+              {{reasons[index]}}
+            </view>
+          </picker>
         </view>
+        
+      </view>
     </view>
     <view class="popup-buttons">
       <button class="popup-button" bindtap="cancel">取消</button>

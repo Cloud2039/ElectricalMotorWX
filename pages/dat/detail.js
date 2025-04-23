@@ -45,7 +45,7 @@ Page({
     navigateToLube: function(){
       var that = this;
       wx.navigateTo({
-        url: '/pages/dat/lube?motor_id='+ that.data.stat.runningData[0].motorId + "&location=" + that.data.stat.location + "&name=" + that.data.stat.name + "&amount=" + that.data.stat.oilInjectionAmount + "&deReferenceTime=" + that.data.stat.runningData[0].deReferenceTime + "&ndeReferenceTime=" + that.data.stat.runningData[0].ndeReferenceTime,
+        url: '/pages/dat/lube?motor_id='+ that.data.stat.runningData[0].motorId + "&positionNum=" + that.data.stat.positionNum + "&location=" + that.data.stat.location + "&name=" + that.data.stat.name + "&amount=" + that.data.stat.oilInjectionAmount + "&deReferenceTime=" + that.data.stat.runningData[0].deReferenceTime + "&ndeReferenceTime=" + that.data.stat.runningData[0].ndeReferenceTime,
       })
     },
     
@@ -68,7 +68,6 @@ Page({
           success:function(res){
             transferLubeTime(res.data.data)
             res.data.data.forEach(item=>{
-              console.log(item)
               if(item.type == 0){
                 tmp_lube_repair_history.push(item)
               }  

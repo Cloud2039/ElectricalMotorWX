@@ -20,7 +20,7 @@
     </view>
   </view>
 </view>
-<swiper current='{{currentTableTab}}' class='swiper-box' duration='300' style='height:600px' bindchange='slideTable'>
+<swiper current='{{currentTableTab}}' class='swiper-box' duration='300' bindchange='slideTable'>
   <swiper-item>
       <view class='selector-tab'>
         <view class='selector-tab-list {{currentLubeTab==2 ? "selected" : ""}}' data-current='2' bindtap='switchLubeTab'>
@@ -35,9 +35,9 @@
       </view>
       <scroll-view scroll-y class='scroller'>
         <block wx:for="{{current_lube_stats}}"  wx:key="index">
-          <view class='block-nav' bindtap='toSpecific' data-query="{{item.runningData[0].motorId}}">
+          <view class='block-nav' bindtap='toSpecificLube' data-query="{{item.runningData[0].motorId}}">
             <view class='view-id-and-stat'>
-              <text class='text-id'>{{item.runningData[0].motorId}}</text>
+              <text class='text-id'>{{item.positionNum}}</text>
               <text wx:if="{{item.runningData[0].motorStatus == 0}}" class='text-stat-normal'>正常</text>
               <text wx:if="{{item.runningData[0].motorStatus == 1}}" class='text-stat-close'>待维护</text>
               <text wx:if="{{item.runningData[0].motorStatus == 2}}" class='text-stat-over'>超期</text>
@@ -81,5 +81,40 @@
         正常
       </view>
     </view>
+      <scroll-view scroll-y class='scroller'>
+        <block wx:for="{{current_bearing_stats}}"  wx:key="index">
+          <view class='block-nav' bindtap='toSpecificBearing' data-query="{{item.runningData[0].motorId}}">
+            <view class='view-id-and-stat'>
+              <text class='text-id'>{{item.positionNum}}</text>
+              <text wx:if="{{item.runningData[0].motorBearingStatus == 0}}" class='text-stat-normal'>正常</text>
+              <text wx:if="{{item.runningData[0].motorBearingStatus == 1}}" class='text-stat-close'>待维护</text>
+              <text wx:if="{{item.runningData[0].motorBearingStatus == 2}}" class='text-stat-over'>超期</text>
+            </view>
+            <view class='block-below'>
+              <image class='block-img' src='../../img/motor_01.png' mode='widthFix'></image>
+              <view class='block-info'>
+                <view class='view-separate-block'>
+                  <view class='view-c1'>
+                    <text class="text-c1">用途：</text>
+                    <text class="text-c1">轴伸端：</text>
+                    <text class="text-c1">非轴伸端：</text>
+                  </view>
+                  <view class='view-c2'>
+                    <text class="text-c2">{{item.location}} {{item.name}}</text>
+                    <view class='view-spec'>
+                      <text class="text-c2">{{item.runningData[0].deMaintenanceTime}}</text>
+                      <text class="text-c2">{{item.runningData[0].deRunningTime}}/{{item.runningData[0].deReferenceTime}}h</text>
+                    </view>
+                    <view class='view-spec'>
+                      <text class="text-c2">{{item.runningData[0].ndeMaintenanceTime}}</text>
+                      <text class="text-c2">{{item.runningData[0].ndeRunningTime}}/{{item.runningData[0].ndeReferenceTime}}h</text>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>  
+          </view>
+        </block>
+      </scroll-view>
   </swiper-item>
 </swiper>

@@ -6,6 +6,7 @@ const years = []
 const months = []
 const days = []
 const hours = []
+const reasons = ['到期更换','故障处理','其他']
 
 for (let i = 2020; i <= date.getFullYear(); i++) {
   years.push(i)
@@ -23,8 +24,6 @@ for (let i = 0; i < 24; i++){
   hours.push(i)
 }
 
-var app = getApp()
-
 Component({
   data: {
     years: years,
@@ -36,6 +35,15 @@ Component({
     hours: hours,
     hour: date.getHours(),
     timeStamp: "",
+    reasons: reasons,
+    reason: "",
+    myUrl: "",
+    index: 0,
+    accessoryList: {},
+    accessoryName: {},
+    accessoryId: -1,
+    index1: 0,
+
     value: [9999, date.getMonth(), date.getDate()-1, date.getHours()],
   },
 
@@ -67,6 +75,18 @@ Component({
     amount: {
       type: Number,
       value: 0,
+    },
+    accessoryList: {
+      type: Array,
+      value: {}, 
+    },
+    accessoryName: {
+      type: Array,
+      value: {},
+    },
+    myUrl: {
+      type: String,
+      value: "",
     }
   },
 
@@ -83,47 +103,45 @@ Component({
           timeStamp: transferLubeTime(date.getFullYear(), date.getMonth() + 1, date.getDate(), date.getHours())
         })
 
-        if(this.data.type == 0){
+        //如果不选的话作为默认选项直接上传，不然会传空值
+        if(this.data.accessoryId == null || this.data.accessoryId==-1) {
+          this.setData({
+            accessoryId: this.data.accessoryList[0].id
+          })
+        }
+
+        if(this.data.reason == null || this.data.reason=="") {
+          this.setData({
+            reason: this.data.reasons[0]
+          })
+        }
+
+        if(this.data.type == 0) {
           wx.request({
-            url: app.myapp.web +'/api/motorRepairRecords/addOne',
+            url: this.data.myUrl +'/api/motorRepairRecords/addOne?motorId='+this.data.motor_id+'&type='+this.data.type+'&time='+this.data.timeStamp+'&amount='+this.data.amount+'&referenceTime='+this.data.deReferenceTime+'&accessoryId='+this.data.accessoryId+'&remark='+this.data.reason+'&operatorId='+wx.getStorageSync('u_operatorID'),
             header: {
               'Authorization': wx.getStorageSync('u_access_token')
             },
-            data: {
-              motor_id: this.data.motor_id,
-              type: this.data.type,
-              time: this.data.timeStamp,
-              amount: this.data.amount,
-              referenceTime: this.data.deReferenceTime,
-              operator: wx.getStorageSync('u_operatorID'),
-            },
+            method: "POST",
             success(res){
               console.log("hell yea")
               console.log(res.data)
             }
           })
         }
-        else if(this.data.type == 0){
+        else if (this.data.type == 1) {
           wx.request({
-            url: app.myapp.web +'/api/motorRepairRecords/addOne',
-            method: "POST",
+            url: this.data.myUrl +'/api/motorRepairRecords/addOne?motorId='+this.data.motor_id+'&type='+this.data.type+'&time='+this.data.timeStamp+'&amount='+this.data.amount+'&referenceTime='+this.data.ndeReferenceTime+'&accessoryId='+this.data.accessoryId+'&remark='+this.data.reason+'&operatorId='+wx.getStorageSync('u_operatorID'),
             header: {
               'Authorization': wx.getStorageSync('u_access_token')
             },
-            data: {
-              motor_id: this.data.motor_id,
-              type: this.data.type,
-              time: this.data.timeStamp,
-              amount: this.data.amount,
-              referenceTime: this.data.ndeReferenceTime,
-              operator: wx.getStorageSync('u_operatorID'),
-            },
+            method: "POST",
             success(res){
-              console.log("hello yeah")
+              console.log("hell yea")
               console.log(res.data)
             }
           })
-        }
+        }  
       },
 
       cancel: function() {
@@ -141,7 +159,21 @@ Component({
           amount: e.detail.value
         })
       },
-      
+
+      bindPickerChange: function(e) {
+        this.setData({
+          index: e.detail.value,
+          reason: reasons[e.detail.value],
+        })
+      },
+
+      bindPickerChange1: function(e) {
+        this.setData({
+          index1: e.detail.value,
+          accessoryId: this.data.accessoryList[e.detail.value].id,
+        })
+      },
+
       bindChange: function (e) {
         const val = e.detail.value
         this.setData({

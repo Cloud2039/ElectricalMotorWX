@@ -8,14 +8,18 @@ Page({
      */
     data: {
       motor_id:         0,
+      positionNum:      "",
       location:         "",
       name:             "",
       amount:           0,
       deReferenceTime:  0,
       ndeReferenceTime: 0,
       operatorId:       0,
-
+      url:              "",
       type:             0,
+      accessoryList:    {},
+      accessoryName:    {},
+
       isPopupVisible:   false,
     },
 
@@ -27,12 +31,31 @@ Page({
     
       that.setData({
         motor_id: options.motor_id,
+        positionNum: options.positionNum,
         location: options.location,
         name: options.name,
         amount: options.amount,
         deReferenceTime: options.deReferenceTime,
         ndeReferenceTime: options.ndeReferenceTime,
         operatorId: wx.getStorageSync('u_operatorID'),
+        url: app.myapp.myweb,
+      })
+
+      wx.request({
+        url: app.myapp.myweb + '/api/accessory/listByType?type=0',
+        header: {
+          'Authorization': wx.getStorageSync('u_access_token')
+        },
+        success:function(res){
+          var tmp_array = new Array()
+          res.data.data.forEach(item=>{
+            tmp_array.push(item.model)
+          })
+          that.setData({
+            accessoryList: res.data.data,
+            accessoryName: tmp_array,
+          })
+        }
       })
     },
 

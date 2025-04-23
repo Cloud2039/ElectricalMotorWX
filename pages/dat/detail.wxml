@@ -44,7 +44,7 @@
       </view>
 
       <view>
-        <Popup visible='{{isPopupVisible}}' motor_id='{{motorId}}' bindmyevent='myEvent'></Popup>
+        <Popup visible='{{isPopupVisible}}' type='{{type}}' motor_id='{{motor_id}}' operatorId='{{operatorId}}' bearingReferenceTime='{{bearingReferenceTime}}' myUrl='{{api_url}}' bindmyevent='myEvent'></Popup>
       </view>
 
       <view class='block-lube'>

@@ -35,8 +35,24 @@
           <text class="text-input"> g</text>
         </view>
 
-        
-        
+        <view class='reason-picker'>
+          <text class="reason-text">请选择更换零件：</text>
+          <picker class="search-picker" mode="selector" bindchange="bindPickerChange1" value="{{index1}}" range="{{accessoryName}}">
+            <view class="picker">
+              {{accessoryList[index1].model}}
+            </view>
+          </picker>
+        </view>
+
+        <view class='reason-picker'>
+          <text class="reason-text">请选择更换原因：</text>
+          <picker class="search-picker" mode="selector" bindchange="bindPickerChange" value="{{index}}" range="{{reasons}}">
+            <view class="picker">
+              {{reasons[index]}}
+            </view>
+          </picker>
+        </view>
+      
       </view>
     </view>
   </view>

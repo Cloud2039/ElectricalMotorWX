@@ -10,7 +10,7 @@ Page({
   data: {
     currentTableTab:        0,
     currentLubeTab:         2,
-    currentBearingTab:      0,
+    currentBearingTab:      2,
 
     lube_stats_all:         [],
     lube_stats_normal:      [],
@@ -20,7 +20,12 @@ Page({
     current_lube_dict:      {},
     all_lube_dict:          {},
 
-    bearing_stats:          [],
+    bearing_stats_normal:   [],
+    bearing_stats_close:    [],
+    bearing_stats_over:     [],
+    current_bearing_stats:  [],
+    current_bearing_dict:   {},
+    all_bearing_dict:       {},
 
     subStations:            [],
     subStationIDs:          [],
@@ -61,7 +66,7 @@ Page({
         // 对每一个motor_id进行数组编号
         var order=0
         var tmp_dict = {}
-        tmp_lube_stat_normal.forEach(item=>{
+        tmp_lube_stat_over.forEach(item=>{
           tmp_dict[item.runningData[0].motorId]=order
           order=order+1
         })
@@ -165,25 +170,56 @@ Page({
       that.setData({
         currentBearingTab: e.target.dataset.current
       })
-      wx.request({
-        url: app.myapp.myweb + 'url',
-        data:{
-          running_stat: e.target.dataset.current
-        },
-        success:function(res){
-          that.setData({bearing_stats:res.data})
-        }
+    }
+
+    if (e.target.dataset.current == 0) {
+      that.setData({
+        current_bearing_stats: that.data.bearing_stats_normal
       })
     }
+    else if (e.target.dataset.current == 1) {
+      that.setData({
+        current_bearing_stats: that.data.bearing_stats_close
+      })
+    }
+    else if (e.target.dataset.current == 2) {
+      that.setData({
+        current_bearing_stats: that.data.bearing_stats_over
+      })
+    }
+
+    // 对每一个motor_id进行数组编号
+    var order=0
+    var tmp_dict = {}
+    that.data.current_lube_stats.forEach(item=>{
+      tmp_dict[item.motor_id]=order
+      order=order+1
+    })
+
+    that.setData({
+      current_lube_dict: tmp_dict
+    })
   },
 
-  toSpecific: function(e){
+  toSpecificLube: function(e){
     var that = this;
     wx.navigateTo({
       url: '/pages/dat/detail?lube',
       success: function(res) {
         // 通过eventChannel向被打开页面传送数据
         var tmp = JSON.stringify(that.data.current_lube_stats[that.data.current_lube_dict[e.currentTarget.dataset.query]])
+        res.eventChannel.emit('acceptDataFromOpenerPage', {data: tmp})
+      }
+    })
+  },
+
+  toSpecificBearing: function(e){
+    var that = this;
+    wx.navigateTo({
+      url: '/pages/dat/detail?lube',
+      success: function(res) {
+        // 通过eventChannel向被打开页面传送数据
+        var tmp = JSON.stringify(that.data.current_lube_stats[that.data.current_bearing_dict[e.currentTarget.dataset.query]])
         res.eventChannel.emit('acceptDataFromOpenerPage', {data: tmp})
       }
     })
@@ -219,6 +255,10 @@ Page({
     var tmp_lube_stat_close = new Array();
     var tmp_lube_stat_over = new Array();
 
+    var tmp_bearing_stat_normal = new Array();
+    var tmp_bearing_stat_close = new Array();
+    var tmp_bearing_stat_over = new Array();
+
     wx.request({
       url: app.myapp.myweb + '/api/motorBasicData/selectAll/1?page=1&limit=20',
       header: {
@@ -239,12 +279,24 @@ Page({
               tmp_lube_stat_over.push(item);
             }
           })
+
+          res.data.data.forEach(item=>{
+            if (item.runningData[0].motorBearingStatus == 0) {
+              tmp_bearing_stat_normal.push(item);
+            }
+            else if (item.runningData[0].motorBearingStatus == 1) {
+              tmp_bearing_stat_close.push(item);
+            }
+            else if (item.runningData[0].motorBearingStatus == 2) {
+              tmp_bearing_stat_over.push(item);
+            }
+          })
         }
         
         // 对每一个motor_id进行数组编号
         var order=0
         var tmp_dict = {}
-        tmp_lube_stat_normal.forEach(item=>{
+        tmp_lube_stat_over.forEach(item=>{
           tmp_dict[item.runningData[0].motorId]=order
           order=order+1
         })
@@ -256,17 +308,29 @@ Page({
           order1=order1+1
         })
 
+        var order2=0
+        var tmp_dict2 = {}
+        tmp_lube_stat_over.forEach(item=>{
+          tmp_dict2[item.runningData[0].motorId]=order2
+          order2=order2+1
+        })
+
         that.setData(
           {
-            lube_stats_all:       res.data.data,
-            lube_stats_normal:    tmp_lube_stat_normal,
-            lube_stats_close:     tmp_lube_stat_close,
-            lube_stats_over:      tmp_lube_stat_over,
-            current_lube_stats:   tmp_lube_stat_over,
-            current_lube_dict:    tmp_dict,
-            all_lube_dict:        tmp_dict1,
-            subStations:          wx.getStorageSync('subStations'),
-            subStationIDs:        wx.getStorageSync('subStationIDs')
+            lube_stats_all:         res.data.data,
+            lube_stats_normal:      tmp_lube_stat_normal,
+            lube_stats_close:       tmp_lube_stat_close,
+            lube_stats_over:        tmp_lube_stat_over,
+            current_lube_stats:     tmp_lube_stat_over,
+            bearing_stats_normal:   tmp_bearing_stat_normal,
+            bearing_stats_close:    tmp_bearing_stat_close,
+            bearing_stats_over:     tmp_bearing_stat_over,
+            current_bearing_stats:  tmp_bearing_stat_over,
+            current_lube_dict:      tmp_dict,
+            current_bearing_dict:   tmp_dict2,
+            all_lube_dict:          tmp_dict1,
+            subStations:            wx.getStorageSync('subStations'),
+            subStationIDs:          wx.getStorageSync('subStationIDs')
           }
         )
       }
@@ -345,8 +409,12 @@ Page({
     var tmp_lube_stat_close = new Array();
     var tmp_lube_stat_over = new Array();
 
+    var tmp_bearing_stat_normal = new Array();
+    var tmp_bearing_stat_close = new Array();
+    var tmp_bearing_stat_over = new Array();
+
     wx.request({
-      url: app.myapp.myweb + '/api/motorBasicData/selectAll/'+that.data.subStationIDs[that.data.index]+'?page=1&limit=20',
+      url: app.myapp.myweb + '/api/motorBasicData/selectAll/1?page=1&limit=20',
       header: {
         'Authorization': wx.getStorageSync('u_access_token')
       },
@@ -365,29 +433,63 @@ Page({
               tmp_lube_stat_over.push(item);
             }
           })
+
+          res.data.data.forEach(item=>{
+            if (item.runningData[0].motorBearingStatus == 0) {
+              tmp_bearing_stat_normal.push(item);
+            }
+            else if (item.runningData[0].motorBearingStatus == 1) {
+              tmp_bearing_stat_close.push(item);
+            }
+            else if (item.runningData[0].motorBearingStatus == 2) {
+              tmp_bearing_stat_over.push(item);
+            }
+          })
         }
         
         // 对每一个motor_id进行数组编号
         var order=0
         var tmp_dict = {}
-        tmp_lube_stat_normal.forEach(item=>{
+        tmp_lube_stat_over.forEach(item=>{
           tmp_dict[item.runningData[0].motorId]=order
           order=order+1
         })
 
+        var order1=0
+        var tmp_dict1 = {}
+        res.data.data.forEach(item=>{
+          tmp_dict1[item.runningData[0].motorId]=order1
+          order1=order1+1
+        })
+
+        var order2=0
+        var tmp_dict2 = {}
+        tmp_lube_stat_over.forEach(item=>{
+          tmp_dict2[item.runningData[0].motorId]=order
+          order2=order2+1
+        })
+
         that.setData(
           {
-            lube_stats_all:       res.data.data,
-            lube_stats_normal:    tmp_lube_stat_normal,
-            lube_stats_close:     tmp_lube_stat_close,
-            lube_stats_over:      tmp_lube_stat_over,
-            current_lube_stats:   tmp_lube_stat_over,
-            current_lube_dict:    tmp_dict,
+            lube_stats_all:         res.data.data,
+            lube_stats_normal:      tmp_lube_stat_normal,
+            lube_stats_close:       tmp_lube_stat_close,
+            lube_stats_over:        tmp_lube_stat_over,
+            current_lube_stats:     tmp_lube_stat_over,
+            bearing_stats_normal:   tmp_bearing_stat_normal,
+            bearing_stats_close:    tmp_bearing_stat_close,
+            bearing_stats_over:     tmp_bearing_stat_over,
+            current_bearing_stats:  tmp_bearing_stat_over,
+            current_lube_dict:      tmp_dict,
+            current_bearing_dict:   tmp_dict2,
+            all_lube_dict:          tmp_dict1,
+            subStations:            wx.getStorageSync('subStations'),
+            subStationIDs:          wx.getStorageSync('subStationIDs')
           }
         )
       }
     })
-    
+
     wx.stopPullDownRefresh()
   },
 
