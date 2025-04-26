@@ -128,6 +128,7 @@ Page({
     if (this.data.currentLubeTab === e.target.dataset.current) {
       return false;
     } else {
+      console.log(e.target.dataset.current+" is chosen")
       that.setData({
         currentLubeTab: e.target.dataset.current
       })
@@ -226,16 +227,25 @@ Page({
   },
 
   scanQRCode: function() {
-    var that = this;
     wx.scanCode({
       onlyFromCamera: false,
       success: (res) => {
-        wx.navigateTo({
-          url: '/pages/dat/detail?lube',
-          success: function(res1) {
-            // 通过eventChannel向被打开页面传送数据
-            var tmp = JSON.stringify(that.data.lube_stats_all[that.data.all_lube_dict[res.result]])
-            res1.eventChannel.emit('acceptDataFromOpenerPage', {data: tmp})
+        wx.request({
+          url: app.myapp.myweb + '/api/motorBasicData/seletById/' + res.result,
+          header: {
+            'Authorization': wx.getStorageSync('u_access_token')
+          },
+          success:function(res1){
+            console.log("I came here again haha")
+            console.log(res1)
+            wx.navigateTo({
+              url: '/pages/dat/detail?lube',
+              success: function(res2) {
+                // 通过eventChannel向被打开页面传送数据
+                var tmp = JSON.stringify(that.data.lube_stats_all[that.data.all_lube_dict[res.result]])
+                res1.eventChannel.emit('acceptDataFromOpenerPage', {data: tmp})
+              }
+            })
           }
         })
       },
@@ -352,7 +362,7 @@ Page({
     var order=0
     var tmp_dict = {}
 
-    if(typeof that.data.currentLubeTab === 'undefined'){
+    if(typeof that.data.currentLubeTab == 'undefined'){
       that.setData({
           currentLubeTab: 0
         }
@@ -365,6 +375,7 @@ Page({
         order=order+1
       })
     }
+    
     else if(that.data.currentLubeTab == 1){
       that.data.lube_stats_close.forEach(item=>{
         tmp_dict[item.runningData[0].motorId]=order
@@ -510,7 +521,7 @@ Page({
 
 function transferLubeTime(test) {
   test.forEach(item=>{
-    item.runningData[0].deMaintenanceTime=timestampToTime(item.runningData[0].deMaintenanceTime, 1)
-    item.runningData[0].ndeMaintenanceTime=timestampToTime(item.runningData[0].ndeMaintenanceTime, 1)
+    item.runningData[0].deMaintenanceTime=timestampToTime(item.runningData[0].deMaintenanceTime)
+    item.runningData[0].ndeMaintenanceTime=timestampToTime(item.runningData[0].ndeMaintenanceTime)
   })
 };

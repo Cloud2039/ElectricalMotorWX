@@ -50,7 +50,7 @@ formSubmit:function(e){
               })          
               wx.setStorage({
                 key: 'u_name',
-                data: res.data.name
+                data: res.data.username
               })  
               wx.setStorage({
                 key: 'u_operatorID',

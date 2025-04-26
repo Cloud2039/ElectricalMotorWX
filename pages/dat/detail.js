@@ -90,6 +90,35 @@ Page({
       console.log(e.detail.date)
     },
 
+    scanQRCode: function() {
+      wx.scanCode({
+        onlyFromCamera: false,
+        success: (res) => {
+          wx.request({
+            url: app.myapp.myweb + '/api/motorBasicData/seletById/' + res.result,
+            header: {
+              'Authorization': wx.getStorageSync('u_access_token')
+            },
+            success:function(res1){
+              console.log("I came here again haha")
+              console.log(res1)
+              wx.navigateTo({
+                url: '/pages/dat/detail?lube',
+                success: function(res2) {
+                  // 通过eventChannel向被打开页面传送数据
+                  var tmp = JSON.stringify(that.data.lube_stats_all[that.data.all_lube_dict[res.result]])
+                  res1.eventChannel.emit('acceptDataFromOpenerPage', {data: tmp})
+                }
+              })
+            }
+          })
+        },
+        fail:(err) => {
+          console.error(err);
+        }
+      })
+    },
+
     popupBearing: function(){
       var that = this
 
@@ -151,6 +180,6 @@ Page({
 
 function transferLubeTime(test) {
   test.forEach(item=>{
-    item.time=timestampToTime(item.time, 1)
+    item.time=timestampToTime(item.time, 0)
   })
 };

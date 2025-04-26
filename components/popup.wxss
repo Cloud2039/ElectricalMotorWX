@@ -77,9 +77,13 @@
   /* 添加这一行使其居中 */
 }
 
-.intro {
-  margin: 30px;
-  text-align: center;
+.picker-time {
+  font-size: 18px;
+  font-weight: bolder;
+}
+
+.picker-item {
+  font-size: 22px;
 }
 
 .reason-picker {

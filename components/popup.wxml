@@ -8,13 +8,10 @@
     <view class="popup-message">
       <!-- 弹窗具体内容 -->
       <view class="page">
-        <view>{{year}}年{{month}}月{{day}}日{{hour}}时</view>
-          <picker-view style="width: 100%; height: 300px;" value="{{value}}" bindchange="bindChange">
+        <view class="picker-time">{{year}}年{{month}}月{{day}}日{{hour}}时</view>
+          <picker-view style="width: 100%; height: 250px;" value="{{value}}" bindchange="bindChange">
             <picker-view-column>
-              <view wx:for="{{years}}" wx:key='unique' style="line-height: 30px">{{item}}年</view>
-            </picker-view-column>
-            <picker-view-column>
-              <view wx:for="{{months}}" wx:key='unique' style="line-height: 30px">{{item}}月</view>
+              <view class="picker-item" wx:for="{{months}}" wx:key='unique' style="line-height: 30px">{{item}}月</view>
             </picker-view-column>
             <picker-view-column>
               <view wx:for="{{days}}" wx:key='unique' style="line-height: 30px">{{item}}日</view>
@@ -25,7 +22,7 @@
           </picker-view>
 
           <view class='reason-picker'>
-          <text class="reason-text">请选择更换原因：</text>
+          <text class="reason-text">更换原因：</text>
           <picker class="search-picker" mode="selector" bindchange="bindPickerChange" value="{{index}}" range="{{reasons}}">
             <view class="picker">
               {{reasons[index]}}

@@ -1,13 +1,18 @@
 <!-- 所有使用教程可以在该链接找到https://echarts.apache.org/zh/option.html -->
-<view class='search-bar'>
+<view class="search-block">
   <picker class="search-picker" mode="selector" bindchange="bindPickerChange" value="{{index}}" range="{{subStations}}">
     <view class="picker">
-      {{subStations[index]}}
+      <text>{{subStations[index]}}</text>
+      <image src="../../img/hamburger-button.png" mode="aspectFit"></image>
     </view>
   </picker>
-  <input type='text' maxlength='12' placeholder='输入信息' confirm-type="search" value="{{search_value}}" bindinput="bindKeyInput" bindconfirm="searchTest"/>
-  <image src="../../img/scanning-blue.png" mode="aspectFit" bindtap="scanQRCode"></image>
+
+  <view class='search-bar'>
+    <input type='text' maxlength='12' placeholder='输入信息' confirm-type="search" value="{{search_value}}" bindinput="bindKeyInput" bindconfirm="searchTest"/>
+    <image src="../../img/scanning-blue.png" mode="aspectFit" bindtap="scanQRCode"></image>
+  </view>
 </view>
+
 
 <view class="swiper-tab-container">
   <view class='swiper-tab'>
@@ -23,14 +28,14 @@
 <swiper current='{{currentTableTab}}' class='swiper-box' duration='300' bindchange='slideTable'>
   <swiper-item>
       <view class='selector-tab'>
-        <view class='selector-tab-list {{currentLubeTab==2 ? "selected" : ""}}' data-current='2' bindtap='switchLubeTab'>
-          超期
+        <view class='selector-tab-list {{currentLubeTab==2 ? "selected-over" : ""}}' data-current='2' bindtap='switchLubeTab'>
+          <text>超期</text>
         </view>
-        <view class='selector-tab-list {{currentLubeTab==1 ? "selected" : ""}}' data-current='1' bindtap='switchLubeTab'>
-          待维护
+        <view class='selector-tab-list {{currentLubeTab==1 ? "selected-close" : ""}}' data-current='1' bindtap='switchLubeTab'>
+          <text>待维护</text>
         </view>
-        <view class='selector-tab-list {{currentLubeTab==0 ? "selected" : ""}}' data-current='0' bindtap='switchLubeTab'>
-          正常
+        <view class='selector-tab-list {{currentLubeTab==0 ? "selected-normal" : ""}}' data-current='0' bindtap='switchLubeTab'>
+          <text>正常</text>
         </view>
       </view>
       <scroll-view scroll-y class='scroller'>
@@ -38,9 +43,10 @@
           <view class='block-nav' bindtap='toSpecificLube' data-query="{{item.runningData[0].motorId}}">
             <view class='view-id-and-stat'>
               <text class='text-id'>{{item.positionNum}}</text>
-              <text wx:if="{{item.runningData[0].motorStatus == 0}}" class='text-stat-normal'>正常</text>
+              <!-- 也许需要加回去 -->
+              <!-- <text wx:if="{{item.runningData[0].motorStatus == 0}}" class='text-stat-normal'>正常</text>
               <text wx:if="{{item.runningData[0].motorStatus == 1}}" class='text-stat-close'>待维护</text>
-              <text wx:if="{{item.runningData[0].motorStatus == 2}}" class='text-stat-over'>超期</text>
+              <text wx:if="{{item.runningData[0].motorStatus == 2}}" class='text-stat-over'>超期</text> -->
             </view>
             <view class='block-below'>
               <image class='block-img' src='../../img/motor_01.png' mode='widthFix'></image>
@@ -71,13 +77,13 @@
     </swiper-item>
   <swiper-item>
     <view class='selector-tab'>
-      <view class='selector-tab-list {{currentBearingTab==2 ? "selected" : ""}}' data-current='2' bindtap='switchBearingTab'>
+      <view class='selector-tab-list {{currentBearingTab==2 ? "selected-over" : ""}}' data-current='2' bindtap='switchBearingTab'>
         超期
       </view>
-      <view class='selector-tab-list {{currentBeartingTab==1 ? "selected" : ""}}' data-current='1'bindtap='switchBearingTab'>
+      <view class='selector-tab-list {{currentBearingTab==1 ? "selected-close" : ""}}' data-current='1'bindtap='switchBearingTab'>
         待维护
       </view>
-      <view class='selector-tab-list {{currentBearingTab==0 ? "selected" : ""}}' data-current='0'bindtap='switchBearingTab'>
+      <view class='selector-tab-list {{currentBearingTab==0 ? "selected-normal" : ""}}' data-current='0'bindtap='switchBearingTab'>
         正常
       </view>
     </view>
@@ -86,9 +92,9 @@
           <view class='block-nav' bindtap='toSpecificBearing' data-query="{{item.runningData[0].motorId}}">
             <view class='view-id-and-stat'>
               <text class='text-id'>{{item.positionNum}}</text>
-              <text wx:if="{{item.runningData[0].motorBearingStatus == 0}}" class='text-stat-normal'>正常</text>
+              <!-- <text wx:if="{{item.runningData[0].motorBearingStatus == 0}}" class='text-stat-normal'>正常</text>
               <text wx:if="{{item.runningData[0].motorBearingStatus == 1}}" class='text-stat-close'>待维护</text>
-              <text wx:if="{{item.runningData[0].motorBearingStatus == 2}}" class='text-stat-over'>超期</text>
+              <text wx:if="{{item.runningData[0].motorBearingStatus == 2}}" class='text-stat-over'>超期</text> -->
             </view>
             <view class='block-below'>
               <image class='block-img' src='../../img/motor_01.png' mode='widthFix'></image>

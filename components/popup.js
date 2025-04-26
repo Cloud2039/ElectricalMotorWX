@@ -40,7 +40,7 @@ Component({
     myUrl: "",
     index: 0,
 
-    value: [9999, date.getMonth(), date.getDate()-1, date.getHours()],
+    value: [date.getMonth(), date.getDate()-1, date.getHours()],
   },
 
   properties:{
@@ -95,28 +95,32 @@ Component({
             'Authorization': wx.getStorageSync('u_access_token')
           },
           method: "POST",
-          success(res){
-            console.log(res.data)
+          success(){
+            wx.showToast({
+              title: '添加成功',
+              icon: 'success'
+            })
+          },
+          fail(res){
+            wx.showToast({
+              title: '添加失败',
+              icon: 'error'
+            })
           }
         })
       },
       cancel: function() {
           this.setData({ 
             visible: false,
-            year: date.getFullYear(),
-            month: date.getMonth() + 1,
-            day: date.getDate(),
-            hour: date.getHours(), 
           }); // 用showPopup变量来控制弹窗显示与否
       },
       
       bindChange: function (e) {
         const val = e.detail.value
         this.setData({
-          year: this.data.years[val[0]],
-          month: this.data.months[val[1]],
-          day: this.data.days[val[2]],
-          hour: this.data.hours[val[3]]
+          month: this.data.months[val[0]],
+          day: this.data.days[val[1]],
+          hour: this.data.hours[val[2]]
         })
       }
   },

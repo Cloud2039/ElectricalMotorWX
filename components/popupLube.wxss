@@ -45,25 +45,20 @@
   margin-bottom: 5px;
 }
 
-.popup-button {
-  display: inline-block;
-  margin: 0;
-  padding: 0;
-  font-size: 32rpx;
-  width: 90rpx;
-  line-height: 64rpx;
-  height: 64rpx;
-  text-align: center;
-  color: #3f8cff;
-  background-color: white;
+.cancel-button {
+  width: 20px;
+  height: 20px;
+  align-self: flex-end;
 }
 
+.confirm-button {
+  margin-top: 10px;
+  background-color: #4582fc;
+}
 
 .popup-header {
   display: flex;
-  border-bottom: 1px solid #ddd;
-  padding: 0 16px;
-  margin-bottom: 16px;
+  width: 100%;
 }
 
 .popup-title {
@@ -74,9 +69,13 @@
   /* 添加这一行使其居中 */
 }
 
-.intro {
-  margin: 30px;
-  text-align: center;
+.picker-time {
+  font-size: 18px;
+  font-weight: bolder;
+}
+
+.picker-item {
+  font-size: 22px;
 }
 
 .amount-block{

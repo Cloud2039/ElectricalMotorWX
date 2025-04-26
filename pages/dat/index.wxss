@@ -6,8 +6,62 @@ page{
   flex-direction: column;
 }
 
-.flex-wrp{
+.search-block{
   display:flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.search-picker {
+  width: 35%;
+  height: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.picker {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  font-size: 16px;
+  font-weight: bold;
+  text-overflow: ellipsis;
+}
+
+.search-picker image{
+  height: 20px;
+  width: 20px;
+  margin-left: 20px;
+}
+
+.search-bar{
+  width: 65%;
+  display: flex;
+  background-color: #efefef;
+  border-bottom: 5px solid white;
+  border-left: 7px solid white;
+  border-right: 7px solid white;
+  border-radius: 5px;
+  padding: 5px;
+  align-items: center;
+}
+
+.search-bar image{
+  height: 30px;
+  width: 30px;
+  padding-right: 10px;
+}
+
+.search-bar input{
+  height: 35px;
+  line-height: 35px;
+  background: #efefef;
+  flex-grow: 1;
+  border-radius: 5px;
 }
 
 .swiper-tab-container {
@@ -44,6 +98,36 @@ page{
   border-bottom: 3px solid #4080ff;
 }
 
+.selected-over {
+  color: #f9513f;
+  border-bottom: 3px solid #f9513f;
+  background-color: #f9513f;
+}
+
+.selected-over text{
+  color: white;
+}
+
+.selected-close {
+  color: #f49a32;
+  border-bottom: 3px solid #f49a32;
+  background-color: #f49a32;
+}
+
+.selected-close text{
+  color: white;
+}
+
+.selected-normal {
+  color: #4582fc;
+  border-bottom: 3px solid #4582fc;
+  background-color: #4582fc;
+}
+
+.selected-normal text{
+  color: white;
+}
+
 .swiper-box {
   width: 100%;
   display: block;
@@ -73,53 +157,6 @@ page{
   text-align: center;
 }
 
-.search-bar{
-  display: flex;
-  background-color: #efefef;
-  border-bottom: 5px solid white;
-  border-left: 7px solid white;
-  border-right: 7px solid white;
-  border-radius: 5px;
-  padding: 5px;
-  align-items: center;
-}
-
-.search-picker {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-  border-radius: 5px;
-  text-align: center;
-  font-size: 16px;
-  font-weight: bold;
-  text-overflow: ellipsis;
-  box-shadow: 0px 2px 2px gainsboro;
-  height: 35px;
-  width: 100px;
-}
-
-.search-bar image{
-  height: 30px;
-  width: 30px;
-  padding-right: 10px;
-}
-
-.search-bar input{
-  height: 35px;
-  line-height: 35px;
-  background: #efefef;
-  flex-grow: 1;
-  border-radius: 5px;
-}
-
-.search-bar button{
-  background:  #efefef;
-  color: #4582fc;
-  height: 35px;
-  line-height: 35px; 
- }
-
  .scroller{
    height: 600px;
    background-color: #efefef;
@@ -136,7 +173,6 @@ page{
   margin-right:5px;
   padding: 5px; 
   width: 94%;
-  border: 1px solid black;
   border-radius: 5px;
   box-shadow: 0px 2px 2px gainsboro;
   margin-top: 5px;

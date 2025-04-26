@@ -11,9 +11,9 @@
 }
 
 .search-bar image{
-  height: 35px;
-  width: 35px;
-  padding-right: 15px;
+  height: 30px;
+  width: 30px;
+  padding-right: 10px;
 }
 
 .search-bar input{

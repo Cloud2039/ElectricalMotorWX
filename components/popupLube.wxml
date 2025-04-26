@@ -3,40 +3,33 @@
 <view class="popup-mask" hidden="{{!visible}}"></view>
 <view class="popup-window" hidden="{{!visible}}">
   <view class="popup-header">
-    <view class="popup-buttons">
-      <button class="popup-button" bindtap="cancel">取消</button>
-      <button class="popup-button" bindtap="confirm">确认</button>
-    </view>
+    <image class="cancel-button" src='/img/x-1.png' bindtap="cancel"></image>
   </view>
   <view class="popup-body">
     <view class="popup-message">
       <!-- 弹窗具体内容 -->
       <view class="page">
-        <text>加注时间：{{year}}年{{month}}月{{day}}日{{hour}}时</text>
+        <text class="picker-time">加注时间：{{year}}年{{month}}月{{day}}日{{hour}}时</text>
         
         <picker-view style="width: 100%; height: 250px;" value="{{value}}" bindchange="bindChange">
           <picker-view-column>
-            <view wx:for="{{years}}" wx:key='unique' style="line-height: 30px">{{item}}年</view>
+            <view class="picker-item" wx:for="{{months}}" wx:key='unique' style="line-height: 30px">{{item}}月</view>
           </picker-view-column>
           <picker-view-column>
-            <view wx:for="{{months}}" wx:key='unique' style="line-height: 30px">{{item}}月</view>
+            <view class="picker-item" wx:for="{{days}}" wx:key='unique' style="line-height: 30px">{{item}}日</view>
           </picker-view-column>
           <picker-view-column>
-            <view wx:for="{{days}}" wx:key='unique' style="line-height: 30px">{{item}}日</view>
-          </picker-view-column>
-          <picker-view-column>
-            <view wx:for="{{hours}}" wx:key='unique' style="line-height: 30px">{{item}}时</view>
+            <view class="picker-item" wx:for="{{hours}}" wx:key='unique' style="line-height: 30px">{{item}}时</view>
           </picker-view-column>
         </picker-view>
 
         <view class='amount-block'>
-          <text class="text-input">加注油量：</text>
+          <text class="text-input">加注油量(g)：</text>
           <input class="input" placeholder='{{amount}}' auto-focus type="digit" />
-          <text class="text-input"> g</text>
         </view>
 
         <view class='reason-picker'>
-          <text class="reason-text">请选择更换零件：</text>
+          <text class="reason-text">更换零件：</text>
           <picker class="search-picker" mode="selector" bindchange="bindPickerChange1" value="{{index1}}" range="{{accessoryName}}">
             <view class="picker">
               {{accessoryList[index1].model}}
@@ -45,14 +38,15 @@
         </view>
 
         <view class='reason-picker'>
-          <text class="reason-text">请选择更换原因：</text>
+          <text class="reason-text">更换原因：</text>
           <picker class="search-picker" mode="selector" bindchange="bindPickerChange" value="{{index}}" range="{{reasons}}">
             <view class="picker">
               {{reasons[index]}}
             </view>
           </picker>
         </view>
-      
+
+        <button class="confirm-button" bindtap="confirm">确认</button>
       </view>
     </view>
   </view>

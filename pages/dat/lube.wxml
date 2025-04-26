@@ -12,7 +12,7 @@
   </view>
 
   <view>
-    <image src='/img/motor.svg'></image>
+    <image src='/img/motor.png'></image>
   </view>
   
   <view class='test'>
