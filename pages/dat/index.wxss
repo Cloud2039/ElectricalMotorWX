@@ -98,18 +98,24 @@ page{
   border-bottom: 3px solid #4080ff;
 }
 
+.unselected{
+  z-index: 999
+}
+
 .selected-over {
-  color: #f9513f;
+  color: white;
   border-bottom: 3px solid #f9513f;
   background-color: #f9513f;
+  z-index: 999;
 }
 
 .selected-over text{
   color: white;
+  z-index: -1;
 }
 
 .selected-close {
-  color: #f49a32;
+  color: #000000
   border-bottom: 3px solid #f49a32;
   background-color: #f49a32;
 }

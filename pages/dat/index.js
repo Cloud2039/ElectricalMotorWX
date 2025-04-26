@@ -425,7 +425,7 @@ Page({
     var tmp_bearing_stat_over = new Array();
 
     wx.request({
-      url: app.myapp.myweb + '/api/motorBasicData/selectAll/1?page=1&limit=20',
+      url: app.myapp.myweb + '/api/motorBasicData/selectAll/'+this.data.subStationIDs[e.detail.value]+'?page=1&limit=20',
       header: {
         'Authorization': wx.getStorageSync('u_access_token')
       },

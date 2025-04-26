@@ -6,7 +6,7 @@ page{
 }
 
 .title {
-  height: 25%;
+  height: 20%;
   margin-top: 20px;
   display: flex;
   width: 100%;
@@ -53,7 +53,7 @@ page{
   border-radius: 5px;
   display:flex;
   align-items: center;
-  height: 45%;
+  height: 50%;
   background-color: white;
 }
 
