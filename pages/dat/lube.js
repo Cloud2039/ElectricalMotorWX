@@ -1,5 +1,6 @@
 // pages/dat/bearing.js
 var app = getApp()
+const date = new Date()
 
 Page({
 
@@ -7,18 +8,21 @@ Page({
      * 页面的初始数据
      */
     data: {
-      motor_id:         0,
-      positionNum:      "",
-      location:         "",
-      name:             "",
-      amount:           0,
-      deReferenceTime:  0,
-      ndeReferenceTime: 0,
-      operatorId:       0,
-      url:              "",
-      type:             0,
-      accessoryList:    {},
-      accessoryName:    {},
+      motor_id:           0,
+      positionNum:        "",
+      location:           "",
+      name:               "",
+      amount:             0,
+      deReferenceTime:    0,
+      ndeReferenceTime:   0,
+      deMaintenanceTime:  "",
+      ndeMaintenanceTime: "",
+      today:              "",
+      operatorId:         0,
+      url:                "",
+      type:               0,
+      accessoryList:      {},
+      accessoryName:      {},
 
       isPopupVisible:   false,
     },
@@ -28,6 +32,16 @@ Page({
      */
     onLoad(options) {
       var that = this
+
+      var month = date.getMonth() + 1
+      if (month < 10) {
+        month = '0' + month
+      }
+      var day = date.getDate()
+      if (day < 10) {
+        day = '0' + day
+      }
+      var today = date.getFullYear()+'-'+month+'-'+day
     
       that.setData({
         motor_id: options.motor_id,
@@ -37,6 +51,10 @@ Page({
         amount: options.amount,
         deReferenceTime: options.deReferenceTime,
         ndeReferenceTime: options.ndeReferenceTime,
+        deMaintenanceTime: options.deMaintenanceTime,
+        ndeMaintenanceTime: options.ndeMaintenanceTime,
+        today: today,
+
         operatorId: wx.getStorageSync('u_operatorID'),
         url: app.myapp.myweb,
       })
@@ -66,19 +84,58 @@ Page({
     popupDeLube: function(){
       var that = this
 
-      that.setData({
-        isPopupVisible:true,
-        type: 0,
-      })
+      if(that.data.today == that.data.deMaintenanceTime){
+        console.log('weird')
+        wx.showModal({
+          title: '提示',
+          content: '您今日已加注过油，请问继续添加吗？',
+          complete: (res) => {
+            if (res.cancel) {             
+              return
+            }
+            if (res.confirm) {
+              that.setData({
+                isPopupVisible:true,
+                type: 1,
+              })
+            }
+          }
+        })
+      }
+      else {
+        that.setData({
+          isPopupVisible:true,
+          type: 1,
+        })
+      }
     },
 
     popupNdeLube: function(){
       var that = this
 
-      that.setData({
-        isPopupVisible:true,
-        type: 1,
-      })
+      if(that.data.today == that.data.ndeMaintenanceTime){
+        wx.showModal({
+          title: '提示',
+          content: '您今日已加注过油，请问继续添加吗？',
+          complete: (res) => {
+            if (res.cancel) {             
+              return
+            }
+            if (res.confirm) {
+              that.setData({
+                isPopupVisible:true,
+                type: 1,
+              })
+            }
+          }
+        })
+      }
+      else {
+        that.setData({
+          isPopupVisible:true,
+          type: 1,
+        })
+      }
     },
 
     /**

@@ -523,5 +523,6 @@ function transferLubeTime(test) {
   test.forEach(item=>{
     item.runningData[0].deMaintenanceTime=timestampToTime(item.runningData[0].deMaintenanceTime)
     item.runningData[0].ndeMaintenanceTime=timestampToTime(item.runningData[0].ndeMaintenanceTime)
+    item.runningData[0].bearingMaintenanceTime=timestampToTime(item.runningData[0].bearingMaintenanceTime)
   })
 };

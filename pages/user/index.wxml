@@ -6,6 +6,7 @@
   </view>
 
   <view class='head-right'>
+    <image src='/img/profile.png' mode="aspectFit" ></image>
     <view class='head-right-txt1'  wx:if="{{lx==1}}">
       <open-data type="userNickName"></open-data>
     </view>

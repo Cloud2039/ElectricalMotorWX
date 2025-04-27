@@ -28,7 +28,7 @@
 <swiper current='{{currentTableTab}}' class='swiper-box' duration='300' bindchange='slideTable'>
   <swiper-item>
       <view class='selector-tab'>
-        <view class='selector-tab-list {{currentLubeTab==2 ? "selected-over" : "unselected"}}' data-current='2' bindtap='switchLubeTab'>
+        <view class='selector-tab-list {{currentLubeTab==2 ? "selected-over" : ""}}' data-current='2' bindtap='switchLubeTab'>
           超期
         </view>
         <view class='selector-tab-list {{currentLubeTab==1 ? "selected-close" : ""}}' data-current='1' bindtap='switchLubeTab'>

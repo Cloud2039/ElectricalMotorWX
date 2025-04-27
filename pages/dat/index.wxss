@@ -103,29 +103,20 @@ page{
 }
 
 .selected-over {
-  color: white;
+  color: white !important;
   border-bottom: 3px solid #f9513f;
   background-color: #f9513f;
-  z-index: 999;
 }
 
-.selected-over text{
-  color: white;
-  z-index: -1;
-}
 
 .selected-close {
-  color: #000000
+  color: white !important;
   border-bottom: 3px solid #f49a32;
   background-color: #f49a32;
 }
 
-.selected-close text{
-  color: white;
-}
-
 .selected-normal {
-  color: #4582fc;
+  color: white !important;
   border-bottom: 3px solid #4582fc;
   background-color: #4582fc;
 }

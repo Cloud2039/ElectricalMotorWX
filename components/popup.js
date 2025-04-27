@@ -96,6 +96,7 @@ Component({
           },
           method: "POST",
           success(){
+            wx.navigateBack(),
             wx.showToast({
               title: '添加成功',
               icon: 'success'

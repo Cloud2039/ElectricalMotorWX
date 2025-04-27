@@ -16,6 +16,7 @@ Page({
       lube_repair_history:    [],
       bearing_repair_history: [],
       current_repair_history: [],
+      today:                  "",
 
       api_url : app.myapp.myweb
     },
@@ -45,7 +46,7 @@ Page({
     navigateToLube: function(){
       var that = this;
       wx.navigateTo({
-        url: '/pages/dat/lube?motor_id='+ that.data.stat.runningData[0].motorId + "&positionNum=" + that.data.stat.positionNum + "&location=" + that.data.stat.location + "&name=" + that.data.stat.name + "&amount=" + that.data.stat.oilInjectionAmount + "&deReferenceTime=" + that.data.stat.runningData[0].deReferenceTime + "&ndeReferenceTime=" + that.data.stat.runningData[0].ndeReferenceTime,
+        url: '/pages/dat/lube?motor_id='+ that.data.stat.runningData[0].motorId + "&positionNum=" + that.data.stat.positionNum + "&location=" + that.data.stat.location + "&name=" + that.data.stat.name + "&amount=" + that.data.stat.oilInjectionAmount + "&deReferenceTime=" + that.data.stat.runningData[0].deReferenceTime + "&ndeReferenceTime=" + that.data.stat.runningData[0].ndeReferenceTime + "&deMaintenanceTime=" + that.data.stat.runningData[0].deMaintenanceTime + "&ndeMaintenanceTime=" + that.data.stat.runningData[0].ndeMaintenanceTime,
       })
     },
     
@@ -55,6 +56,18 @@ Page({
     onLoad(options) {
       var that = this;
       const eventChannel = this.getOpenerEventChannel()
+      var month = date.getMonth() + 1
+      if (month < 10) {
+        month = '0' + month
+      }
+      var day = date.getDate()
+      if (day < 10) {
+        day = '0' + day
+      }
+      var today = date.getFullYear()+'-'+month+'-'+day
+      that.setData({
+        today: today
+      })
       eventChannel.on('acceptDataFromOpenerPage', function(data) {
         var temp = JSON.parse(data.data)
         var tmp_lube_repair_history = []
@@ -122,10 +135,30 @@ Page({
     popupBearing: function(){
       var that = this
 
-      that.setData({
-        isPopupVisible:true,
-        type: 0,
-      })
+      if(that.data.today == that.data.deMaintenanceTime){
+        console.log('weird')
+        wx.showModal({
+          title: '提示',
+          content: '您今日已换过轴，请问仍然换轴吗？',
+          complete: (res) => {
+            if (res.cancel) {             
+              return
+            }
+            if (res.confirm) {
+              that.setData({
+                isPopupVisible:true,
+                type: 1,
+              })
+            }
+          }
+        })
+      }
+      else {
+        that.setData({
+          isPopupVisible:true,
+          type: 1,
+        })
+      }
     },
 
     /**

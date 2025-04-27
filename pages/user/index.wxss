@@ -22,6 +22,12 @@
     padding-left: 10px;
     display: flex;
     flex-direction: row;
+    align-items: center;
+  }
+
+  .head-right image{
+    height: 75px;
+    width: 75px;
   }
 
   .head-right-txt1 {
