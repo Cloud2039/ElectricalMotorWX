@@ -56,6 +56,7 @@ Page({
     onLoad(options) {
       var that = this;
       const eventChannel = this.getOpenerEventChannel()
+      var date = new Date()
       var month = date.getMonth() + 1
       if (month < 10) {
         month = '0' + month

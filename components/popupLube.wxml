@@ -4,12 +4,13 @@
 <view class="popup-window" hidden="{{!visible}}">
   <view class="popup-header">
     <image class="cancel-button" src='/img/x-1.png' bindtap="cancel"></image>
+    <text>加注时间：</text>
   </view>
   <view class="popup-body">
     <view class="popup-message">
       <!-- 弹窗具体内容 -->
       <view class="page">
-        <text class="picker-time">加注时间：{{year}}年{{month}}月{{day}}日{{hour}}时</text>
+        <text class="picker-time">{{year}}年{{month}}月{{day}}日{{hour}}时</text>
         
         <picker-view style="width: 100%; height: 250px;" value="{{value}}" bindchange="bindChange">
           <picker-view-column>

@@ -19,7 +19,7 @@ Page({
       ec: {
         onInit: function (canvas, width, height, dpr) {
           const chart = echarts.init(canvas, null, {
-            width: width-10,
+            width: width,
             height: height,
             devicePixelRatio: dpr // new
           });

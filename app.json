@@ -6,7 +6,8 @@
         "pages/dat/overview",
         "pages/dat/detail",
         "pages/dat/lube",
-        "pages/user/password"
+        "pages/user/password",
+        "pages/dat/search"
     ],
     "window": {
         "backgroundTextStyle": "light",

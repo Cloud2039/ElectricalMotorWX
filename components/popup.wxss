@@ -64,9 +64,9 @@
   /* 添加这一行以使内容居中对齐 */
   align-items: center;
   /* 添加这一行以使垂直居中对齐 */
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #000000;
   padding: 0 16px;
-  margin-bottom: 16px;
+  margin-bottom: 4px;
 }
 
 .popup-title {
@@ -111,4 +111,15 @@
   box-shadow: 0px 2px 2px gainsboro;
   height: 35px;
   width: 100px;
+}
+
+.cancel-button {
+  width: 20px;
+  height: 20px;
+  align-self: flex-end;
+}
+
+.confirm-button {
+  margin-top: 10px;
+  background-color: #4582fc;
 }

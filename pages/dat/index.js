@@ -94,10 +94,29 @@ Page({
 
   searchTest:function() {
     var that = this;
-    console.log("You've been here")
+
     wx.navigateTo({
-      url: '/pages/dat/detail?lube',
+      url: '/pages/dat/search',
       success: function(res1) {
+        console.log(res1)
+        wx.request({
+          url: app.myapp.myweb + '/api/motorBasicData/selectAll/1?page=1&limit=10&positionNum=' + that.data.search_value,
+          header: {
+            'Authorization': wx.getStorageSync('u_access_token')
+          },
+          success:function(res){
+            console.log("Damn")
+            console.log(res.data)
+            var tmp_array = new Array()
+            res.data.data.forEach(item=>{
+              tmp_array.push(item.id)
+            })
+            that.setData({
+              accessoryList: res.data.data,
+              accessoryName: tmp_array,
+            })
+          }
+        })
         // 通过eventChannel向被打开页面传送数据
         var tmp = JSON.stringify(that.data.lube_stats_all[that.data.all_lube_dict[that.data.search_value]])
         res1.eventChannel.emit('acceptDataFromOpenerPage', {data: tmp})
