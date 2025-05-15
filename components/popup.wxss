@@ -57,24 +57,28 @@
   background-color: transparent;
 }
 
-
 .popup-header {
   display: flex;
-  justify-content: center;
-  /* 添加这一行以使内容居中对齐 */
-  align-items: center;
-  /* 添加这一行以使垂直居中对齐 */
   border-bottom: 1px solid #000000;
   padding: 0 16px;
   margin-bottom: 4px;
+  text-align: center;
 }
 
-.popup-title {
+.item-wrp{
+  flex: 1
+}
+
+.popup-header image{
+  margin-left: 0px;
+  width: 20px;
+  height: 20px;
+}
+
+.popup-header text{
   font-size: 18px;
   font-weight: bold;
   color: #333;
-  text-align: center;
-  /* 添加这一行使其居中 */
 }
 
 .picker-time {
@@ -96,6 +100,7 @@
 
 .reason-text {
   font-size: 16px;
+  font-weight: bold;
 }
 
 .search-picker {
@@ -111,12 +116,6 @@
   box-shadow: 0px 2px 2px gainsboro;
   height: 35px;
   width: 100px;
-}
-
-.cancel-button {
-  width: 20px;
-  height: 20px;
-  align-self: flex-end;
 }
 
 .confirm-button {

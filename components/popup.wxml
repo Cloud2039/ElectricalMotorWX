@@ -2,8 +2,10 @@
 <view class="popup-mask" hidden="{{!visible}}"></view>
 <view class="popup-window" hidden="{{!visible}}">
   <view class="popup-header">
-    <image class="cancel-button" src='/img/x-1.png' bindtap="cancel"></image>
-    <text class="popup-title">换轴时间</text>
+    <image src='/img/x-1.png' bindtap="cancel"></image>
+    <view class="item-wrp">
+      <text>换轴时间</text>
+    </view>
   </view>
   <view class="popup-body">
     <view class="popup-message">
@@ -16,10 +18,10 @@
               <view class="picker-item" wx:for="{{months}}" wx:key='unique' style="line-height: 30px">{{item}}月</view>
             </picker-view-column>
             <picker-view-column>
-              <view wx:for="{{days}}" wx:key='unique' style="line-height: 30px">{{item}}日</view>
+              <view class="picker-item" wx:for="{{days}}" wx:key='unique' style="line-height: 30px">{{item}}日</view>
             </picker-view-column>
             <picker-view-column>
-              <view wx:for="{{hours}}" wx:key='unique' style="line-height: 30px">{{item}}时</view>
+              <view class="picker-item" wx:for="{{hours}}" wx:key='unique' style="line-height: 30px">{{item}}时</view>
             </picker-view-column>
           </picker-view>
 

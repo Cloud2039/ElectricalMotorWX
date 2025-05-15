@@ -3,8 +3,10 @@
 <view class="popup-mask" hidden="{{!visible}}"></view>
 <view class="popup-window" hidden="{{!visible}}">
   <view class="popup-header">
-    <image class="cancel-button" src='/img/x-1.png' bindtap="cancel"></image>
-    <text>加注时间：</text>
+    <image src='/img/x-1.png' bindtap="cancel"></image>
+    <view class="item-wrp">
+      <text>加注时间</text>
+    </view>
   </view>
   <view class="popup-body">
     <view class="popup-message">

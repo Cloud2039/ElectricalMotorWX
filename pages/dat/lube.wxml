@@ -5,7 +5,7 @@
   <text>{{name}}</text>
 
   <view>
-    <Popup visible='{{isPopupVisible}}' type='{{type}}' motor_id='{{motor_id}}' operatorId='{{operatorId}}' deReferenceTime='{{deReferenceTime}}' ndeReferenceTime='{{ndeReferenceTime}}' amount='{{amount}}' accessoryList='{{accessoryList}}' accessoryName='{{accessoryName}}' myUrl='{{url}}' bindmyevent='myEvent'></Popup>
+    <Popup visible='{{isPopupVisible}}' type='{{type}}' motor_id='{{motor_id}}' operatorId='{{operatorId}}' deReferenceTime='{{deReferenceTime}}' ndeReferenceTime='{{ndeReferenceTime}}' amount='{{amount}}' accessoryList='{{accessoryList}}' accessoryName='{{accessoryName}}' myUrl='{{url}}' ></Popup>
   </view>
   <view class='nde_lube'>
     <button class='button' bindtap='popupNdeLube'>非轴伸端</button>

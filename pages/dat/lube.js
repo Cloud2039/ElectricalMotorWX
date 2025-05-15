@@ -77,15 +77,10 @@ Page({
       })
     },
 
-    myEvent: function(e) {
-      console.log(e.detail.date)
-    },
-
     popupDeLube: function(){
       var that = this
 
       if(that.data.today == that.data.deMaintenanceTime){
-        console.log('weird')
         wx.showModal({
           title: '提示',
           content: '您今日已加注过油，请问继续添加吗？',

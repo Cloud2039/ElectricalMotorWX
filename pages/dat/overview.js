@@ -1,5 +1,6 @@
 // pages/dat/overview.js
 import * as echarts from '../../ec-canvas/echarts';
+import {timestampToTime} from "../../utils/common"
 
 var app = getApp()
 
@@ -36,27 +37,37 @@ Page({
       wx.scanCode({
         onlyFromCamera: false,
         success: (res) => {
+  
           wx.request({
-            url: app.myapp.myweb + '/api/motorBasicData/seletById/' + res.result,
+            url: app.myapp.myweb + '/api/motorBasicData/selectAll/1?page=1&limit=10&positionNum='  + res.result,
             header: {
               'Authorization': wx.getStorageSync('u_access_token')
             },
             success:function(res1){
-              console.log("I came here again haha")
-              console.log(res1)
+              transferSingleLubeTime(res1.data.data[0])
               wx.navigateTo({
                 url: '/pages/dat/detail?lube',
                 success: function(res2) {
                   // 通过eventChannel向被打开页面传送数据
-                  var tmp = JSON.stringify(that.data.lube_stats_all[that.data.all_lube_dict[res.result]])
-                  res1.eventChannel.emit('acceptDataFromOpenerPage', {data: tmp})
+                  var tmp = JSON.stringify(res1.data.data[0])
+                  res2.eventChannel.emit('acceptDataFromOpenerPage', {data: tmp})
                 }
+              })
+            },
+            fail:function(){
+              wx.showToast({
+                title: '没有搜索到该装置',
+                icon: fail,
               })
             }
           })
         },
         fail:(err) => {
           console.error(err);
+          wx.showToast({
+            title: err,
+            icon: fail,
+          })
         }
       })
     },
@@ -226,4 +237,10 @@ function getOption() {
           ]
       }
     }
+};
+
+function transferSingleLubeTime(test) {
+  test.runningData[0].deMaintenanceTime=timestampToTime(test.runningData[0].deMaintenanceTime)
+  test.runningData[0].ndeMaintenanceTime=timestampToTime(test.runningData[0].ndeMaintenanceTime)
+  test.runningData[0].bearingMaintenanceTime=timestampToTime(test.runningData[0].bearingMaintenanceTime)
 };
