@@ -62,45 +62,52 @@
     </view>
   </view>
 
-  <view class='block-basic'>
-    <text class='text-data-title'>型号：{{stat.modelNum}}</text>
-    <text class='text-data-title'>生产厂家：{{stat.manufacturer}}</text>
-    <view class='block-basic-sub1'>
-      <view class='block-basic-sub2'>
-        <text class='text-data-title'>机座号：</text>
-        <text class='text-data-title'>额定电压：</text>
-        <text class='text-data-title'>额定电流：</text>
-        <text class='text-data-title'>轴伸端轴承：</text>
-        <text class='text-data-title'>出厂编号：</text>
-        <text class='text-data-title'>注油量：</text>
-      </view>
-      <view class='block-basic-sub2'>
-        <text class='text-data'>{{stat.positionNum}}</text>
-        <text class='text-data'>{{stat.ratedVoltage}}</text>
-        <text class='text-data'>{{stat.ratedCurrent}}</text>
-        <text class='text-data'>{{stat.deBearing}}</text>
-        <text class='text-data'>{{stat.factoryNum}}</text>
-        <text class='text-data'>{{stat.oilInjectionAmount}}g</text>
-      </view>
-      <view class='block-basic-sub2'>
-        <text class='text-data-title'>极数：</text>
-        <text class='text-data-title'>额定功率：</text>
-        <text class='text-data-title'>额定转速：</text>
-        <text class='text-data-title'>非轴伸端轴承：</text>
-        <text class='text-data-title'>出厂年月：</text>
-        <text class='text-data-title'>注油周期：</text>
-      </view>
-      <view class='block-basic-sub2'>
-        <text class='text-data'>{{stat.polarNum}}</text>
-        <text class='text-data'>{{stat.ratedPower}}</text>
-        <text class='text-data'>{{stat.ratedSpeed}}</text>
-        <text class='text-data'>{{stat.ndeBearing}}</text>
-        <text class='text-data'>{{stat.factoryDate}}</text>
-        <text class='text-data'>{{stat.oilInjectionPeriod}}</text>
+  <view>
+    <view class="toggle-header" bindtap="toggleDetail">
+      <text>电机详情</text>
+      <image class='toggle-arrow' src="{{detailHidden ? '/img/expand-down.png' : '/img/expand-up.png'}}" mode='widthFix'></image>
+    </view>
+    <view wx:if="{{!detailHidden}}" class='block-basic'>
+      <text space="emsp" class='text-data-title'>型  号：{{stat.modelNum}}</text>
+      <text class='text-data-title'>生产厂家：{{stat.manufacturer}}</text>
+
+      <view class='block-basic-sub1'>
+        <view class='block-basic-sub2'>
+          <text class='text-data-title'>机座号：</text>
+          <text class='text-data-title'>额定电压：</text>
+          <text class='text-data-title'>额定电流：</text>
+          <text class='text-data-title'>轴伸端轴承：</text>
+          <text class='text-data-title'>出厂编号：</text>
+          <text class='text-data-title'>注油量：</text>
+        </view>
+        <view class='block-basic-sub2'>
+          <text class='text-data'>{{stat.positionNum}}</text>
+          <text class='text-data'>{{stat.ratedVoltage}}</text>
+          <text class='text-data'>{{stat.ratedCurrent}}</text>
+          <text class='text-data'>{{stat.deBearing}}</text>
+          <text class='text-data'>{{stat.factoryNum}}</text>
+          <text class='text-data'>{{stat.oilInjectionAmount}}g</text>
+        </view>
+        <view class='block-basic-sub2'>
+          <text class='text-data-title'>极数：</text>
+          <text class='text-data-title'>额定功率：</text>
+          <text class='text-data-title'>额定转速：</text>
+          <text class='text-data-title'>非轴伸端轴承：</text>
+          <text class='text-data-title'>出厂年月：</text>
+          <text class='text-data-title'>注油周期：</text>
+        </view>
+        <view class='block-basic-sub2'>
+          <text class='text-data'>{{stat.polarNum}}</text>
+          <text class='text-data'>{{stat.ratedPower}}</text>
+          <text class='text-data'>{{stat.ratedSpeed}}</text>
+          <text class='text-data'>{{stat.ndeBearing}}</text>
+          <text class='text-data'>{{stat.factoryDate}}</text>
+          <text class='text-data'>{{stat.oilInjectionPeriod}}</text>
+        </view>
       </view>
     </view>
   </view>
-
+  
   <view class='block-repair'>
     <view class='block-repair-title'>
       <text class='text-running-stat-title'>维修记录</text>

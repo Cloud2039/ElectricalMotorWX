@@ -23,7 +23,7 @@ App({
     })
   },
   myapp:{
-    //myweb: "http://motor.ruishan.cn", 
-    myweb:"http://192.168.0.191:8083",
+    myweb: "https://motor.ruishan.cn", 
+    //myweb:"https://192.168.0.191:8083",
   },
 })

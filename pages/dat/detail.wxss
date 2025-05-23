@@ -91,6 +91,21 @@
   justify-content: space-between;
 }
 
+.toggle-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  padding: 10px;
+  background-color: #fff;
+}
+
+.toggle-arrow {
+  width: 20px;
+  height: 20px;
+}
+
 .block-basic{
   padding: 5px;
   display: flex;
@@ -108,6 +123,11 @@
   flex-direction: column;
   width: 25%;
   justify-content:space-evenly;
+}
+
+.view-expand-up image{
+  height: 20px;
+  width: 45px;
 }
 
 .block-repair{
@@ -138,8 +158,8 @@
 
 .button {
   height: 30px;
-  background-color:#eeeeee;
-  color: #4582fc;
+  background-color:#4582fc;
+  color: #eeeeee;
   border-radius: 2px;
 }
 
@@ -153,6 +173,7 @@
   font-size: 13px;
   color: grey;
   margin-bottom: 8px;
+  text-align: start;
 }
 
 .text-data{

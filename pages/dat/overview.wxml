@@ -7,7 +7,7 @@
 
   <view class='search-bar'>    
     <input type='text' maxlength='12' placeholder='输入信息' confirm-type="search" value="{{search_value}}" bindinput="bindKeyInput" bindconfirm="searchTest"/>
-  <image src="../../img/scanning-blue.png" mode="aspectFit" bindtap="scanQRCode"></image>
+    <image src="../../img/scanning-blue.png" mode="aspectFit" bindtap="scanQRCode"></image>
   </view>
 
   <view class="chart-container">
@@ -15,17 +15,17 @@
   </view>
 
   <view class="summary-stat-container" style="flex-direction: row;">
-    <view class="child-summary-stat-container" style="flex-direction: column;">
+    <view class="child-summary-stat-container" style="flex-direction: column" bindtap="toOver">
       <text style="color:#f9513f">超  期</text>
       <text style="color:#f9513f">{{over_cnt}} 个</text>
     </view>
 
-    <view class="child-summary-stat-container" style="flex-direction: column;">
+    <view class="child-summary-stat-container" style="flex-direction: column">
       <text style="color:#f49a32">待维护</text>
       <text style="color:#f49a32">{{close_cnt}} 个</text>
     </view>
 
-    <view class="child-summary-stat-container" style="flex-direction: column;">
+    <view class="child-summary-stat-container" style="flex-direction: column">
       <text style="color:#4582fc">正  常</text>
       <text style="color:#4080ff">{{normal_cnt}} 个</text>
     </view>

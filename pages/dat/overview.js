@@ -5,7 +5,6 @@ import {timestampToTime} from "../../utils/common"
 var app = getApp()
 
 Page({
-
     /**
      * 页面的初始数据
      */
@@ -96,6 +95,12 @@ Page({
             }
           })
         }
+      })
+    },
+
+    toOver() {
+      wx.switchTab({
+        url: '/pages/dat/index',
       })
     },
 

@@ -12,6 +12,7 @@ Page({
     data: {
       current_tab:            0,
       stat:                   {},
+      detailHidden:           true,
 
       lube_repair_history:    [],
       bearing_repair_history: [],
@@ -44,9 +45,14 @@ Page({
     },
 
     navigateToLube: function(){
-      var that = this;
       wx.navigateTo({
         url: '/pages/dat/lube?motor_id='+ that.data.stat.runningData[0].motorId + "&positionNum=" + that.data.stat.positionNum + "&location=" + that.data.stat.location + "&name=" + that.data.stat.name + "&amount=" + that.data.stat.oilInjectionAmount + "&deReferenceTime=" + that.data.stat.runningData[0].deReferenceTime + "&ndeReferenceTime=" + that.data.stat.runningData[0].ndeReferenceTime + "&deMaintenanceTime=" + that.data.stat.runningData[0].deMaintenanceTime + "&ndeMaintenanceTime=" + that.data.stat.runningData[0].ndeMaintenanceTime,
+      })
+    },
+
+    toggleDetail: function() {
+      this.setData({
+        detailHidden: !this.data.detailHidden
       })
     },
     

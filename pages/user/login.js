@@ -22,7 +22,7 @@ formSubmit:function(e){
   var constant = "IAC_USR_WEB"
   if (e.detail.value.uname == "" || e.detail.value.upwd ==""){
     that.setData({
-      info:"☒请填写用户名和密码！"
+      info:"请填写用户名和密码！"
     })
   }else{
     //发起登录请求
